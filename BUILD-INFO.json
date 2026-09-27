@@ -1,15 +1,20 @@
 {
-  "version": "3.0-provisional-brand",
-  "date": "2026-09-27",
+  "version": "3.1-discord-reviews-provisional-brand",
+  "date": "2026-09-28",
   "brandFinal": false,
   "githubInspected": "LucidWolfx/Cosmic-fbi",
-  "githubModified": false,
-  "published": false,
-  "authConfigured": false,
-  "backendPermissionTestsExecuted": false,
+  "githubModified": true,
+  "repository": "LucidWolfx/cosmic-website",
+  "olderRepositoryModified": false,
+  "published": true,
+  "authConfigured": true,
+  "backendPermissionTestsExecuted": true,
+  "discordAutomatedTestsPassed": 20,
+  "liveDiscordReviewVerified": true,
+  "submissionsOpen": false,
   "uiAssertionsPassed": 283,
   "uiAssertionsTotal": 283,
   "htmlDocuments": 30,
   "referenceSha256": "fc3c2a3d03804a53a1b6b4890606d253cc353bd81f6abf4e0457e0edca282bfd",
-  "note": "Reference styling and UI package. Final art, deployment, real authentication and backend validation remain pending."
+  "note": "Website published; Discord login and fictional review workflow verified. Intake remains closed by owner choice pending draft-rules review. Historical UI assertions are from the original supplied package; see TEST-REPORT.md."
 }

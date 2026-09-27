@@ -52,7 +52,7 @@ export function reviewMessage(job) {
   if(a.reviewed_by_discord)fields.push({name:'Reviewed by Discord user',value:text(a.reviewed_by_discord,30)});
   const payload={
     content:'',allowed_mentions:{parse:[]},
-    embeds:[{title:TYPES[a.kind]||'Application',description:'Read the attached application, then choose a decision below. Feedback is visible to the applicant on the website.',color:a.status==='approved'?0x5ac99c:a.status==='denied'?0xe27979:0x8ac7f3,fields,footer:{text:`Cosmic • submission ${job.revision}`}}],
+    embeds:[{title:TYPES[a.kind]||'Application',description:'Read the attached application, then choose a decision below. Feedback is visible to the applicant on the website.',color:a.status==='approved'?0x5ac99c:a.status==='denied'?0xe27979:0x8ac7f3,fields,footer:{text:`Cosmic | submission ${job.revision}`}}],
     components:open?[{type:1,components:[
       {type:2,style:3,label:'Approve',custom_id:`cosmic:approve:${a.id}:${job.revision}`},
       {type:2,style:4,label:'Deny',custom_id:`cosmic:deny:${a.id}:${job.revision}`},

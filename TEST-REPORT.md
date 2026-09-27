@@ -1,6 +1,6 @@
 # Cosmic v3 verification report
 
-## GitHub and Discord integration update — 27 September 2026
+## GitHub and Discord integration update — 28 September 2026
 
 The public site is deployed at https://lucidwolfx.github.io/cosmic-website/ in
 the separate `LucidWolfx/cosmic-website` repository. The earlier local-only
@@ -12,8 +12,24 @@ report below describes the supplied ZIP and is retained as historical evidence.
 - Both Edge Functions are deployed; automatic delivery is scheduled every minute.
 - Discord OAuth is enabled and the exact GitHub Pages callback is allowlisted.
 - Public files pass the 30-page static validator and JavaScript syntax checks.
-- Full live sign-in, channel delivery, and button decisions are still being
-  verified. Intake remains closed while setup and owner content review continue.
+- Live Discord sign-in succeeded and loaded the signed-in applicant portal.
+- One clearly labeled fictional support application reached the private Discord
+  review channel with its full-answer attachment and review buttons.
+- Request changes, resubmission, and approval succeeded on that same test record.
+  Feedback persisted, the same message updated, and approval removed its buttons.
+- The delivery worker's final message formatting was verified in Discord.
+- Submissions remain closed by explicit owner choice while the rules are reviewed.
+  Both whitelist and member-request intake are disabled; rules remain draft.
+
+### Current verification limits
+
+The live test used a synthetic database fixture with no real applicant data;
+it did not open intake or submit through an open public form. The synthetic
+record remains as setup audit evidence. Denial, authorization failures, stale
+buttons, retries, and whitelist-to-portal membership promotion are covered by
+automated tests rather than additional live applications. Approval does not
+assign Discord roles or grant FiveM admission. No physical-device, independent
+security, or full accessibility audit is claimed.
 
 ## Original supplied-package verification
 

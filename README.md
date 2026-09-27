@@ -28,11 +28,12 @@ private review channel with Approve, Deny, and Request changes buttons.
 Decisions update the same application records used by the portal. See
 `docs/DISCORD-REVIEWS.md` for configuration, tests, and operation.
 
-**The public website can be hosted independently of the member backend.** Public
-pages and fictional previews work before setup. Authentication, persistence,
-permissions, and reviews need a configured backend and successful staging tests.
-Read `TEST-REPORT.md` for the distinction between tested UI behavior and
-unexecuted backend/authentication flows.
+The live website is https://lucidwolfx.github.io/cosmic-website/. Discord sign-in
+and private reviews are configured and verified. The review channel is currently
+named **#website-applications**. Submissions remain closed at the owner's request
+while the draft rules are reviewed. Read `TEST-REPORT.md` for verified behavior
+and remaining test limits. Public pages and fictional previews also work without
+a backend when using a separate copy of this project.
 
 ## Preview
 
@@ -95,7 +96,7 @@ the Supabase dashboard or SQL, not a visual content-management system.
 - Roles are applicant, member, staff, and admin, plus account suspension. All
   authorized staff share the review queue. Department-specific permissions,
   department rosters, and owner dashboards are not implemented in this release.
-- No direct evidence/media uploads, automatic deletion, payments, notifications,
+- No direct evidence/media uploads, automatic deletion, payments, applicant notifications,
   live Discord role synchronization, or FiveM whitelist bridge.
 - The portal shows up to the latest 200 personal applications and 200 published
   resources. Profile export paginates through all personal applications. The

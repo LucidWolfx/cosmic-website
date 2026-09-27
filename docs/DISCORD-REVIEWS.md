@@ -12,11 +12,18 @@ Approval of a whitelist application grants portal membership only.
 - Supabase project: `mygpttrerwwexljgdiyq`
 - Discord application: `1553880371664523374` (Cosmic Website Reviews)
 - Discord server: `1329107732003029093`
-- Review channel: `1449966265195171892` (#pending-staff-app)
+- Review channel: `1449966265195171892` (#website-applications; selected earlier as #pending-staff-app)
 - Reviewer roles: `1329107732896284713`, `1329107732896284720`
 
 These IDs are configuration, not credentials. Never commit the bot token,
 OAuth client secret, service-role key, or worker secret to the repository.
+
+Live setup was verified on 28 September 2026: Discord login, private-channel
+delivery, request changes, resubmission, and approval all worked. One clearly
+labeled fictional support request remains as test evidence. Whitelist and
+member-request submissions are closed while the owner reviews the draft rules.
+The bot is connected but closed intake must remain closed until the owner asks
+to open it.
 
 ## Setup
 
@@ -51,7 +58,8 @@ OAuth client secret, service-role key, or worker secret to the repository.
    Discord must accept the signed validation ping before saving.
 7. Schedule the delivery endpoint every minute using Supabase Cron and
    `pg_net`. Choose the Edge Function and Add header options > Add secret key
-   in the dashboard. Use a 120000ms timeout. The job stays inside the private
+   in the dashboard. Switch to SQL Snippet and use `timeout_milliseconds:=120000`
+   (the simple form limits this to 5000ms). The job stays inside the private
    Supabase database. If using a dedicated bearer secret instead, store it in
    Vault. Never put credentials into a publicly shared snippet or source file.
    Each invocation processes

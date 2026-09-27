@@ -21,11 +21,12 @@ files. The build preserves config.js and content.js.
 
 ## Member backend
 
-Publishing the public website does not connect Discord login or application
-storage. Follow LAUNCH.md for Supabase setup, Discord OAuth, owner roles,
-official community links, and permission tests. Keep all server secrets out
-of this public repository. Portal membership does not grant FiveM access or
-Discord roles automatically.
+The Cosmic deployment already has Supabase, Discord login, and private Discord
+application reviews configured. See DISCORD-REVIEWS.md for the deployed setup
+and TEST-REPORT.md for verification. Intake remains closed at the owner's request
+while the draft rules are reviewed. Publishing a separate copy alone does not
+configure its backend. Keep all server secrets out of this public repository.
+Portal membership does not grant FiveM access or Discord roles automatically.
 
 Official reference:
 https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages
