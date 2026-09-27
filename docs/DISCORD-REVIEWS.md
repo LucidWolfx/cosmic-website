@@ -10,7 +10,7 @@ Approval of a whitelist application grants portal membership only.
 
 - GitHub Pages: https://lucidwolfx.github.io/cosmic-website/
 - Supabase project: `mygpttrerwwexljgdiyq`
-- Discord application: `1553880371664523374` (Cosmic Website Reviews)
+- Discord application: `1399288433595252777` (Cosmic Roleplay, the owner's existing app)
 - Discord server: `1329107732003029093`
 - Review channel: `1449966265195171892` (#website-applications; selected earlier as #pending-staff-app)
 - Reviewer roles: `1329107732896284713`, `1329107732896284720`
@@ -19,7 +19,10 @@ These IDs are configuration, not credentials. Never commit the bot token,
 OAuth client secret, service-role key, or worker secret to the repository.
 
 Live setup was verified on 28 September 2026: Discord login, private-channel
-delivery, request changes, resubmission, and approval all worked. One clearly
+delivery, request changes, resubmission, and approval all worked. After switching
+to the owner's existing Cosmic Roleplay app, sign-in, delivery, and approval
+were verified again using submission 3 of the same fictional support request.
+The saved decision and Discord message are synchronized. One clearly
 labeled fictional support request remains as test evidence. Whitelist and
 member-request submissions are closed while the owner reviews the draft rules.
 The bot is connected but closed intake must remain closed until the owner asks
@@ -69,6 +72,13 @@ to open it.
    and retention details before collecting real applications.
 
 ## Review behavior
+
+The website's **Staff review** navigation item appears for portal accounts with
+the `staff` or `admin` role in `cosmic_access`. Discord reviewer roles authorize
+the Discord buttons independently; they do not automatically promote a website
+account. A new sign-in starts as `applicant`. The owner verifies the linked
+Discord identity before assigning access using `backend/owner-operations.sql`.
+Reload the portal after a role change to load the staff navigation and queue.
 
 - Only the configured server, channel, and reviewer roles are accepted.
 - Current Discord role membership is checked again before saving a decision.

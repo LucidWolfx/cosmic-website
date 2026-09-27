@@ -18,6 +18,12 @@ report below describes the supplied ZIP and is retained as historical evidence.
 - Request changes, resubmission, and approval succeeded on that same test record.
   Feedback persisted, the same message updated, and approval removed its buttons.
 - The delivery worker's final message formatting was verified in Discord.
+- The website now uses the owner's existing Cosmic Roleplay Discord application
+  (`1399288433595252777`) for sign-in and reviews. Sign-in succeeded after the
+  switch; submission 3 of the same fictional fixture was delivered and approved
+  through that app. The database and Discord both show Approved, the review
+  buttons are removed, and delivery version 7 is fully synchronized without an
+  outstanding delivery error.
 - Submissions remain closed by explicit owner choice while the rules are reviewed.
   Both whitelist and member-request intake are disabled; rules remain draft.
 

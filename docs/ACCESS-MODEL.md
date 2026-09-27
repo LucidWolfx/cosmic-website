@@ -20,6 +20,12 @@ Suspended users can read their own basic profile/access record but cannot use
 portal actions, read applications, or access private resources. The front end
 shows an access-paused state. Use the configured external support route.
 
+The portal's **Staff review** view is shown only for website `staff` and `admin`
+accounts. Having an authorized Discord reviewer role permits Discord reviews
+but does not assign the website role. Owner-side role changes must target the
+verified Discord-linked account, never a matching display name alone. Refresh
+the portal after an approved role change.
+
 Whitelist state machine:
 
     draft -> submitted -> under_review -> approved / denied / changes_requested

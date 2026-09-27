@@ -11,6 +11,7 @@
   "backendPermissionTestsExecuted": true,
   "discordAutomatedTestsPassed": 20,
   "liveDiscordReviewVerified": true,
+  "discordApplicationId": "1399288433595252777",
   "submissionsOpen": false,
   "uiAssertionsPassed": 283,
   "uiAssertionsTotal": 283,
