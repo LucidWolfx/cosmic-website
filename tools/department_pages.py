@@ -93,7 +93,7 @@ def build_lspd(page, icon, btn):
             <details class="lspd-ranks"><summary>Proposed rank structure</summary><ul>{ranks}</ul></details>
           </section>
           <section class="lspd-panel lspd-resources" aria-labelledby="lspd-resources">
-            {icon('lock')}<h2 id="lspd-resources">ALREADY A MEMBER?</h2><p>Visit the Core Hub for the resources available to your account.</p><a class="text-link" href="portal.html#resources">Open member resources {icon('arrow')}</a>
+            {icon('lock')}<h2 id="lspd-resources">ALREADY A MEMBER?</h2><p>Open LSPD’s internal notices and employee roster using your department Discord role.</p><a class="text-link" href="portal.html#departments">Open LSPD workspace {icon('arrow')}</a>
           </section>
           <section class="lspd-panel lspd-events" aria-labelledby="lspd-events">
             <span class="lspd-kicker">ON THE CALENDAR</span><h2 id="lspd-events">UPCOMING EVENTS.</h2><p>No department events have been announced.</p>

@@ -7,3 +7,7 @@ verify_jwt = false
 # The queue endpoint requires a separate secret Authorization bearer token.
 [functions.discord-delivery]
 verify_jwt = false
+
+# The handler validates the caller with Supabase Auth and checks live Discord roles.
+[functions.department-hub]
+verify_jwt = false

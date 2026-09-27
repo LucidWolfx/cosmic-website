@@ -1,0 +1,34 @@
+.department-hub {max-width:1120px;}
+.department-hub .hub-intro {margin-bottom:25px;}
+.department-hub .card h3 {margin:15px 0 12px;}
+.department-hub .hub-access {color:var(--accent);margin:18px 0;font-size:12px;}
+.hub-heading {display:flex;justify-content:space-between;align-items:start;gap:22px;padding:28px;background:linear-gradient(110deg,#163249,#122232);border:1px solid #3a5e79;border-radius:9px;}
+.hub-heading h2 {font-size:32px;line-height:1.15;margin:14px 0;}
+.hub-heading p,.hub-intro {font-size:13px;}
+.hub-heading .button {flex-shrink:0;}
+.hub-toolbar {display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin:22px 0;}
+.hub-archive-filter {display:flex;gap:10px;align-items:center;font-size:12px;}
+.hub-archive-filter input {width:16px;height:16px;margin:0;}
+.hub-section {margin-top:33px;}
+.hub-section-heading {display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:20px;}
+.hub-section-heading h2 {font-size:29px;margin-top:10px;}
+.hub-section .eyebrow {font-size:9px;}
+.hub-notice {margin-bottom:15px;}
+.hub-notice-meta {display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-size:10px;color:#a6bfd2;}
+.hub-notice-body {white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.9;color:#c4d2de;margin-top:18px;}
+.department-hub .button-row {margin-top:22px;}
+.hub-roster {display:grid;gap:12px;}
+.hub-employee {display:flex;align-items:center;gap:20px;padding:23px;background:#10202e;border:1px solid #2c455b;border-radius:8px;}
+.hub-employee>div:first-child {flex:1;min-width:0;overflow-wrap:anywhere;}
+.hub-employee h3 {font-size:17px;margin:7px 0;}
+.hub-employee p {font-size:12px;}
+.hub-callsign {font-size:10px;letter-spacing:1px;color:var(--accent);}
+.hub-employee .pill {white-space:nowrap;}
+.hub-employee .button-row {margin:0;gap:7px;}
+.hub-editor {margin-top:25px;border-color:#638bab!important;}
+.hub-editor .button-row {margin-top:25px;}
+.hub-editor .grid-2 {gap:0 18px;}
+.hub-editor textarea {min-height:190px;}
+.department-hub .pager {margin-top:15px;display:flex;gap:10px;flex-wrap:wrap;}
+@media(max-width:900px){.hub-heading{display:block}.hub-heading>.button{margin-top:20px}.hub-employee{flex-wrap:wrap}.hub-employee .button-row{width:100%}}
+@media(max-width:560px){.hub-heading{padding:23px}.hub-heading h2{font-size:28px}.hub-section-heading{flex-wrap:wrap}.hub-section-heading h2{font-size:26px}.hub-employee{padding:20px}.hub-employee h3{font-size:16px}.hub-editor .grid-2{grid-template-columns:1fr}}

@@ -23,6 +23,9 @@ the content and replacing the artwork with approved server media.
 The portal source implements Discord sign-in, private account profiles, saved
 application drafts, submission, withdrawal, progress history, applicant-visible
 feedback, protected member/staff resources, requests, and a staff review queue.
+The **My departments** area includes private LSPD notices and an employee roster,
+with live Discord membership checks and separate command editing permissions.
+See `docs/DEPARTMENT-HUB.md` for the role mapping and publishing instructions.
 A Supabase SQL migration supplies tables, authorization policies, and checked
 write operations. Website whitelist approval grants portal membership, not
 automatic FiveM admission or Discord roles.
@@ -99,10 +102,11 @@ the Supabase dashboard or SQL, not a visual content-management system.
 - Current rules and news copy are visibly marked as drafts.
 - Core Hub is provisionally treated as a guides and resources area.
 - Roles are applicant, member, staff, and admin, plus account suspension. All
-  authorized staff share the review queue. Department-specific permissions,
-  department rosters, and owner dashboards are not implemented in this release.
+  authorized staff share the review queue. LSPD notices and roster use separate
+  Discord department and command roles. An owner management dashboard is not included.
 - No direct evidence/media uploads, automatic deletion, payments, applicant notifications,
-  live Discord role synchronization, or FiveM whitelist bridge.
+  automatic Discord role assignment, or FiveM whitelist bridge. Department
+  access does check current Discord roles on every request.
 - The portal shows up to the latest 200 personal applications and 200 published
   resources. Profile export paginates through all personal applications. The
   staff queue has 20-record pagination.

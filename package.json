@@ -2,6 +2,6 @@
   "name": "cosmic-website",
   "private": true,
   "type": "module",
-  "scripts": { "test": "node --test tests/discord-*.test.mjs" },
+  "scripts": { "test": "node --test tests/discord-*.test.mjs tests/department-*.test.mjs" },
   "devDependencies": { "@electric-sql/pglite": "0.5.8" }
 }

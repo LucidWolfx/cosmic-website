@@ -23,7 +23,7 @@ jobs:
           cache: npm
       - name: Install review test dependencies
         run: npm ci --ignore-scripts
-      - name: Test Discord reviews and database permissions
+      - name: Test Discord reviews and department permissions
         run: npm test
       - name: Build public pages
         run: python3 tools/build.py

@@ -1,5 +1,18 @@
 # Cosmic v3 verification report
 
+## Internal LSPD workspace - 28 September 2026
+
+- All 35 automated checks pass: 20 existing Discord/application checks and 15
+  department checks, including database permissions and the HTTP handler.
+- Department checks cover direct-access denial, verified identity, live role
+  checks, missing/pending membership, Discord outages, viewer/editor separation,
+  draft privacy, scoped records, stale edits, validation, archive/restore,
+  audit records, suspension, and role removal.
+- JavaScript syntax checks and static validation pass for 31 HTML pages.
+- Migration 003 was applied successfully and the department-hub service deployed
+  to the Cosmic Roleplay Supabase project. Live portal UI verification is pending.
+- Website admin does not bypass LSPD membership. Applications remain closed.
+
 ## Owner-supplied LSPD screenshot — 28 September 2026
 
 The owner-supplied LSPD SUV screenshot replaces the generated concept in both

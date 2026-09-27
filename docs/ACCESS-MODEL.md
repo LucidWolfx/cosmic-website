@@ -38,7 +38,14 @@ limits. Only one active record per user per kind is allowed. Approval of a
 whitelist record promotes an applicant to member and does not overwrite an
 existing staff/admin role. It does not synchronize any external service.
 
-Current departmental permissions are not granular: authorized reviewers can see
-all submissions, and resource audiences are member or staff. Add department
-membership tables, scoped policies, and corresponding authorization tests before
-storing department-confidential resources requiring narrower visibility.
+The LSPD internal workspace uses separate Discord permissions. Role
+`1449442096955002982` permits reading published notices and the active roster.
+Editing requires that role **and** command role `1449494268329852938`.
+Website staff/admin status does not bypass these requirements. Draft and archived
+entries are command-only. The server verifies current Discord roles on every
+request; suspended accounts and unavailable role verification are denied.
+See `DEPARTMENT-HUB.md` for operation and the tested authorization design.
+
+These department permissions apply only to department notices and rosters.
+Authorized application reviewers still share all submissions, and general
+resource audiences remain member or staff.

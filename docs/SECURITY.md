@@ -1,8 +1,7 @@
 # Security notes and remaining review
 
 This is implementation guidance, not a claim of an independent security audit.
-The live backend, OAuth provider, CDN asset, and deployed hosting configuration
-have not been exercised in this environment.
+See `TEST-REPORT.md` for the live checks performed and their limitations.
 
 - Authentication delegates to Discord and Supabase; there is no website password
   form. The browser uses PKCE and a fixed local callback, with no user-controlled
@@ -39,6 +38,11 @@ have not been exercised in this environment.
   database passwords. The public setup editor does not accept secret keys.
 - Changing client JavaScript to show a staff button must not grant any database
   access. Verify this with a normal account and direct API calls in staging.
+- Department notices and rosters use a separate service-only API and database
+  functions. Every request verifies the Supabase session, the stored Discord
+  identity, and fresh guild roles. Website admin status is not a bypass. Drafts
+  and archives require command access. Direct table and RPC access are denied
+  to browser roles; see `DEPARTMENT-HUB.md` and the department authorization tests.
 - Maintain a clear privacy notice, data retention/deletion process, backups,
   audit practices, and a staff access review process. Owner role changes should
   be performed through the controlled privileged dashboard with its audit logs.
