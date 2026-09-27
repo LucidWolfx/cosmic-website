@@ -1,0 +1,33 @@
+COSMIC WEBSITE + MEMBER PORTAL / V3 BRAND DIRECTION
+
+1. Unzip this package.
+2. Open site/index.html to view the public website.
+3. Open site/portal-preview.html for the fictional applicant/member/staff preview.
+4. Open site/setup.html to edit public branding and destinations.
+5. Read docs/GITHUB-HANDOFF.md before uploading to a repository.
+6. Read docs/LAUNCH.md before connecting real accounts.
+
+A local HTTP server is recommended for testing. From this package folder:
+    python -m http.server 8080 --directory site
+Then open:
+    http://localhost:8080
+
+NEW IN V3
+Charcoal, silver, and ice blue with the supplied sunset-city concept art.
+The public website, member portal, login, and department concepts share the theme.
+The artwork and all six department concepts remain provisional, not final.
+See docs/BRAND-DIRECTION.md for replacing the board with final standalone files.
+
+GITHUB PROJECT
+https://github.com/LucidWolfx/cosmic-website
+The new website has a separate repository. The older Cosmic-fbi site is unchanged.
+The Publish Cosmic website workflow builds, validates, and deploys site/.
+Check its latest successful run for the published website address.
+
+REAL LOGIN IS STILL NOT CONNECTED OR DEPLOYED.
+Supabase configuration, Discord OAuth, approved rules, live status, official links,
+privacy information, and backend/permission tests still need to be completed.
+Portal membership does not automatically grant FiveM access or Discord roles.
+
+Only site/ is published by the included GitHub Pages workflow.
+Never add secret credentials or private documents to the public repository.

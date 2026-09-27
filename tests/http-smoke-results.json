@@ -1,0 +1,37 @@
+[
+  {
+    "path": "index.html",
+    "status": 200,
+    "contentType": "text/html",
+    "bytes": 14602,
+    "matchesFile": true
+  },
+  {
+    "path": "portal-preview.html",
+    "status": 200,
+    "contentType": "text/html",
+    "bytes": 3791,
+    "matchesFile": true
+  },
+  {
+    "path": "assets/brand.css",
+    "status": 200,
+    "contentType": "text/css",
+    "bytes": 14196,
+    "matchesFile": true
+  },
+  {
+    "path": "assets/cosmic-brand-reference.jpg",
+    "status": 200,
+    "contentType": "image/jpeg",
+    "bytes": 346843,
+    "matchesFile": true
+  },
+  {
+    "path": "assets/app.js",
+    "status": 200,
+    "contentType": "text/javascript",
+    "bytes": 9446,
+    "matchesFile": true
+  }
+]

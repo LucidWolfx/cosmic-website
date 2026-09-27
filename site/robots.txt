@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /portal.html
+Disallow: /portal-preview.html
+Disallow: /auth-callback.html
+Disallow: /tools/

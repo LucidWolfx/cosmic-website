@@ -1,0 +1,1139 @@
+{
+  "method": "In-memory Chromium rendering; inline asset test transform; no live backend or OAuth; CSP not exercised",
+  "checks": [
+    {
+      "name": "404.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "404.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "404.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "404.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "404.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "404.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "404.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "404.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "about.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "about.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "about.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "about.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "about.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "about.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "about.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "about.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "auth-callback.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "auth-callback.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "auth-callback.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "auth-callback.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "auth-callback.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "auth-callback.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "auth-callback.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "auth-callback.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "businesses.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "businesses.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "businesses.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "businesses.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "businesses.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "businesses.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "businesses.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "businesses.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "community.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "community.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "community.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "community.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "community.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "community.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "community.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "community.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "core-hub.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "core-hub.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "core-hub.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "core-hub.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "core-hub.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "core-hub.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "core-hub.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "core-hub.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "departments.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "departments.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "departments.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "departments.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "departments.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "departments.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "departments.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "departments.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-account.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-account.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-account.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-account.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-account.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-account.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-account.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-account.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-business.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-business.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-business.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-business.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-business.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-business.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-business.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-business.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-character.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-character.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-character.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-character.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-character.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-character.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-character.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-character.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-departments.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-departments.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-departments.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-departments.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-departments.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-departments.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-departments.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-departments.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-getting-started.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-getting-started.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-getting-started.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-getting-started.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-getting-started.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-getting-started.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-getting-started.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-getting-started.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-knowledge.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-knowledge.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-knowledge.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-knowledge.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-knowledge.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-knowledge.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-knowledge.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-knowledge.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-organizations.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-organizations.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-organizations.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-organizations.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-organizations.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-organizations.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-organizations.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-organizations.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-support.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-support.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-support.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-support.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-support.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-support.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "guide-support.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "guide-support.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "index.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "index.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "index.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "index.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "index.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "index.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "index.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "index.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "join.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "join.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "join.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "join.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "join.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "join.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "join.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "join.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "login.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "login.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "login.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "login.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "login.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "login.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "login.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "login.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "media.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "media.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "media.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "media.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "media.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "media.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "media.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "media.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "news-portal.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-portal.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "news-portal.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-portal.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "news-portal.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-portal.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "news-portal.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-portal.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "news-rebrand.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-rebrand.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "news-rebrand.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-rebrand.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "news-rebrand.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-rebrand.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "news-rebrand.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-rebrand.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "news-whitelist.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-whitelist.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "news-whitelist.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-whitelist.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "news-whitelist.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-whitelist.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "news-whitelist.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news-whitelist.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "news.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "news.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "news.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "news.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "news.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "organizations.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "organizations.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "organizations.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "organizations.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "organizations.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "organizations.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "organizations.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "organizations.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "portal-preview.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "portal-preview.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "portal-preview.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "portal-preview.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "portal-preview.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "portal-preview.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "portal-preview.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "portal-preview.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "portal.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "portal.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "portal.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "portal.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "portal.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "portal.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "portal.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "portal.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "privacy.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "privacy.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "privacy.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "privacy.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "privacy.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "privacy.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "privacy.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "privacy.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "rules.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "rules.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "rules.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "rules.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "rules.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "rules.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "rules.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "rules.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "setup.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "setup.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "setup.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "setup.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "setup.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "setup.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "setup.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "setup.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "status.html 1440px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "status.html 1440px images render",
+      "passed": true
+    },
+    {
+      "name": "status.html 1024px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "status.html 1024px images render",
+      "passed": true
+    },
+    {
+      "name": "status.html 390px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "status.html 390px images render",
+      "passed": true
+    },
+    {
+      "name": "status.html 320px no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "status.html 320px images render",
+      "passed": true
+    },
+    {
+      "name": "12 public navigation items",
+      "passed": true
+    },
+    {
+      "name": "Global search finds public content",
+      "passed": true
+    },
+    {
+      "name": "Missing destination opens honest notice",
+      "passed": true
+    },
+    {
+      "name": "Mobile menu opens all 12 pages plus login",
+      "passed": true
+    },
+    {
+      "name": "Mobile menu closes with Escape",
+      "passed": true
+    },
+    {
+      "name": "Guide search filters cards",
+      "passed": true
+    },
+    {
+      "name": "Guide empty state",
+      "passed": true
+    },
+    {
+      "name": "Rules category filter",
+      "passed": true
+    },
+    {
+      "name": "Unconfigured login disabled",
+      "passed": true
+    },
+    {
+      "name": "Unconfigured login does not claim success",
+      "passed": true
+    },
+    {
+      "name": "Unconfigured portal has no private shell",
+      "passed": true
+    },
+    {
+      "name": "Live portal has no preview role control",
+      "passed": true
+    },
+    {
+      "name": "Unconfigured status unavailable",
+      "passed": true
+    },
+    {
+      "name": "Fresh monitor response shown",
+      "passed": true
+    },
+    {
+      "name": "Stale monitor response rejected",
+      "passed": true
+    },
+    {
+      "name": "Preview explicitly labeled fictional",
+      "passed": true
+    },
+    {
+      "name": "Member has no staff navigation",
+      "passed": true
+    },
+    {
+      "name": "Member preview resources appear",
+      "passed": true
+    },
+    {
+      "name": "Resource opens as text",
+      "passed": true
+    },
+    {
+      "name": "Same-hash resource back navigation",
+      "passed": true
+    },
+    {
+      "name": "Preview does not claim to save draft",
+      "passed": true
+    },
+    {
+      "name": "Applicant resource lock",
+      "passed": true
+    },
+    {
+      "name": "Applicant has support request only",
+      "passed": true
+    },
+    {
+      "name": "Applicant manual staff-route denial",
+      "passed": true
+    },
+    {
+      "name": "Staff preview queue appears",
+      "passed": true
+    },
+    {
+      "name": "Preview staff cannot record decision",
+      "passed": true
+    },
+    {
+      "name": "Provisional reference logo active",
+      "passed": true
+    },
+    {
+      "name": "Ice-blue accent applied",
+      "passed": true
+    },
+    {
+      "name": "Reference panorama is present",
+      "passed": true
+    },
+    {
+      "name": "Final logo not invented",
+      "passed": true
+    },
+    {
+      "name": "Relative image URLs accepted",
+      "passed": true
+    },
+    {
+      "name": "Unsafe URL rejected javascript:alert(1)",
+      "passed": true
+    },
+    {
+      "name": "Unsafe URL rejected data:text/html,test",
+      "passed": true
+    },
+    {
+      "name": "Unsafe URL rejected //example.test/image.png",
+      "passed": true
+    },
+    {
+      "name": "Unsafe URL rejected https://user:pass@example.test/image.png",
+      "passed": true
+    },
+    {
+      "name": "Unsafe URL rejected ../outside.html",
+      "passed": true
+    },
+    {
+      "name": "Reference artwork can be disabled",
+      "passed": true
+    },
+    {
+      "name": "Standalone logo takes priority",
+      "passed": true
+    },
+    {
+      "name": "Standalone cover takes priority",
+      "passed": true
+    },
+    {
+      "name": "Six provisional department concepts",
+      "passed": true
+    },
+    {
+      "name": "Reference sheet configuration editable",
+      "passed": true
+    },
+    {
+      "name": "Config export preserves reference board and changed tagline",
+      "passed": true
+    },
+    {
+      "name": "No JavaScript runtime errors",
+      "passed": true
+    }
+  ],
+  "failures": [],
+  "javascriptErrors": []
+}

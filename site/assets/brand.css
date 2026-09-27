@@ -1,0 +1,236 @@
+/* Cosmic visual direction v3. Provisional brand reference, not final logo artwork.
+   Keep this layer separate so the functional portal does not depend on its theme. */
+:root {
+  --bg: #090e14;
+  --panel: #101923;
+  --panel2: #152230;
+  --text: #edf3f8;
+  --muted: #a4b4c4;
+  --dim: #8194a8;
+  --line: #243241;
+  --accent: #8ac7f3;
+  --radius: 10px;
+  --brand-sheet: none;
+}
+body {background:var(--bg);}
+::selection {background:var(--accent);color:#091522;}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible {outline-color:var(--accent);}
+.eyebrow {color:var(--accent);}
+.button {border-color:#415366;min-height:46px;border-radius:5px;}
+.button.primary {color:#081521;box-shadow:0 4px 26px #73bfff10;}
+.button.primary:hover {filter:brightness(1.08);box-shadow:0 5px 30px #73bfff25;}
+.text-link:hover {color:var(--accent);}
+.sheet-slice {display:block;position:relative;overflow:hidden;flex-shrink:0;isolation:isolate;}
+.sheet-slice img {position:absolute;max-width:none;height:auto;pointer-events:none;}
+.reference-brand {width:156px;display:none;mix-blend-mode:screen;}
+html[data-brand-mode=reference] .reference-brand {display:block;}
+html[data-brand-mode=reference] .brand [data-brand-symbol],
+html[data-brand-mode=reference] .brand [data-wordmark],
+html[data-brand-mode=custom] .brand [data-brand-symbol],
+html[data-brand-mode=custom] .brand [data-wordmark] {display:none;}
+.brand-logo {width:156px;height:77px;object-fit:contain;}
+.brand-symbol {border-radius:6px;border-color:var(--accent);color:var(--accent);font-weight:800;}
+.brand-symbol:after {display:none;}
+.wordmark small {color:var(--accent);letter-spacing:2px;}
+.site-header {background:#080d13ef;border-color:#283542;}
+.nav-top {height:88px;gap:30px;}
+.primary-nav {gap:24px;}
+.primary-nav a,.secondary-nav a {font-size:12px;color:#b1beca;}
+.primary-nav a[aria-current=page]:after {background:var(--accent);width:22px;}
+.subbar {background:#0e151d;border-top-color:#1c2732;}
+.subbar-inner {height:42px;}
+.subbar-label {color:#899eaf;}
+.secondary-nav {gap:28px;}
+.subbar-status {color:#afbdcb;}
+.subbar-status:before {content:'';display:inline-block;width:5px;height:5px;background:var(--accent);border-radius:50%;margin-right:8px;}
+.mobile-nav a[aria-current=page] {background:#1a2b3d;border-left:2px solid var(--accent);}
+/* The hero displays the top panorama of the original board. No flattened
+   webpage mockup or embedded buttons are used. All UI below is actual HTML. */
+.hero-rebrand {min-height:0;background:#090e14;}
+.hero-rebrand:before,.hero-rebrand:after {display:none;}
+.cinema-stage {position:relative;overflow:hidden;background:#101c29;isolation:isolate;}
+.cinema-reference {width:100%;}
+.cinema-stage:after {content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,#080e1410 30%,#090e1400 55%,#090e14bd 88%,#090e14 100%);}
+.cinema-custom {display:none;width:100%;height:clamp(250px,29vw,500px);object-fit:cover;}
+html[data-cover-mode=custom] .cinema-reference {display:none;}
+html[data-cover-mode=custom] .cinema-custom {display:block;}
+html[data-cover-mode=none] .cinema-stage {min-height:90px;}
+.cinema-caption {position:absolute;bottom:21px;left:max(44px,calc((100% - var(--max))/2));right:max(44px,calc((100% - var(--max))/2));display:flex;align-items:center;justify-content:space-between;z-index:2;color:#d1dfe9;font-size:9px;letter-spacing:1.6px;}
+.cinema-caption a {display:flex;align-items:center;gap:12px;}
+.cinema-caption .icon {width:16px;height:16px;}
+.hero-rebrand .hero-inner {min-height:0;text-align:center;padding-block:23px 0;}
+.hero-rebrand .eyebrow {justify-content:center;font-size:10px;letter-spacing:2.4px;}
+.hero-rebrand .eyebrow:before {width:18px;}
+.hero-rebrand h1 {font-size:clamp(43px,5.7vw,84px);max-width:none;line-height:1.06;letter-spacing:-.015em;margin-top:18px;}
+.hero-rebrand h1 span {color:var(--accent);}
+.hero-rebrand p {max-width:670px;margin:18px auto 0;line-height:1.75;font-size:14px;}
+.hero-rebrand .button-row {justify-content:center;margin-top:26px;gap:12px;}
+.hero-rebrand .button {min-width:163px;padding:13px 23px;}
+.hero-rebrand .hero-footer {margin-top:39px;padding:18px 0;border-color:#273645;}
+.hero-rebrand .hero-footer span,.hero-rebrand .hero-footer a {font-size:9px;color:#93aabd;letter-spacing:1.35px;}
+.rail {background:#0f1821;}
+.rail-item {font-size:11px;padding:20px 12px;color:#bfccd7;}
+.rail-item .icon {color:var(--accent);}
+.section.muted {background:#0c151f;}
+.intro-grid h2 {font-size:46px;}
+.section-head h2 {font-size:42px;}
+.card {background:linear-gradient(145deg,#14202c,#101820);border-color:#29394a;}
+.card-icon {color:var(--accent);background:#8ac7f309;border-color:#3c566d;}
+.path-card {background:linear-gradient(145deg,#162331,#0f1720);border-top:2px solid #4b789a;}
+.path-card:hover {border-color:#79acd0;}
+.path-card .text-link {color:#cbdfed;}
+.portal-feature {color:var(--text);background:linear-gradient(110deg,#152737,#111b27);border:1px solid #365066;border-top:2px solid #659dc6;box-shadow:0 20px 65px #00000022;}
+.portal-feature h2 {font-size:47px;}
+.portal-feature p {color:#adbecb;}
+.portal-feature .eyebrow {color:var(--accent);}
+.portal-feature .button {color:var(--text);border-color:#56768e;}
+.portal-mini {background:#0a131d;border-color:#34546d;box-shadow:0 15px 36px #0003;transform:rotate(-1deg);}
+.portal-mini header {border-color:#283a4b;}
+.portal-mini .mini-copy small {color:#93adbf;}
+.mini-list>div {border-color:#25394b;color:#cbd7e1;}
+.mini-list span {color:var(--accent);background:#102c40;border-color:#284e69;}
+.avatar {background:#172f44;border-color:#49779b;color:#d5eafd;}
+.news-art {background:radial-gradient(ellipse at 70% 10%,#3b536b,#142232 60%,#101720);isolation:isolate;}
+.news-art .display {position:relative;z-index:2;color:#e5f0fa;letter-spacing:4px;}
+.news-cityline {position:absolute;inset:15% 0 0;background:linear-gradient(0deg,#071522,#203f59);clip-path:polygon(0 48%,8% 48%,8% 30%,12% 30%,12% 50%,19% 50%,19% 20%,25% 20%,25% 42%,34% 42%,34% 12%,37% 12%,37% 0,40% 0,40% 35%,48% 35%,48% 50%,53% 50%,53% 16%,59% 16%,59% 43%,64% 43%,64% 22%,70% 22%,70% 53%,78% 53%,78% 37%,84% 37%,84% 60%,90% 60%,90% 40%,100% 40%,100% 100%,0 100%);}
+.news-card:first-child .news-art {background-image:linear-gradient(90deg,#0d1b25aa,#0a121dcc),var(--brand-sheet);background-size:cover,auto 450px;background-position:center,center top;}
+.news-card:first-child .news-cityline {display:none;}
+.meta,.category {color:#a8c4d9;}
+.page-hero {position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(115deg,#142434,#0b121b);border-bottom:1px solid #2a3b4c;}
+.page-hero:after {content:'';position:absolute;width:45%;inset:0 0 0 auto;z-index:-1;background:linear-gradient(90deg,#0d1723,transparent),var(--brand-sheet);background-size:cover,auto 640px;background-position:center,right top;opacity:.2;pointer-events:none;}
+.page-hero h1 {color:#e8f0f7;}
+.notice {background:#101e2b;border-color:#3b5a73;color:#b9cdda;}
+.notice.warning {background:#221f1a;border-color:#645039;color:#e1d4bf;}
+.filter[aria-pressed=true] {background:#20394c;border-color:#729dbb;color:#e0f0fc;}
+.department-grid {margin-top:28px;}
+.department-card {display:flex;flex-direction:column;padding:26px;min-height:295px;}
+.department-identity {height:108px;display:flex;align-items:center;margin-bottom:18px;}
+.department-reference {width:155px;mix-blend-mode:screen;display:none;}
+html[data-reference-art=true] .department-reference {display:block;}
+html[data-reference-art=true] .department-fallback {display:none;}
+.department-fallback {font-family:var(--display);font-size:38px;letter-spacing:1px;color:var(--accent);}
+.department-card h3 {font-size:20px;margin-top:12px;}
+.department-card p {font-size:12px;margin-bottom:20px;}
+.department-card .category {font-size:9px;letter-spacing:1.3px;}
+.department-card .text-link {margin-top:auto;font-size:11px;}
+.auth-copy {position:relative;}
+.auth-copy:before {content:'';display:block;height:166px;margin-bottom:30px;background-image:linear-gradient(0deg,#090e14,transparent 45%),var(--brand-sheet);background-size:cover,auto 376px;background-position:center,center top;border-radius:8px;}
+.auth-card {background:#101c28;border-color:#36526b;}
+.status-row {background:#101a25;border-color:#2a4053;}
+.cta {border-color:#293e50;}
+.site-footer {background:#070c12;border-top-color:#213141;}
+.footer-group h3 {color:#b7d3e8;}
+.footer-bottom {border-color:#1e2d3d;}
+/* Same identity, task-focused portal. No permissions are granted by this CSS. */
+.preview-banner {background:#173149;color:#d2e7f8;border-bottom:1px solid #42637f;}
+.preview-banner select {color:#d2e7f8;background:#0e2436;border-color:#426984;}
+.portal-bar {height:83px;background:#090f17;border-color:#26394b;}
+.portal-bar .brand {transform:none;}
+.portal-bar .reference-brand {width:137px;}
+.portal-bar .brand-logo {width:137px;height:71px;}
+.portal-bar .right .pill {color:#b9d5e8;border-color:#37516a;}
+.portal-sidebar {background:#0c141e;border-color:#283b4d;}
+.portal-sidebar button[aria-current=page] {background:linear-gradient(90deg,#213e57,#142636);color:#e3f2ff;border-color:#426989;box-shadow:inset 2px 0 var(--accent);}
+.portal-sidebar button[aria-current=page] .icon {color:var(--accent);}
+.portal-sidebar button:hover,.portal-sidebar a:hover {background:#16293a;}
+.sidebar-label {color:#95afc5;}
+.portal-main {background:#0a121b;}
+.portal-main .card {background:#101d29;border-color:#294055;}
+.portal-welcome {background:linear-gradient(110deg,#132c43,#152539);border-color:#436989;isolation:isolate;}
+.portal-welcome:after {display:none;}
+.portal-scene {position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#10263ff7,#10263fe8 45%,#10263f70),var(--brand-sheet);background-size:cover,auto 610px;background-position:center,85% top;opacity:.7;}
+.portal-welcome .eyebrow {position:relative;z-index:1;}
+.portal-welcome p {color:#b7cee0;}
+.metric {background:#112131;border-color:#2b445a;border-top:2px solid #416584;}
+.metric strong {color:#e4f2fc;}
+.metric small {color:#9db9d0;}
+.metric span {color:#9bb3c6;}
+.progress-step.done .progress-marker {background:#c4e8ff;color:#0d283e;border-color:#c4e8ff;}
+.portal-list small {color:#9ab5c9;}
+@media(min-width:1800px) {
+  .cinema-stage {max-height:500px;}
+  .hero-rebrand .hero-inner {padding-top:32px;}
+}
+@media(max-width:1100px) {
+  .nav-top {gap:21px;}
+  .primary-nav {gap:18px;}
+  .primary-nav a {font-size:11px;}
+  .nav-actions {gap:12px;}
+  .reference-brand {width:132px;}
+  .secondary-nav {gap:23px;}
+  .subbar-status {font-size:8px;}
+  .hero-rebrand h1 {font-size:clamp(42px,6.3vw,76px);}
+}
+@media(max-width:980px) {
+  .cinema-caption {left:34px;right:34px;bottom:15px;}
+  .primary-nav {display:none;}
+  .nav-actions {margin-left:auto;}
+  .hero-rebrand .hero-inner {padding-top:26px;}
+  .portal-feature {gap:30px;}
+  .department-card {padding:22px;}
+  .department-card h3 {font-size:18px;}
+}
+@media(max-width:720px) {
+  .reference-brand {width:122px;}
+  .brand-logo {width:122px;height:62px;}
+  .nav-top {height:76px;gap:12px;}
+  .nav-actions {gap:7px;}
+  .nav-actions .button {padding:10px 12px;}
+  .cinema-stage {height:232px;}
+  .cinema-reference {width:250vw;max-width:1030px;position:absolute;left:50%;top:0;transform:translateX(-50%);}
+  .cinema-stage:after {background:linear-gradient(180deg,#0a14261f,transparent 60%,#090e14);}
+  .cinema-caption {left:18px;right:18px;bottom:14px;justify-content:center;font-size:7px;letter-spacing:1.2px;}
+  .cinema-caption a {display:none;}
+  .cinema-custom {height:100%;}
+  .hero-rebrand .hero-inner {padding-top:18px;}
+  .hero-rebrand .eyebrow {font-size:8px;letter-spacing:1.65px;}
+  .hero-rebrand h1 {font-size:clamp(43px,9.8vw,62px);line-height:1.08;margin-top:19px;max-width:500px;margin-inline:auto;}
+  .hero-rebrand p {font-size:13px;max-width:360px;margin-top:18px;padding-inline:9px;}
+  .hero-rebrand .button-row {margin-top:24px;gap:10px;}
+  .hero-rebrand .button {min-width:142px;padding:12px 16px;font-size:11px;}
+  .hero-rebrand .hero-footer {margin-top:31px;gap:15px;padding:17px 0;}
+  .hero-rebrand .hero-footer span {max-width:180px;text-align:left;font-size:7px;}
+  .hero-rebrand .hero-footer a {font-size:7px;white-space:nowrap;}
+  .rail-item {font-size:10px;padding:16px 6px;}
+  .intro-grid h2 {font-size:36px;}
+  .section-head h2 {font-size:36px;}
+  .portal-feature h2 {font-size:38px;}
+  .portal-mini {transform:none;}
+  .page-hero:after {width:60%;opacity:.12;}
+  .department-grid {grid-template-columns:1fr 1fr;gap:13px;}
+  .department-card {padding:17px;min-height:300px;}
+  .department-reference {width:123px;}
+  .department-identity {height:86px;margin-bottom:13px;}
+  .department-card h3 {font-size:17px;}
+  .department-card .category {font-size:7px;}
+  .department-card p {font-size:11px;}
+  .department-card .text-link {font-size:10px;gap:5px;}
+  .auth-copy:before {height:160px;margin-bottom:23px;}
+  .portal-bar {height:72px;}
+  .portal-bar .reference-brand {width:123px;}
+  .portal-bar .brand-logo {width:123px;height:62px;}
+  .portal-scene {background-position:center,68% top;opacity:.48;}
+  .portal-sidebar {border-color:#2b4157;}
+  .preview-banner {padding-block:12px;}
+}
+@media(max-width:380px) {
+  .reference-brand {width:112px;}
+  .brand-logo {width:112px;height:58px;}
+  .nav-actions .button {font-size:9px;padding:9px 11px;gap:6px;}
+  .hero-rebrand h1 {font-size:42px;}
+  .hero-rebrand .button {min-width:130px;padding:12px;font-size:10px;}
+  .hero-rebrand p {padding:0;}
+  .department-grid {grid-template-columns:1fr;}
+  .department-card {min-height:280px;}
+  .department-reference {width:150px;}
+}
+@media print {
+  .cinema-stage,.portal-scene,.auth-copy:before,.page-hero:after {display:none;}
+  .hero-rebrand h1 span,.eyebrow,.metric strong {color:#222;}
+  .card,.portal-feature,.portal-mini,.metric {background:white;color:black;box-shadow:none;}
+}
+
+/* Crush the dark board background in CSS while retaining the untouched source. */
+.reference-brand,.department-reference {mix-blend-mode:lighten;}
+.reference-brand img,.department-reference img {filter:contrast(1.16);}
+@media(max-width:720px) {.cinema-caption {display:none;}}
