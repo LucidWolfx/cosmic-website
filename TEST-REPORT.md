@@ -1,5 +1,22 @@
 # Cosmic v3 verification report
 
+## GitHub and Discord integration update — 27 September 2026
+
+The public site is deployed at https://lucidwolfx.github.io/cosmic-website/ in
+the separate `LucidWolfx/cosmic-website` repository. The earlier local-only
+report below describes the supplied ZIP and is retained as historical evidence.
+
+- All 20 Discord handler and PostgreSQL lifecycle/permission checks pass.
+- Both database migrations ran successfully in the Cosmic Roleplay Supabase project.
+- Discord accepted the deployed interaction endpoint's signed validation ping.
+- Both Edge Functions are deployed; automatic delivery is scheduled every minute.
+- Discord OAuth is enabled and the exact GitHub Pages callback is allowlisted.
+- Public files pass the 30-page static validator and JavaScript syntax checks.
+- Full live sign-in, channel delivery, and button decisions are still being
+  verified. Intake remains closed while setup and owner content review continue.
+
+## Original supplied-package verification
+
 Build: 27 September 2026. Provisional rebrand, not a live deployment.
 
 ## Completed

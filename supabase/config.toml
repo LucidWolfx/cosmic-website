@@ -1,0 +1,9 @@
+project_id = "cosmic-website"
+
+# Discord's Ed25519 signature is checked by the interaction handler.
+[functions.discord-interactions]
+verify_jwt = false
+
+# The queue endpoint requires a separate secret Authorization bearer token.
+[functions.discord-delivery]
+verify_jwt = false

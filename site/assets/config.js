@@ -7,7 +7,7 @@ window.COSMIC = {
     referenceSheet: 'assets/cosmic-brand-reference.jpg' // Provisional user-supplied board.
   },
   links: { discord: '', connect: '', support: '', youtube: '', twitch: '', instagram: '', tiktok: '' },
-  auth: { supabaseUrl: '', publishableKey: '' },
+  auth: { supabaseUrl: 'https://mygpttrerwwexljgdiyq.supabase.co', publishableKey: 'sb_publishable_0nTViuh_6URRrT0UBMbdPA_iOqq5nXc' },
   // Authoritative submission settings live in backend cosmic_settings, not this file.
   launch: { label: 'Whitelist transition planned', rulesApproved: false },
   status: { endpoint: '', maxAgeSeconds: 180 },

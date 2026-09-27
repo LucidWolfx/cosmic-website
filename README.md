@@ -22,6 +22,12 @@ A Supabase SQL migration supplies tables, authorization policies, and checked
 write operations. Website whitelist approval grants portal membership, not
 automatic FiveM admission or Discord roles.
 
+Discord review integration is implemented in `supabase/functions/` and
+`backend/002_discord_reviews.sql`. Submitted applications are queued for a
+private review channel with Approve, Deny, and Request changes buttons.
+Decisions update the same application records used by the portal. See
+`docs/DISCORD-REVIEWS.md` for configuration, tests, and operation.
+
 **The public website can be hosted independently of the member backend.** Public
 pages and fictional previews work before setup. Authentication, persistence,
 permissions, and reviews need a configured backend and successful staging tests.
