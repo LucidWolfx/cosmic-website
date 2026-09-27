@@ -15,7 +15,7 @@
   "submissionsOpen": false,
   "uiAssertionsPassed": 283,
   "uiAssertionsTotal": 283,
-  "htmlDocuments": 30,
+  "htmlDocuments": 31,
   "referenceSha256": "fc3c2a3d03804a53a1b6b4890606d253cc353bd81f6abf4e0457e0edca282bfd",
   "note": "Website published; Discord login and fictional review workflow verified. Intake remains closed by owner choice pending draft-rules review. Historical UI assertions are from the original supplied package; see TEST-REPORT.md."
 }

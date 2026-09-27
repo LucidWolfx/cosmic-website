@@ -17,7 +17,7 @@ a member portal, and a separate fictional design preview.
 
 The LSPD directory entry opens a dedicated department page with mission and
 expectations, a joining pathway, closed recruitment indicators, proposed units
-and command structure, and concept media. See `docs/LSPD-PAGE.md` for editing
+and command structure, and the owner's LSPD screenshot. See `docs/LSPD-PAGE.md` for editing
 the content and replacing the artwork with approved server media.
 
 The portal source implements Discord sign-in, private account profiles, saved

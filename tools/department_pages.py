@@ -29,7 +29,7 @@ def build_lspd(page, icon, btn):
     body = f'''<div class="wrap lspd-page">
       <nav class="lspd-breadcrumbs" aria-label="Breadcrumb"><a href="departments.html">Departments</a><span aria-hidden="true">/</span><span aria-current="page">Los Santos Police Department</span></nav>
       <section class="lspd-hero" aria-labelledby="lspd-title">
-        <img class="lspd-hero-image" src="assets/lspd-city-patrol.webp" width="1672" height="941" alt="" fetchpriority="high">
+        <img class="lspd-hero-image" src="assets/lspd-patrol-screenshot.webp" width="1919" height="1079" alt="Los Santos Police SUV parked above the city at sunset" fetchpriority="high">
         <div class="lspd-hero-copy">
           <span class="lspd-kicker">COSMIC ROLEPLAY <span aria-hidden="true">/</span> LSPD</span>
           <div class="lspd-insignia" aria-hidden="true">{icon('shield')}<span>LOS SANTOS<br><b>POLICE DEPARTMENT</b></span></div>
@@ -37,7 +37,6 @@ def build_lspd(page, icon, btn):
           <p>Behind the badge is a person.<br>Beyond the call is a story.</p>
           <div class="button-row">{btn('Discover the department', '#about', True)}{btn('Joining LSPD', '#joining')}</div>
         </div>
-        <span class="lspd-art-credit">COSMIC CONCEPT ART</span>
       </section>
       <nav class="lspd-section-nav" aria-label="LSPD sections">
         <a href="#about">The department</a><a href="#joining">Joining LSPD</a><a href="#divisions">Divisions</a><a href="#leadership">Leadership</a><a href="#media">Media</a>
@@ -74,7 +73,7 @@ def build_lspd(page, icon, btn):
           <section class="lspd-panel lspd-media" id="media" aria-labelledby="lspd-media">
             <span class="lspd-kicker">04 / LIFE IN THE DEPARTMENT</span>
             <h2 id="lspd-media">STORIES FROM THE CITY.</h2>
-            <figure><img src="assets/lspd-city-patrol.webp" width="1672" height="941" alt="Concept artwork of a patrol car overlooking a city skyline at dusk" loading="lazy"><figcaption>Original Cosmic concept artwork. Server photography and the department trailer will be added here when available.</figcaption></figure>
+            <figure><img src="assets/lspd-patrol-screenshot.webp" width="1919" height="1079" alt="Los Santos Police SUV beneath an American flag, with city lights and a sunset in the background" loading="lazy"><figcaption>Los Santos Police Department. A quiet moment above the city.</figcaption></figure>
             <a class="text-link" href="media.html">Explore Cosmic media {icon('arrow')}</a>
           </section>
         </div>

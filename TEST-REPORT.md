@@ -1,5 +1,15 @@
 # Cosmic v3 verification report
 
+## Owner-supplied LSPD screenshot — 28 September 2026
+
+The owner-supplied LSPD SUV screenshot replaces the generated concept in both
+the department banner and media panel. The full image remains visible in the
+media panel; responsive banner framing keeps the vehicle visible. Desktop
+(1440 px) and phone (390 px) layouts were visually reviewed, and 390/320 px
+checks found no horizontal overflow. The original 1919 × 1079 content is
+preserved in a 239 KB WebP; no retouching was applied. The concept-art label
+was removed. Intake and account access were not changed.
+
 ## LSPD department page — 28 September 2026
 
 - Added the dedicated LSPD page, Departments directory link, and search entry.

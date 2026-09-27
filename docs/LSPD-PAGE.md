@@ -12,11 +12,22 @@ are intentionally unfilled, and units and ranks are labeled as proposed until
 the owner supplies the confirmed structure. No other community's staff names,
 logos, video embeds, or server screenshots were copied from the references.
 
-A real LSPD trailer, server photographs, and leadership portraits can replace the
-concept media once supplied. The current banner and media panel are visibly
-identified as concept artwork; they are not claimed as server photography.
+The owner-supplied LSPD SUV screenshot now appears in the banner and media panel.
+The desktop banner places the text on the right to keep the vehicle visible.
+Smaller screens show the photograph above the text. The media panel preserves
+the complete image. A trailer and leadership portraits can be added when supplied.
 
-## Banner provenance
+## Current screenshot
+
+Source: the screenshot supplied by the owner on 28 September 2026. Saved as
+`site/assets/lspd-patrol-screenshot.webp` (1919 × 1079), with WebP compression
+for website delivery and no retouching. Original screenshot content is preserved;
+only the banner's responsive CSS framing crops the displayed area.
+
+## Previous concept banner provenance
+
+The earlier generated concept remains in the project archive but is no longer
+displayed on the LSPD page. Its generation record follows for provenance.
 
 Created with the built-in image-generation tool on 28 September 2026. The original
 was converted to WebP for delivery (1672 × 941, approximately 190 KB), without
