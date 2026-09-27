@@ -10,7 +10,19 @@
   audit records, suspension, and role removal.
 - JavaScript syntax checks and static validation pass for 31 HTML pages.
 - Migration 003 was applied successfully and the department-hub service deployed
-  to the Cosmic Roleplay Supabase project. Live portal UI verification is pending.
+  to the Cosmic Roleplay Supabase project. GitHub Pages build and deployment passed.
+- The live API rejects unauthenticated requests with HTTP 401. The signed-in
+  owner account correctly receives an empty department list without its required
+  Discord role, despite being a website admin. No browser errors were observed.
+- Fictional local UI checks exercised command and member layouts, notice and
+  roster editors, and hiding command controls and drafts in the member preview.
+  Desktop and phone visuals were reviewed; 390/320 px layouts had no horizontal
+  overflow. These fixtures do not substitute for a live authorized write test.
+- Live notices/roster writes await an account with both supplied Discord roles.
+  No live test notices or roster entries were created. The role assignment
+  question is pending; no Discord roles have been changed for this feature.
+- Portal asset URLs use content hashes to prevent old cached scripts hiding the
+  new department navigation after publication.
 - Website admin does not bypass LSPD membership. Applications remain closed.
 
 ## Owner-supplied LSPD screenshot — 28 September 2026
