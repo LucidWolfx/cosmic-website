@@ -3,6 +3,7 @@
 from pathlib import Path
 from html import escape
 import json
+import hashlib
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'site'
 E=escape
@@ -55,6 +56,10 @@ def page(file,title,description,body,portal=False,preview=False,extra_css=''):
  html=f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#090e14"><meta name="description" content="{E(description)}"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="{csp}">{noindex}<meta property="og:title" content="{E(title)} | Cosmic"><meta property="og:description" content="{E(description)}"><meta property="og:type" content="website"><title>{E(title)} | Cosmic</title><link rel="icon" href="assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/styles.css"><link rel="stylesheet" href="assets/brand.css">{scripts}</head><body data-page="{file[:-5]}"{' data-preview="true"' if preview else ''}><noscript><div class="no-script">Public content is available below. Enable JavaScript for search, member login and portal features.</div></noscript>{shell}{dialogs()}</body></html>'''
  if portal:html=html.replace('</head>','<link rel="stylesheet" href="assets/department-hub.css"></head>')
  if extra_css:html=html.replace('</head>',f'<link rel="stylesheet" href="{E(extra_css)}"></head>')
+ if portal:
+  for asset in ('portal.js','department-hub.js','department-hub.css'):
+   version=hashlib.sha256((SITE/'assets'/asset).read_bytes()).hexdigest()[:12]
+   html=html.replace(f'assets/{asset}"',f'assets/{asset}?v={version}"')
  (SITE/file).write_text(html,encoding='utf-8')
 def hero(title,desc,kicker='Explore Cosmic',actions=''):
  return f'<section class="page-hero"><div class="wrap"><div class="breadcrumbs"><a href="index.html">Home</a><span>/</span><span>{title.title()}</span></div><span class="eyebrow">{kicker}</span><h1>{title}</h1><p class="lead">{desc}</p>{actions}</div></section>'
