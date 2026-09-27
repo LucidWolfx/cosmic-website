@@ -15,6 +15,11 @@ Departments, Businesses, Organizations, Media, News, and Status**. It also has
 public guides, editorial previews, login, an OAuth callback, privacy information,
 a member portal, and a separate fictional design preview.
 
+The LSPD directory entry opens a dedicated department page with mission and
+expectations, a joining pathway, closed recruitment indicators, proposed units
+and command structure, and concept media. See `docs/LSPD-PAGE.md` for editing
+the content and replacing the artwork with approved server media.
+
 The portal source implements Discord sign-in, private account profiles, saved
 application drafts, submission, withdrawal, progress history, applicant-visible
 feedback, protected member/staff resources, requests, and a staff review queue.

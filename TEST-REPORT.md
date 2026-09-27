@@ -1,5 +1,20 @@
 # Cosmic v3 verification report
 
+## LSPD department page — 28 September 2026
+
+- Added the dedicated LSPD page, Departments directory link, and search entry.
+- Static validation passes for 31 HTML pages. All nine local section/skip links
+  resolve; the search data passes JavaScript syntax validation.
+- Live local-browser checks passed at 1440, 1024, 390, and 320 pixel widths with
+  no horizontal overflow. Desktop and phone screenshots were visually reviewed.
+- Directory navigation, LSPD search, section links, and the rank disclosure work.
+- The banner loads correctly and the checked page produced no browser warnings
+  or errors. The 190 KB WebP is labeled as concept artwork, not server photography.
+- Recruit, reserve, and transfer recruitment remain visibly closed. No intake,
+  account permission, authentication, or backend application behavior was changed.
+- Command appointments remain unfilled, and divisions and ranks are explicitly
+  proposed pending the owner's confirmed structure.
+
 ## GitHub and Discord integration update — 28 September 2026
 
 The public site is deployed at https://lucidwolfx.github.io/cosmic-website/ in
