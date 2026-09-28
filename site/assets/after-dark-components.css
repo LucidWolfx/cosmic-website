@@ -1,0 +1,335 @@
+/* Public-page components for Cosmic's black and crimson identity.
+   Loaded after page-specific styles; the authenticated portal has its own theme. */
+:root {
+  --after-surface: #101010;
+  --after-raised: #171717;
+  --after-line: #292929;
+  --after-muted: #aaa;
+  --after-text: #f5f5f5;
+  --after-accent: #df2846;
+  --after-highlight: #ff6480;
+}
+
+/* Shared public content and actions. */
+.section {padding: 64px 0;}
+.section.compact {padding: 30px 0 56px;}
+.section.muted {background: #080808; border-color: var(--after-line);}
+.section-head {gap: 30px;}
+.section-head h2, .intro-grid h2 {font-size: clamp(28px, 3.2vw, 40px); line-height: 1.12; letter-spacing: -.045em;}
+.intro-grid {gap: 50px; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);}
+.section-head p, .intro-grid p {color: var(--after-muted); line-height: 1.8;}
+.button {border-color: #3c3c3c; border-radius: 3px; color: var(--after-text);}
+.button:hover {background: #1b1b1b; border-color: #686868;}
+.button.primary, .portal-feature .button.primary, .lspd-hero .button.primary {
+  background: var(--after-accent);
+  border-color: var(--after-accent);
+  color: #fff;
+  box-shadow: 0 5px 24px #df284617;
+}
+.button.primary:hover, .portal-feature .button.primary:hover, .lspd-hero .button.primary:hover {
+  background: #ed3654;
+  border-color: #ed3654;
+  color: #fff;
+  box-shadow: 0 7px 27px #df284627;
+}
+.button.danger {background: #1a0b0e; border-color: #64303b; color: #ffabbc;}
+.eyebrow {color: var(--after-highlight); font-size: 11px; letter-spacing: 1.6px;}
+.text-link {color: #e3e3e3;}
+.text-link:hover {color: var(--after-highlight);}
+.pill {border-color: #383838; background: #171717; color: #d2d2d2; font-size: 11px; letter-spacing: .1px;}
+.muted-text {color: var(--after-muted) !important;}
+.notice {background: #111; border-color: #353535; border-left: 3px solid var(--after-accent); border-radius: 4px; color: #bbb; line-height: 1.8;}
+.notice b {color: var(--after-text);}
+.notice.warning {background: #18140e; border-color: #58462b; color: #dfc9a8;}
+.notice.error {background: #1b0d11; border-color: #78404e; color: #ffbac8;}
+.message {color: #ccc;}
+.message.error {color: #ff9caf;}
+.empty-state {background: #0c0c0c; border-color: #353535; border-radius: 5px;}
+.empty-state > .icon {color: var(--after-highlight);}
+.empty-state h3 {color: var(--after-text); line-height: 1.35;}
+.empty-state p {color: var(--after-muted); line-height: 1.8;}
+
+/* Page introductions keep a quiet graphic edge, leaving the mascot to the home page. */
+.page-hero {padding: 48px 0 42px; background: #080808; border-color: var(--after-line);}
+.page-hero:after {background: linear-gradient(125deg, transparent 58%, #df2846 58%, #df2846 61%, transparent 61%); opacity: .08;}
+.page-hero h1 {max-width: 22ch; color: #fff; font: 800 clamp(34px, 4.5vw, 59px)/1.06 'Segoe UI', Arial, sans-serif; letter-spacing: -.045em; overflow-wrap: anywhere;}
+.page-hero .lead {max-width: 690px; color: #aaa; font-size: 15px; line-height: 1.8;}
+.breadcrumbs {flex-wrap: wrap; color: #999; font-size: 11px; margin-bottom: 27px;}
+.breadcrumbs a:hover {color: var(--after-highlight);}
+.cta {border-color: var(--after-line); gap: 28px;}
+.cta h2 {font-size: clamp(29px, 3.5vw, 42px); line-height: 1.14; letter-spacing: -.04em;}
+.cta p {color: var(--after-muted);}
+
+/* Pathways, directories, and guides. */
+.card {background: var(--after-surface); border-color: var(--after-line); border-radius: 6px; padding: 27px;}
+.card h3 {color: #f3f3f3; font-size: 21px; line-height: 1.3; letter-spacing: -.025em;}
+.card > p {color: var(--after-muted); font-size: 13px; line-height: 1.8;}
+.card-icon {color: var(--after-highlight); background: #1c1013; border-color: #493038; border-radius: 4px;}
+.path-card {background: linear-gradient(145deg, #161616, #090909); border-top: 2px solid #414141; min-height: 280px;}
+.path-card:hover {border-color: var(--after-accent);}
+.path-card .card-number {color: #999; font-size: 11px;}
+.path-card .text-link {color: var(--after-highlight);}
+.guide-card .category, .department-card .category, .news-card .meta, .meta, .category {color: #bbb; font-size: 11px; letter-spacing: 1px;}
+.guide-card:hover {border-color: #696969;}
+.guide-meta {color: #999; font-size: 11px;}
+.guide-card h3 {font-size: 19px;}
+.department-grid {margin-top: 28px;}
+.department-card {display: flex; flex-direction: column; min-height: 300px;}
+.department-identity {height: 105px; display: flex; align-items: center; margin-bottom: 16px;}
+.department-card h3 {font-size: 20px; margin-top: 12px;}
+.department-card p {margin-bottom: 21px;}
+.department-card .text-link {margin-top: auto; font-size: 12px;}
+.department-fallback {font: 750 34px/1 'Segoe UI', Arial, sans-serif; color: #ededed; letter-spacing: -.025em;}
+.steps {gap: 18px;}
+.step {background: linear-gradient(180deg, #141414, #060606); border-top: 2px solid #3f3f3f; border-radius: 0;}
+.step-num {color: var(--after-highlight); font: 700 26px/1.2 'Segoe UI', Arial, sans-serif;}
+.step h3 {line-height: 1.4;}
+.step p {color: var(--after-muted); line-height: 1.8;}
+.prose {max-width: 80ch;}
+.prose h2 {font: 750 27px/1.25 'Segoe UI', Arial, sans-serif; letter-spacing: -.03em; margin-top: 36px;}
+.prose h3 {font-size: 20px; line-height: 1.4;}
+.prose p, .prose ul, .prose ol {color: #b9b9b9; font-size: 14px; line-height: 1.9;}
+.prose a:not(.button) {color: var(--after-highlight); text-underline-offset: 4px;}
+
+/* Public portal introduction and sign-in; internal portal styling is separate. */
+.portal-feature {background: #101010; border-color: #333; border-top: 2px solid var(--after-accent); color: #f5f5f5; border-radius: 6px; box-shadow: none; gap: 38px; padding: 36px;}
+.portal-feature h2 {font-size: clamp(29px, 3.3vw, 41px); line-height: 1.12; letter-spacing: -.04em;}
+.portal-feature p {color: #aaa;}
+.portal-feature .eyebrow {color: var(--after-highlight);}
+.portal-feature .button {color: #f5f5f5; border-color: #505050;}
+.portal-mini {background: #070707; border-color: #383838; border-radius: 5px; box-shadow: none; transform: none;}
+.portal-mini header, .mini-list > div {border-color: #292929;}
+.mini-list > div {color: #dedede;}
+.portal-mini .mini-copy small {color: #aaa; font-size: 11px;}
+.mini-list span {background: #191919; border-color: #3b3b3b; color: #ddd; font-size: 11px;}
+.portal-mini .avatar {background: #261016; border-color: #653441; color: #fff;}
+.auth-layout {gap: 55px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 65px 0;}
+.auth-copy:before {display: none;}
+.auth-copy h1 {font: 800 clamp(32px, 4.2vw, 54px)/1.08 'Segoe UI', Arial, sans-serif; letter-spacing: -.045em; overflow-wrap: anywhere;}
+.auth-copy p {color: #aaa; line-height: 1.85;}
+.auth-card {background: #101010; border-color: #343434; border-top: 2px solid var(--after-accent); border-radius: 6px; padding: 32px;}
+.auth-card h2 {color: #fff; font-size: 25px; letter-spacing: -.04em;}
+.auth-card p {color: #aaa; line-height: 1.8;}
+.auth-card .tiny {color: #aaa; font-size: 11px;}
+.auth-card .tiny a {color: #ddd;}
+.auth-card .message.error {color: #ff9caf;}
+
+/* Inputs, search and the published rulebook. */
+input, select, textarea {background: #080808; border-color: #3e3e3e; border-radius: 4px; color: #f4f4f4; accent-color: var(--after-accent);}
+input::placeholder, textarea::placeholder {color: #939393; opacity: 1;}
+label small, .field-help {color: #aaa;}
+.search-field > .icon {color: #aaa;}
+.filter {background: #101010; border-color: #383838; color: #bbb; min-height: 38px;}
+.filter:hover {border-color: #777; color: #fff;}
+.filter[aria-pressed=true] {background: #2a1117; border-color: #9e344a; color: #ffcad4;}
+.accordion {background: #101010; border-color: #303030; border-radius: 5px;}
+.accordion summary {color: #f0f0f0; font-size: 15px; line-height: 1.5;}
+.accordion[open] {border-color: #515151;}
+.accordion p {color: #b9b9b9; line-height: 1.85;}
+.rules-intro p {color: #b9b9b9; font-size: 15px; line-height: 1.85;}
+.rules-summary {background: #101010; border-color: #333; border-radius: 5px;}
+.rules-summary > div {border-color: #333; padding: 21px;}
+.rules-summary strong {color: var(--after-highlight); font-size: 25px;}
+.rules-summary span {color: #aaa;}
+.rules-tools {gap: 18px;}
+.rules-tools label {color: #ddd;}
+.rules-tools .button-row {gap: 8px;}
+.rules-list .accordion {scroll-margin-top: 32px;}
+.rule-body {max-width: 86ch; padding: 0 10px 22px;}
+.rule-body p {color: #bbb;}
+.rule-permalink {color: var(--after-highlight); font-size: 12px;}
+.rules-help {background: #0e0e0e;}
+#rules-count {color: #aaa;}
+
+/* Public news, media, status, setup and shared dialogs. */
+.news-card .news-art, .news-card:first-child .news-art {background: linear-gradient(125deg, #231216, #0b0b0b); border-color: #3d2b30; border-radius: 4px;}
+.news-art .display {color: #e8e8e8; font: 800 clamp(32px, 4vw, 52px)/1 'Segoe UI', Arial, sans-serif; letter-spacing: -.025em;}
+.news-cityline {background: linear-gradient(0deg, #080808, #3f2028);}
+.news-art .orbit {border-color: #805260;}
+.news-card h3 {font-size: 21px;}
+.media-slot {background: repeating-linear-gradient(135deg, #131313 0, #131313 1px, #0c0c0c 1px, #0c0c0c 17px); border-color: #303030; border-radius: 5px; color: #aaa;}
+.media-slot > .icon {color: var(--after-highlight);}
+.media-slot strong {color: #ddd;}
+.media-img {border-radius: 4px;}
+.status-row {background: #101010; border-color: #303030; border-radius: 5px;}
+.status-row > div {min-width: 0;}
+.status-row h3 {color: #eee; font-size: 16px;}
+.status-row p {color: #aaa; font-size: 12px; line-height: 1.75;}
+.status-row .pill {font-size: 11px;}
+.setup-form {max-width: 800px;}
+.setup-form fieldset {background: #0d0d0d; border-color: #333; border-radius: 5px; min-width: 0;}
+.setup-form legend {color: #eee;}
+.setup-form input[type=color] {background: #111;}
+dialog {background: #101010; border-color: #494949; border-radius: 6px; color: #f4f4f4;}
+dialog::backdrop {background: #000c;}
+dialog p {color: #b9b9b9;}
+.dialog-close {color: #ccc;}
+.search-results a {background: #151515; border-color: #353535; border-radius: 4px;}
+.search-results a:hover {border-color: #8d3547;}
+.search-results small {color: #aaa; font-size: 11px;}
+.no-script {background: #171717; color: #ddd;}
+
+/* LSPD retains its imagery and insignia; its surrounding interface joins the site theme. */
+.lspd-breadcrumbs {color: #aaa; font-size: 11px;}
+.lspd-hero {background: #080808; border-color: #333; border-radius: 6px;}
+.lspd-hero:before {background: linear-gradient(90deg, #0000 0%, #0003 38%, #000d 66%, #000f 100%);}
+.lspd-hero-copy {width: 50%; padding: 40px 30px;}
+.lspd-kicker {color: var(--after-highlight); font-size: 11px; letter-spacing: 1.4px;}
+.lspd-kicker > span {color: #777;}
+.lspd-insignia {color: #e3e3e3;}
+.lspd-insignia > span {font-size: 11px; letter-spacing: 1.3px;}
+.lspd-insignia b {font-size: 10px; color: #aaa; letter-spacing: .9px;}
+.lspd-hero h1 {font: 800 clamp(38px, 4.1vw, 58px)/1.05 'Segoe UI', Arial, sans-serif; letter-spacing: -.04em;}
+.lspd-hero h1 > span {color: #d8d8d8; letter-spacing: -.015em;}
+.lspd-hero-copy > p {color: #c5c5c5; font-size: 14px;}
+.lspd-hero .button {background: #101010cf; border-color: #505050; color: #f5f5f5;}
+.lspd-section-nav {border-color: #303030; color: #bbb; font-size: 12px; gap: 16px 26px;}
+.lspd-section-nav a:hover {color: var(--after-highlight);}
+.lspd-layout {grid-template-columns: minmax(0, 1fr) 280px; gap: 23px;}
+.lspd-panel {background: #101010; border-color: #303030; border-radius: 5px; padding: 28px;}
+.lspd-panel h2, .lspd-divisions h2 {font: 750 29px/1.2 'Segoe UI', Arial, sans-serif; letter-spacing: -.035em;}
+.lspd-panel > p, .lspd-section-intro {color: #aaa; line-height: 1.85;}
+.lspd-about h2 {font-size: clamp(30px, 3.2vw, 40px); line-height: 1.12;}
+.lspd-about h2 span {color: #f5f5f5;}
+.lspd-about .lspd-lead {color: #ddd; font-size: 16px;}
+.lspd-principles {border-color: #333; gap: 15px 22px;}
+.lspd-principles > span {color: #ccc;}
+.lspd-principles .icon {color: var(--after-highlight);}
+.lspd-values li {border-color: #2e2e2e;}
+.lspd-values li > span {color: var(--after-highlight);}
+.lspd-values p, .lspd-pathway p, .lspd-unit p {color: #aaa;}
+.lspd-values h3, .lspd-pathway h3 {color: #ededed;}
+.lspd-heading {flex-wrap: wrap;}
+.lspd-status {background: #251218; border-color: #64323d; color: #ffc2cf; font-size: 11px; white-space: normal;}
+.lspd-pathway li:not(:last-child):before {background: #444;}
+.lspd-pathway li > span {background: #191919; border-color: #4d4d4d; color: #eee; font-size: 11px;}
+.lspd-pathway a {color: var(--after-highlight); font-size: 12px;}
+.lspd-unit {background: #101010; border-color: #303030; border-top: 2px solid #565656; border-radius: 5px; padding: 23px;}
+.lspd-unit-top > span:last-child {color: #aaa; font-size: 10px; letter-spacing: 1px;}
+.lspd-unit-icon {background: #1d1114; border-color: #60323c; color: var(--after-highlight); border-radius: 4px;}
+.lspd-unit h3 {color: #f0f0f0; font-size: 20px;}
+.lspd-unit strong {color: #ccc; font-size: 12px;}
+.lspd-media img {border-color: #393939; border-radius: 4px;}
+.lspd-media figcaption {color: #aaa; font-size: 11px;}
+.lspd-sidebar .lspd-panel {padding: 24px;}
+.lspd-sidebar h2 {font-size: 26px;}
+.lspd-sidebar .lspd-kicker {font-size: 10px; letter-spacing: 1px;}
+.lspd-recruitment {background: linear-gradient(145deg, #1d1013, #101010 65%); border-top: 2px solid var(--after-accent);}
+.lspd-recruitment h2 {font-size: 34px; line-height: 1.1;}
+.lspd-intakes > div {border-color: #393034; gap: 12px;}
+.lspd-intakes dd {color: #ffc2cf; font-size: 11px;}
+.lspd-intakes dd:before {background: var(--after-highlight);}
+.lspd-command li, .lspd-ranks {border-color: #333;}
+.lspd-rank-mark {background: #191919; border-color: #474747; color: #ddd; border-radius: 4px;}
+.lspd-command p {color: #aaa; font-size: 11px;}
+.lspd-ranks summary {color: #ddd; font-size: 12px;}
+.lspd-ranks li {font-size: 11px;}
+.lspd-ranks span {color: #aaa;}
+.lspd-resources > .icon {color: var(--after-highlight);}
+.lspd-resources p, .lspd-events p {color: #aaa; font-size: 12px;}
+.lspd-bottom {border-color: #303030;}
+.lspd-page section[id] {scroll-margin-top: 28px;}
+
+/* The desktop navigation takes a column: reflow content before it becomes cramped. */
+@media (max-width: 1200px) {
+  .intro-grid {gap: 32px;}
+  .grid-3 {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  .grid-4, .steps {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  .portal-feature {gap: 26px; padding: 28px;}
+  .auth-layout {gap: 32px;}
+  .auth-card {padding: 27px;}
+  .rules-tools {align-items: stretch; flex-direction: column;}
+  .rules-tools label {max-width: none;}
+  .lspd-layout {grid-template-columns: minmax(0, 1fr) 250px; gap: 20px;}
+  .lspd-panel {padding: 24px;}
+  .lspd-sidebar .lspd-panel {padding: 21px;}
+  .lspd-unit-grid {grid-template-columns: 1fr;}
+}
+@media (max-width: 1050px) {
+  .section-head {align-items: start; flex-direction: column; gap: 16px;}
+  .section-head p {max-width: 65ch;}
+  .auth-layout {grid-template-columns: 1fr; max-width: 700px; margin-inline: auto; gap: 35px;}
+  .auth-copy p {max-width: 620px;}
+  .auth-copy h1 {max-width: 18ch;}
+  .portal-feature {grid-template-columns: 1fr;}
+  .lspd-layout {grid-template-columns: 1fr;}
+  .lspd-sidebar {grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start;}
+  .lspd-unit-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  .lspd-hero {min-height: 0;}
+  .lspd-hero-image {position: relative; display: block; inset: auto; z-index: auto; height: clamp(220px, 34vw, 350px); object-position: 40% bottom;}
+  .lspd-hero:before {display: none;}
+  .lspd-hero-copy {width: 100%; margin: 0; padding: 32px;}
+  .lspd-hero h1 {max-width: 16ch; font-size: 48px;}
+  .lspd-insignia {margin: 22px 0;}
+}
+@media (max-width: 900px) {
+  .rules-list .accordion, .lspd-page section[id] {scroll-margin-top: 110px;}
+}
+@media (max-width: 720px) {
+  .section {padding: 44px 0;}
+  .section.compact {padding: 24px 0 44px;}
+  .page-hero {padding: 31px 0;}
+  .page-hero h1 {font-size: clamp(31px, 7vw, 44px);}
+  .page-hero .lead {font-size: 14px;}
+  .page-hero:after {opacity: .06;}
+  .intro-grid, .grid-2, .grid-3, .department-grid {grid-template-columns: 1fr;}
+  .intro-grid {gap: 24px;}
+  .section-head h2, .intro-grid h2 {font-size: 30px;}
+  .card {padding: 24px;}
+  .path-card {min-height: 245px;}
+  .department-card {min-height: 290px;}
+  .department-identity {height: 105px;}
+  .department-card h3 {font-size: 21px;}
+  .department-card p {font-size: 13px;}
+  .department-card .category, .department-card .text-link {font-size: 11px;}
+  .portal-feature {padding: 25px;}
+  .portal-feature h2 {font-size: 32px;}
+  .auth-layout {padding: 42px 0;}
+  .auth-copy h1 {font-size: 39px;}
+  .rules-summary {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  .rules-summary > div:nth-child(2) {border-right: 0;}
+  .rules-summary > div:nth-child(-n+2) {border-bottom: 1px solid #333;}
+  .status-row {flex-wrap: wrap; align-items: start; padding: 21px;}
+  .status-row .pill {font-size: 11px;}
+  .lspd-hero-copy {padding: 29px 24px;}
+  .lspd-hero h1 {font-size: 41px;}
+  .lspd-about h2 {font-size: 33px;}
+  .lspd-panel h2, .lspd-divisions h2 {font-size: 27px;}
+  .lspd-recruitment h2 {font-size: 34px;}
+  .lspd-panel > p, .lspd-section-intro {font-size: 13px;}
+  .lspd-sidebar, .lspd-unit-grid {grid-template-columns: 1fr;}
+  .lspd-unit, .lspd-sidebar .lspd-panel {padding: 24px;}
+  .lspd-section-nav {font-size: 11px; gap: 12px 20px;}
+  .lspd-principles > span {font-size: 11px;}
+}
+@media (max-width: 390px) {
+  .page-hero h1 {font-size: 32px;}
+  .card, .auth-card, .portal-feature {padding: 21px;}
+  .auth-copy h1 {font-size: 32px;}
+  .steps, .grid-4 {grid-template-columns: 1fr;}
+  .step p {font-size: 12px;}
+  .rules-summary > div {padding: 16px;}
+  .rules-summary strong {font-size: 23px;}
+  .rules-tools .button-row {align-items: stretch; flex-direction: column;}
+  .accordion {padding-inline: 17px;}
+  .accordion summary {font-size: 14px;}
+  .rule-body {padding-inline: 0;}
+  .lspd-hero-copy, .lspd-panel, .lspd-sidebar .lspd-panel {padding: 24px 20px;}
+  .lspd-hero h1 {font-size: 35px;}
+  .lspd-about h2 {font-size: 29px;}
+  .lspd-insignia > span {font-size: 10px;}
+  .lspd-unit {padding: 21px;}
+  .lspd-kicker {font-size: 10px;}
+  dialog {padding: 23px;}
+}
+@media (pointer: coarse) {
+  .filter, .rules-tools .button.small, .lspd-section-nav a {min-height: 44px;}
+  .lspd-section-nav a {display: inline-flex; align-items: center;}
+}
+@media print {
+  .page-hero, .card, .notice, .accordion, .rules-summary, .lspd-hero, .lspd-panel, .lspd-unit {background: #fff; border-color: #aaa; color: #111; box-shadow: none;}
+  .page-hero:after {display: none;}
+  .page-hero h1, .card h3, .prose h2, .prose h3, .lspd-hero h1, .lspd-panel h2, .lspd-unit h3 {color: #111;}
+  .prose p, .card > p, .rule-body p, .lspd-panel > p, .lspd-unit p, .lspd-hero-copy > p {color: #333;}
+  .rules-summary strong, .lspd-kicker, .lspd-pathway a, .rule-permalink {color: #333;}
+}

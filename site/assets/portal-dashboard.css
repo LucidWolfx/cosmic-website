@@ -1,28 +1,30 @@
-/* Portal presentation only. Account access and department permissions remain
-   controlled by the existing authenticated services. */
+/* Cosmic After Dark portal presentation. Account access and department
+   permissions remain controlled by the existing authenticated services. */
 :is(body[data-page="portal"], body[data-page="portal-preview"]) {
   color-scheme: dark;
-  accent-color: #ededed;
-  --bg: #080808;
-  --panel: #141414;
-  --panel2: #1c1c1c;
-  --text: #f5f5f5;
-  --muted: #b2b2b2;
-  --dim: #929292;
-  --line: #2a2a2a;
-  --accent: #ededed;
+  accent-color: #df2846;
+  --bg: #000;
+  --panel: #121216;
+  --panel2: #1c1c21;
+  --text: #f4f4f5;
+  --muted: #b5b5bf;
+  --dim: #9999a3;
+  --line: #2b2b31;
+  --accent: #ff6480;
   --radius: 9px;
-  --body: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --body: "Segoe UI", Arial, sans-serif;
   --display: var(--body);
-  --portal-side: #0f0f0f;
-  --portal-active: #252525;
+  --portal-side: #000;
+  --portal-active: #19191d;
+  --portal-cta: #df2846;
+  --portal-cta-hover: #c8213d;
   --portal-green: #a2cfb3;
   --portal-amber: #dfc28e;
   background: var(--bg);
   color: var(--text);
   font: 14px/1.55 var(--body);
 }
-:is(body[data-page="portal"], body[data-page="portal-preview"]) ::selection {background: #dedede; color: #101010;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) ::selection {background: #df2846; color: #fff;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(h1, h2, h3, h4) {
   font-family: var(--body);
   font-weight: 650;
@@ -75,16 +77,18 @@
   display: block;
   width: auto;
   padding: 0 11px;
-  color: var(--accent);
+  color: var(--text);
   border: 0;
   border-radius: 0;
   background: transparent;
-  font-size: 25px;
-  font-weight: 750;
+  font-size: 21px;
+  font-weight: 800;
   letter-spacing: 2px;
   line-height: 1.25;
+  text-align: center;
 }
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-identity small {display: block; margin-top: 5px; color: var(--muted); font-size: 9px; font-weight: 500; letter-spacing: 1.9px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-identity .portal-mascot {display: block; width: 74px; height: 80px; object-fit: contain; margin: 0 auto 11px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-identity small {display: block; margin-top: 5px; color: var(--muted); font-size: 10px; font-weight: 500; letter-spacing: 1.4px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-nav {display: grid; gap: 5px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-label {display: block; padding: 9px 12px 7px; color: var(--dim); font-size: 10px; letter-spacing: 1.4px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a:not(.portal-identity)) {
@@ -104,7 +108,8 @@
   white-space: normal;
 }
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a):hover {background: var(--panel2); color: var(--text);}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a)[aria-current="page"] {background: var(--portal-active); color: var(--accent) !important; border-color: #505050; box-shadow: inset 2px 0 0 #d4d4d4;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a)[aria-current="page"] {background: var(--portal-active); color: var(--text) !important; border-color: #443039; box-shadow: inset 3px 0 0 var(--portal-cta);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a)[aria-current="page"] .portal-icon {color: var(--accent);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(.icon, svg) {display: inline-block; width: 17px; height: 17px; flex-shrink: 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-account {display: flex; align-items: center; gap: 10px; margin-top: auto; padding: 17px 7px 0; border-top: 1px solid var(--line); min-width: 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .account-avatar {display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 9px; background: var(--portal-active); color: var(--accent); font-size: 12px; font-weight: 650; overflow: hidden;}
@@ -156,8 +161,8 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-list small {font-size: 11px; color: var(--muted);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .button {min-height: 39px; padding: 9px 13px; gap: 8px; border: 1px solid #626262; border-radius: 6px; background: transparent; color: var(--text); font-size: 12px; font-weight: 550; line-height: 1.45; text-align: center; box-shadow: none;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .button:hover {background: var(--panel2); transform: none;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.primary {background: var(--accent); color: #111111; border-color: var(--accent); box-shadow: none;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.primary:hover {background: #ffffff; border-color: #ffffff; filter: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.primary {background: var(--portal-cta); color: #fff; border-color: var(--portal-cta); box-shadow: 0 6px 22px #df28461a; font-weight: 650;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.primary:hover {background: var(--portal-cta-hover); border-color: var(--portal-cta-hover); box-shadow: 0 7px 25px #df284624; filter: none;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .button.small {min-height: 35px; padding: 7px 11px; font-size: 11px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .button.danger {color: #f5baba; border-color: #805050;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .button-row {gap: 9px;}
@@ -166,7 +171,7 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .pill::before {display: none;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .pill[data-status] {color: var(--portal-amber); border-color: #60563f; background: #252219;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="approved"], [data-status="active"]) {color: var(--portal-green); border-color: #405e49; background: #18241c;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="under_review"], [data-status="submitted"], [data-status="leave"]) {color: var(--accent); border-color: #565656; background: #242424;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="under_review"], [data-status="submitted"], [data-status="leave"]) {color: #d5d5de; border-color: #56565e; background: #242429;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="denied"], [data-status="suspended"]) {color: #e7b1b1; border-color: #704949; background: #291d1d;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="draft"], [data-status="withdrawn"], [data-status="archived"], [data-status="inactive"]) {color: var(--muted); border-color: #454545; background: #202020;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-toolbar {display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin: 20px 0 15px;}
@@ -205,7 +210,7 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .progress {margin-top: 0; gap: 20px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-step small {color: var(--muted); font-size: 11px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-marker {border-color: #606060; color: var(--muted);}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-step.done .progress-marker {background: var(--portal-active); color: var(--accent); border-color: #707070;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-step.done .progress-marker {background: #18241c; color: var(--portal-green); border-color: #405e49;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .message {color: var(--muted); font-size: 12px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .message.error {color: #edbaba;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-load {max-width: 780px; padding: 65px 24px; margin: 0 auto;}
@@ -219,7 +224,7 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-access {color: var(--accent);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs {display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 19px; padding-bottom: 17px; border-bottom: 1px solid var(--line);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button {min-height: 39px; padding: 9px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; color: var(--muted); font-size: 12px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button[aria-pressed="true"] {background: var(--portal-active); color: var(--accent); border-color: #707070;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button[aria-pressed="true"] {background: var(--portal-active); color: var(--text); border-color: #87515d; box-shadow: inset 0 -2px var(--portal-cta);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button:hover {background: var(--panel2); color: var(--text);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-section {margin-top: 20px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-section-heading {margin-bottom: 16px; flex-wrap: wrap;}
@@ -245,7 +250,7 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) dialog {background: var(--panel); border-color: #616161; color: var(--text);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) dialog::backdrop {background: #000000b3;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .dialog-close {color: var(--muted);}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(input[type="checkbox"], input[type="radio"]) {accent-color: var(--accent);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(input[type="checkbox"], input[type="radio"]) {accent-color: var(--portal-cta);}
 
 @media (max-width: 1100px) {
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-shell {grid-template-columns: 208px minmax(0, 1fr);}
@@ -258,8 +263,9 @@
 @media (max-width: 800px) {
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-shell {display: block; min-height: calc(100dvh - 64px);}
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar {position: static; height: auto; max-height: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 15px; padding: 18px 22px; border-right: 0; border-bottom: 1px solid var(--line); overflow: visible;}
-  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar .portal-identity {padding: 0; font-size: 21px;}
-  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-identity small {font-size: 8px; letter-spacing: 1.3px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar .portal-identity {display: flex; align-items: center; gap: 11px; padding: 0; font-size: 19px; text-align: left;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-identity .portal-mascot {width: 59px; height: 64px; margin: 0; flex-shrink: 0;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-identity small {font-size: 9px; letter-spacing: 1px;}
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-nav {grid-column: 1 / -1; grid-row: 2; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px;}
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-nav .sidebar-label {grid-column: 1 / -1; padding: 5px 2px 2px;}
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a:not(.portal-identity)) {padding: 9px 10px; min-height: 42px; font-size: 12px; gap: 8px;}
@@ -278,6 +284,9 @@
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .right > a {font-size: 11px;}
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .button {font-size: 11px; padding: 8px 10px;}
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar {padding: 17px 15px; gap: 16px 12px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar .portal-identity {gap: 9px; font-size: 17px; letter-spacing: 1.6px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-identity .portal-mascot {width: 50px; height: 54px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-identity small {letter-spacing: .4px;}
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-nav {grid-template-columns: repeat(2, minmax(0, 1fr));}
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-account {max-width: 140px; gap: 8px;}
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .account-avatar {width: 31px; height: 31px; font-size: 10px;}

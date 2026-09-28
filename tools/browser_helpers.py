@@ -1,6 +1,7 @@
 """Test-only, in-memory fixtures for a browser environment without URL navigation."""
 from pathlib import Path
 from bs4 import BeautifulSoup
+from urllib.parse import unquote,urlsplit
 import base64,json,mimetypes
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'site'
@@ -32,18 +33,21 @@ def render_in_memory(page,filename,config_override=None,extra_script=''):
         return original.call(this,name,value,priority);
       };
     })();'''.replace('ASSETS',json.dumps(assets))
-    soup=BeautifulSoup((SITE/filename).read_text(),'html.parser')
+    soup=BeautifulSoup((SITE/filename).read_text(encoding='utf-8'),'html.parser')
     for node in list(soup.select('meta[http-equiv="Content-Security-Policy"],link[rel="icon"]')):node.decompose()
     for link in list(soup.select('link[rel="stylesheet"]')):
-        style=soup.new_tag('style');style.string=(SITE/link['href']).read_text();link.replace_with(style)
+        path=unquote(urlsplit(link['href']).path)
+        style=soup.new_tag('style');style.string=(SITE/path).read_text(encoding='utf-8');link.replace_with(style)
     scripts=[]
     for script in list(soup.select('script[src]')):
-        text=(SITE/script['src']).read_text()
-        if script['src']=='assets/config.js' and config_override:
+        path=unquote(urlsplit(script['src']).path)
+        text=(SITE/path).read_text(encoding='utf-8')
+        if path=='assets/config.js' and config_override:
             text+='\nObject.assign(window.COSMIC,'+json.dumps(config_override)+');'
         scripts.append(text);script.decompose()
     for img in soup.select('img[src]'):
-        if img['src'] in assets:img['src']=assets[img['src']]
+        path=unquote(urlsplit(img['src']).path)
+        if path in assets:img['src']=assets[path]
     for text in [fixture]+([extra_script] if extra_script else [])+scripts:
         tag=soup.new_tag('script');tag.string=text;soup.body.append(tag)
     page.set_content(str(soup),wait_until='load')

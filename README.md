@@ -1,12 +1,12 @@
 # Cosmic: public website + member portal
 
-The third visual revision of the Cosmic public website and member portal.
-It uses provisional charcoal, silver, ice-blue accents, and city imagery from
-the supplied brand concept board. The visible name remains **Cosmic**.
+Cosmic’s public website and member portal use the approved red panda mascot,
+a true-black background, crimson accents, and cinematic city artwork. The
+homepage keeps a green indicator for open whitelist applications.
 
-The brand is not final. The project now has its own repository at
-https://github.com/LucidWolfx/cosmic-website. Read `docs/BRAND-DIRECTION.md`
-for replacing the artwork and `docs/GITHUB-HANDOFF.md` for publishing details.
+The project is published from https://github.com/LucidWolfx/cosmic-website.
+Read `docs/BRAND-DIRECTION.md` for asset and theme editing, and
+`docs/GITHUB-HANDOFF.md` for publishing details.
 
 ## Included
 
@@ -71,8 +71,11 @@ site/                       Publish only this folder
   assets/config.js          Public branding, links, authentication configuration
   assets/content.js         Approved public directory and media entries
   assets/styles.css         Responsive layout and component foundations
-  assets/brand.css          Isolated v3 brand layer
-  assets/cosmic-brand-reference.jpg  Untouched provisional reference board
+  assets/brand.css          Shared black/crimson theme and public navigation
+  assets/after-dark-components.css  Public page and LSPD presentation
+  assets/cosmic-mascot.webp   Approved Cosmic mascot
+  assets/cosmic-after-dark.jpg  Generated promotional city artwork
+  assets/cosmic-brand-reference.jpg  Provisional department reference board
   assets/auth.js            Discord OAuth and session handling
   assets/portal.js           Member and staff portal application
   assets/preview.js          Fictional preview data, not an auth mechanism

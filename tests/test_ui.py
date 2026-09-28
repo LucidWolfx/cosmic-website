@@ -15,26 +15,27 @@ with sync_playwright() as p:
  def new(file,width=1440,override=None,extra=''):
   page=b.new_page(viewport={'width':width,'height':1000},device_scale_factor=1)
   page.on('pageerror',lambda error:errors.append(str(error)))
-  render_in_memory(page,file,override,extra)
+  fixture_override={'auth':{'supabaseUrl':'','publishableKey':''},**(override or {})}
+  render_in_memory(page,file,fixture_override,extra)
   page.locator('img[loading="lazy"]').evaluate_all('(images)=>images.forEach(i=>i.loading="eager")')
   page.wait_for_function('Array.from(document.images).filter(i=>i.getAttribute("src")).every(i=>i.complete)',timeout=10000)
   return page
- # Layout checks on every HTML document, at four widths.
+ # Cover the desktop rail, tablet header, and two mobile widths.
  for file in sorted(SITE.glob('*.html')):
   print('Checking',file.name,flush=True)
-  for width in [1440,1024,390,320]:
+  for width in [1440,1024,800,390,320]:
    page=new(file.name,width)
    overflow=page.evaluate('document.documentElement.scrollWidth > innerWidth + 1')
    check(f'{file.name} {width}px no horizontal overflow',not overflow)
    broken=page.locator('img[src]').evaluate_all('(images)=>images.filter(i=>!i.complete || i.naturalWidth===0).length')
    check(f'{file.name} {width}px images render',broken==0)
    page.close()
- page=new('index.html');check('12 public navigation items',page.locator('.primary-nav a,.secondary-nav a').count()==12)
+ page=new('index.html');check('12 public navigation items',page.locator('.public-navigation .nav-group a').count()==12)
  page.locator('[data-open-search]').click();page.locator('#site-search').fill('organization');check('Global search finds public content',page.locator('#search-results a').count()>0);page.locator('#search-dialog [data-close-dialog]').click();page.close()
  page=new('community.html');page.locator('.button[data-link="discord"]').click();check('Missing destination opens honest notice',page.locator('#message-dialog').is_visible() and 'not been added' in page.locator('#message-copy').inner_text());page.close()
- page=new('index.html',390);page.locator('#menu-toggle').click();check('Mobile menu opens all 12 pages plus login',page.locator('#mobile-nav').is_visible() and page.locator('#mobile-nav a').count()==13);page.keyboard.press('Escape');check('Mobile menu closes with Escape',not page.locator('#mobile-nav').is_visible());page.close()
+ page=new('index.html',390);page.locator('#menu-toggle').click();check('Mobile menu opens all 12 pages plus member portal',page.locator('#mobile-nav').is_visible() and page.locator('#mobile-nav .nav-group a').count()==12 and page.locator('#mobile-nav .nav-portal').get_attribute('href')=='portal.html');page.keyboard.press('Escape');check('Mobile menu closes with Escape',not page.locator('#mobile-nav').is_visible());page.close()
  page=new('core-hub.html');page.locator('#guide-search').fill('building a character');check('Guide search filters cards',page.locator('[data-guide-card]:visible').count()==1);page.locator('#guide-search').fill('nothingmatchesxyz');check('Guide empty state',page.locator('#guide-empty').is_visible());page.close()
- page=new('rules.html');page.locator('[data-rule-filter="fairplay"]').click();check('Rules category filter',page.locator('[data-rule-category]:visible').count()==2);page.close()
+ page=new('rules.html');page.locator('[data-rules-category="fairplay"]').click();check('Rules category filter',page.locator('[data-rule-category]:visible').count()==5 and page.locator('[data-rule-category="fairplay"]:visible').count()==5);page.close()
  page=new('login.html');check('Unconfigured login disabled',page.locator('#discord-login').is_disabled());check('Unconfigured login does not claim success','not connected' in page.locator('#auth-notice').inner_text());page.close()
  page=new('portal.html');check('Unconfigured portal has no private shell',page.locator('.portal-shell').count()==0);check('Live portal has no preview role control',page.locator('#preview-role').count()==0);page.close()
  page=new('status.html');check('Unconfigured status unavailable',page.locator('#server-status').inner_text()=='Status unavailable');page.close()
@@ -44,14 +45,18 @@ with sync_playwright() as p:
  page.locator('[data-view="requests"]').click();page.wait_for_timeout(20);page.locator('[data-new-kind="business"]').click();page.locator('#save-draft').click();check('Preview does not claim to save draft','No draft was saved' in page.locator('#portal-message').inner_text())
  page.locator('#preview-role').select_option('applicant');page.locator('[data-view="resources"]').click();page.wait_for_timeout(20);check('Applicant resource lock','unlocks after approval' in page.locator('#view-content').inner_text());page.locator('[data-view="requests"]').click();page.wait_for_timeout(20);check('Applicant has support request only',page.locator('[data-new-kind]').count()==1 and page.locator('[data-new-kind="support"]').count()==1)
  page.evaluate("location.hash='review'");page.wait_for_timeout(20);check('Applicant manual staff-route denial','Staff access is required' in page.locator('#view-content').inner_text());page.locator('#preview-role').select_option('staff');check('Staff preview queue appears',page.locator('[data-review]').count()==2);page.locator('[data-review]').first.click();page.locator('#review-form input[type="checkbox"]').check();page.locator('#review-form button[type="submit"]').click();check('Preview staff cannot record decision','No decision has been recorded' in page.locator('#portal-message').inner_text());page.close()
- # Brand direction and safe replacement behavior.
- page=new('index.html');check('Provisional reference logo active',page.evaluate('document.documentElement.dataset.brandMode')=='reference');check('Ice-blue accent applied',page.evaluate('getComputedStyle(document.documentElement).getPropertyValue("--accent").trim()')=='#8ac7f3');check('Reference panorama is present',page.locator('.cinema-reference').is_visible());check('Final logo not invented',page.locator('[data-brand-logo]:visible').count()==0)
- check('Relative image URLs accepted',page.evaluate("CosmicUI.safeUrl('assets/cosmic-brand-reference.jpg')")=='assets/cosmic-brand-reference.jpg')
+ # Approved mascot identity, interactive homepage, and safe replacement behavior.
+ page=new('index.html');check('Approved mascot active',page.evaluate('document.documentElement.dataset.brandMode')=='custom' and page.locator('.site-header [data-brand-logo]').is_visible());check('True black background',page.evaluate('getComputedStyle(document.body).backgroundColor')=='rgb(0, 0, 0)');check('Crimson accent applied',page.evaluate('getComputedStyle(document.documentElement).getPropertyValue("--accent").trim()')=='#df2846');check('After Dark hero artwork is present',page.locator('#home-art').is_visible());check('Welcome mascot is present',page.locator('.ad-welcome-logo').is_visible())
+ check('Homepage starts with the city and application link',page.locator('[data-home-scene]').get_attribute('data-home-scene')=='city' and page.locator('#home-action').get_attribute('href')=='portal.html#apply')
+ page.locator('[data-home-choice="calling"]').click();check('Calling scene opens LSPD pathway',page.locator('#home-action').get_attribute('href')=='department-lspd.html' and 'The city' in page.locator('#home-heading').inner_text() and page.locator('[data-home-choice="calling"]').get_attribute('aria-pressed')=='true')
+ page.locator('[data-home-choice="start"]').click();check('First-day scene opens application pathway',page.locator('#home-action').get_attribute('href')=='portal.html#apply' and page.locator('#home-action').inner_text().startswith('Start your application') and page.locator('[data-home-choice="start"]').get_attribute('aria-pressed')=='true')
+ page.locator('[data-home-choice="city"]').click();check('City scene restores default content',page.locator('#home-action').inner_text().startswith('Enter Cosmic') and page.locator('[data-home-choice][aria-pressed="true"]').count()==1 and page.locator('[data-home-choice="city"]').get_attribute('aria-pressed')=='true')
+ check('Relative image URLs accepted',page.evaluate("CosmicUI.safeUrl('assets/cosmic-mascot.webp')")=='assets/cosmic-mascot.webp')
  for bad in ['javascript:alert(1)','data:text/html,test','//example.test/image.png','https://user:pass@example.test/image.png','../outside.html']:
   check('Unsafe URL rejected '+bad,page.evaluate('(v)=>CosmicUI.safeUrl(v)',bad)=='')
  page.close()
- page=new('index.html',override={'brand':{'name':'Cosmic','tagline':'SAN ANDREAS','accent':'#8ac7f3','referenceSheet':'','logo':''}});check('Reference artwork can be disabled',page.locator('.reference-brand:visible').count()==0 and page.locator('[data-wordmark]:visible').count()==2);page.close()
- page=new('index.html',override={'brand':{'name':'Cosmic','tagline':'SAN ANDREAS','accent':'#8ac7f3','referenceSheet':'assets/cosmic-brand-reference.jpg','logo':'assets/favicon.svg'},'heroImage':'assets/city.svg'});check('Standalone logo takes priority',page.evaluate('document.documentElement.dataset.brandMode')=='custom');check('Standalone cover takes priority',page.evaluate('document.documentElement.dataset.coverMode')=='custom' and page.locator('.cinema-custom').is_visible());page.close()
+ page=new('departments.html',override={'brand':{'name':'Cosmic','tagline':'Roleplay','accent':'#df2846','referenceSheet':'','logo':'assets/cosmic-mascot.webp'}});check('Department reference artwork can be disabled',page.locator('.department-reference:visible').count()==0 and page.locator('.department-fallback:visible').count()==6 and page.locator('.site-header [data-brand-logo]').is_visible());page.close()
+ page=new('index.html',override={'brand':{'name':'Cosmic','tagline':'Roleplay','accent':'#df2846','referenceSheet':'assets/cosmic-brand-reference.jpg','logo':'assets/favicon.svg'},'heroImage':'assets/city.svg'});check('Standalone logo takes priority',page.evaluate('document.documentElement.dataset.brandMode')=='custom' and page.locator('[data-brand-logo]').evaluate('(image)=>image.currentSrc.startsWith("data:image/svg+xml")'));check('Standalone cover takes priority',page.evaluate('document.documentElement.dataset.coverMode')=='custom' and page.locator('#home-art').is_visible() and page.locator('#home-art').evaluate('(image)=>image.currentSrc.startsWith("data:image/svg+xml")'));page.close()
  page=new('departments.html');check('Six provisional department concepts',page.locator('.department-card').count()==6 and 'Proposed identities, not an active roster' in page.locator('.notice').first.inner_text());page.screenshot(path=str(OUTPUT/'Cosmic-v3-Departments.png'),full_page=True);page.close()
  page=new('setup.html');check('Reference sheet configuration editable',page.locator('[name="referenceSheet"]').input_value()=='assets/cosmic-brand-reference.jpg');page.locator('[name="tagline"]').fill('A NEW CHAPTER');
  with page.expect_download() as d:page.locator('button[type="submit"]').click()

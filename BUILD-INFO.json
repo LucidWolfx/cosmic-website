@@ -1,7 +1,7 @@
 {
-  "version": "3.8-black-portal-theme",
+  "version": "4.0-mascot-after-dark",
   "date": "2026-09-28",
-  "brandFinal": false,
+  "brandFinal": true,
   "githubInspected": "LucidWolfx/Cosmic-fbi",
   "githubModified": true,
   "repository": "LucidWolfx/cosmic-website",
@@ -19,12 +19,12 @@
   "uiAssertionsTotal": 283,
   "htmlDocuments": 31,
   "referenceSha256": "fc3c2a3d03804a53a1b6b4890606d253cc353bd81f6abf4e0457e0edca282bfd",
-  "note": "Published Cosmic 18+ serious RP rules and open application intake with the new portal dashboard layout. Existing Supabase login, applications, Discord notifications and department permissions retained. Reserve and transfer routes remain closed. Historical UI assertion totals are from the supplied package; see TEST-REPORT.md.",
+  "note": "Approved mascot and After Dark design applied throughout the public website and member portal. Existing authentication, intake, application and department permissions are retained. Historical UI assertion totals are not a count of this release\u2019s browser checks; see TEST-REPORT.md.",
   "departmentNotificationChannelId": "1449966318072627362",
   "departmentNotificationRoleId": "1449494268329852938",
   "rulesVersion": "cosmic-rules-1.0-2026-09-28",
   "rulesApproved": true,
   "minimumAge": 18,
   "portalDashboardLayout": true,
-  "portalTheme": "Black and charcoal with white/silver accents"
+  "portalTheme": "True black, charcoal, crimson, and Cosmic mascot"
 }

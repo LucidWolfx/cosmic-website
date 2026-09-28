@@ -1,55 +1,43 @@
-# Cosmic brand direction: provisional v3
+# Cosmic brand direction: mascot / After Dark
 
-This revision responds to the concept board supplied on 27 September 2026.
-The name remains Cosmic. The identity is not yet final.
+Approved by the owner on 28 September 2026 for the public website and portal.
+The identity uses the supplied Cosmic red panda mascot, true black (#000000),
+charcoal panels, white text, crimson (#df2846), and a brighter accent (#ff6480).
+The open-applications status dot is green (#36d879).
 
-## Visual direction
+## Assets
 
-The interface now uses charcoal and blue-black surfaces, silver-white text,
-ice-blue highlights, and the warm sunset city panorama from the supplied board.
-The previous orbit-style header and monochrome hero illustration are no longer
-used by default. The public website and portal share the same visual system.
-The favicon is a temporary letter C, not a finalized logo.
+- `site/assets/cosmic-mascot.webp`: the supplied 1200 by 1310 mascot, converted
+  to WebP at its original dimensions with transparency preserved.
+- `site/assets/cosmic-after-dark.jpg`: generated promotional artwork approved
+  in the homepage mockup. It is labelled promotional artwork, not server footage.
+- `site/assets/lspd-city-patrol.webp`: the owner's existing LSPD image.
+- `site/assets/cosmic-brand-reference.jpg`: retained only for the existing
+  provisional department badge concepts. Those departments and identities are
+  not newly confirmed by this visual release.
 
-## Reference artwork, not a finished brand asset pack
+## Editing
 
-`site/assets/cosmic-brand-reference.jpg` is the supplied 1536 by 768 image,
-copied without altering its bytes. CSS viewports display its primary mark,
-top panorama, and department concepts. No separately drawn or upscaled logos
-are represented as final artwork. Its resolution limits are visible at large
-sizes; replace it with the original high-resolution logo and cover files before
-launch. The department display is deliberately labelled provisional.
+`tools/homepage.html` and `site/assets/homepage.js` control the homepage scenes.
+`tools/site_shell.py` builds the shared public navigation and footer.
+`site/assets/brand.css` provides the black background, mascot styling, public
+navigation and homepage presentation. `after-dark-components.css` styles the
+inner public pages; `portal-dashboard.css` styles portal screens and tools.
 
-The six proposed identities shown are LSPD, BCSO, SASP, FMA, DOJ, and ICO.
-Names, responsibilities, recruitment status, and permission requirements have
-not been confirmed merely because a name appears in the reference board.
-No Discord invite or operational claims printed within the board have been
-adopted as configured links or factual site copy.
+The logo, hero image, and public accent remain configurable in
+`site/assets/config.js`. `site/setup.html` can generate a replacement public
+configuration. The reference-sheet option applies only to the original board's
+layout; do not use another sheet as a drop-in replacement.
 
-The owner must confirm permission to publish the supplied artwork. No unrelated
-community's artwork, roster, application data, or brand copy was downloaded.
+Run `python tools/build.py` after edits. The builder generates the public pages,
+login, portal, and configuration editor and versions CSS/JavaScript asset links
+so returning visitors receive the current appearance.
 
-## Replacing the provisional artwork
+## Scope
 
-Open `site/setup.html` and enter the final full-width transparent logo path,
-cover image path, accent, and tagline. Download the configuration and replace
-`site/assets/config.js`.
+This release changes presentation. It retains the existing 18+ serious RP rules,
+open whitelist/member requests, Discord authentication, review routing and
+ department permissions. Reserve and transfer routes remain closed.
 
-The final logo takes priority over the board's primary mark. A standalone cover
-takes priority over the board panorama. Clear the reference-sheet field to remove
-all board-derived graphics, including the department samples and background
-imagery. The text wordmark and department initials provide fallbacks.
-
-The reference-sheet field assumes exactly this board layout. A new differently
-arranged board is not a drop-in replacement. Use standalone final assets instead.
-
-`site/assets/brand.css` is the isolated visual layer. `tools/build.py` builds the
-public markup and the CSS viewports. Functionality and backend permissions do not
-depend on an accent color or on a logo being present.
-
-## Remaining content decisions
-
-Core Hub is still provisionally a knowledge and resources center. Department
-subgroups, private departmental roles, public business/organization listings,
-media, approved rules, the Discord destination, and launch dates need the team's
-confirmation. Nothing in this brand revision opens whitelist intake.
+No staff names, department assignments, Discord invites, service statistics or
+community media were invented as part of the redesign.

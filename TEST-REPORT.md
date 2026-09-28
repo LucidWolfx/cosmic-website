@@ -1,5 +1,27 @@
 # Cosmic v3 verification report
 
+## Mascot / After Dark rollout - 28 September 2026
+
+- Applied the approved mascot, true black, crimson controls, and green open-intake
+  indicator to the homepage, public pages, login, portal and staff tools.
+- Local build/static validation passed for all 31 HTML pages. JavaScript syntax
+  checks passed, and all 54 existing Discord/department tests passed.
+- Browser verification covered desktop homepage scenes and links, site search,
+  rule filtering, LSPD, login, and member/staff preview screens.
+- At 320 px, homepage, rules, department directory, LSPD, login, join, setup and
+  portal preview had no horizontal document overflow or broken eager images.
+  The 390 px homepage and menu were visually checked; the staff review form and
+  fictional department roster/editing controls fit at 320 px.
+- Existing department controls were checked through a local fixture with fictional
+  records. No real application was submitted, no review decision was recorded,
+  and no Discord message or permission change was made for this visual release.
+- Updated the offline browser helper and visual expectations to match the new
+  theme and versioned asset URLs. Python syntax passed; that legacy automated
+  browser suite was not executed in this run. Earlier assertion counts below are
+  historical, not a count of the current browser verification.
+- These are selected browser checks, not a complete accessibility/device audit.
+  Backend configuration, credentials, rules content and role mappings are unchanged.
+
 ## Black portal theme - 28 September 2026
 
 - Changed portal and design preview to neutral black/charcoal surfaces, white text,

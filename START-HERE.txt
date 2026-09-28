@@ -1,4 +1,4 @@
-COSMIC WEBSITE + MEMBER PORTAL / V3 BRAND DIRECTION
+COSMIC WEBSITE + MEMBER PORTAL / MASCOT AFTER DARK
 
 1. Unzip this package.
 2. Open site/index.html to view the public website.
@@ -12,11 +12,12 @@ A local HTTP server is recommended for testing. From this package folder:
 Then open:
     http://localhost:8080
 
-NEW IN V3
-Charcoal, silver, and ice blue with the supplied sunset-city concept art.
-The public website, member portal, login, and department concepts share the theme.
-The artwork and all six department concepts remain provisional, not final.
-See docs/BRAND-DIRECTION.md for replacing the board with final standalone files.
+NEW IN V4
+Approved Cosmic red panda mascot, true black, crimson accents, and city artwork.
+The public pages, login, member portal and staff tools share the new theme.
+Open whitelist applications keep their green status dot.
+Department badge concepts remain provisional. Existing roles and data are retained.
+See docs/BRAND-DIRECTION.md for editing the shared theme and assets.
 
 GITHUB PROJECT
 https://github.com/LucidWolfx/cosmic-website
@@ -27,7 +28,8 @@ Live website: https://lucidwolfx.github.io/cosmic-website/
 DISCORD LOGIN AND PRIVATE APPLICATION REVIEWS ARE CONNECTED.
 Reviews go to #website-applications. Staff can approve, deny, or request changes.
 Login and a fictional review workflow were verified; see TEST-REPORT.md.
-SUBMISSIONS REMAIN CLOSED while the owner reviews the draft rules.
+SUBMISSIONS ARE OPEN. Cosmic requires 18+ and story-focused serious roleplay.
+The approved rules are published on rules.html. Reserve/transfer routes stay closed.
 Final rules, brand, public content, owner/contact and retention details still need
 owner review. Live server monitoring is not configured.
 Portal membership does not automatically grant FiveM access or Discord roles.
