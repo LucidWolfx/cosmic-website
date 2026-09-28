@@ -2,7 +2,7 @@
 from html import escape
 
 GROUPS = [
-    ('Discover', [('index.html','Discover','grid'),('about.html','About Cosmic','people'),('community.html','Community','discord'),('join.html','How to join','user')]),
+    ('Discover', [('index.html','Discover','grid'),('about.html','About Cosmic','people'),('community.html','Community','people'),('join.html','How to join','user')]),
     ('The city', [('departments.html','Departments','shield'),('businesses.html','Businesses','briefcase'),('organizations.html','Organizations','people')]),
     ('Explore', [('rules.html','Rulebook','book'),('core-hub.html','Core Hub','grid'),('media.html','Media','camera'),('news.html','News','file'),('status.html','Status','pulse')])
 ]

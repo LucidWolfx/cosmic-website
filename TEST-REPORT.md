@@ -1,5 +1,18 @@
 # Cosmic v3 verification report
 
+## Community team page - 28 September 2026
+
+- Replaced the events/creator overview with public leadership and staff profiles,
+  support links, application tracking, and a link to LSPD command information.
+- Initial owner profile uses the confirmed .white.wolf display name. Other staff
+  names remain unpublished until provided. Public directory data is separate from
+  the authenticated portal and private department roster.
+- Build/static validation passed for 31 pages. Browser checks confirmed section
+  links, the owner card, contact destinations, and no horizontal overflow at
+  320, 390, 800, and 1440 pixels. The mascot and mobile menu remain in the shared theme.
+- This is a public content/layout update. No authentication, intake, application,
+  department permissions or live records were changed.
+
 ## Mascot / After Dark rollout - 28 September 2026
 
 - Applied the approved mascot, true black, crimson controls, and green open-intake

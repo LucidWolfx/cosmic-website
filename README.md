@@ -15,6 +15,10 @@ Departments, Businesses, Organizations, Media, News, and Status**. It also has
 public guides, editorial previews, login, an OAuth callback, privacy information,
 a member portal, and a separate fictional design preview.
 
+The Community page is a public staff directory with leadership, team profiles,
+and contact routes. Edit `site/assets/team.json` to update confirmed public
+profiles; see `docs/COMMUNITY-TEAM.md`. It does not change account permissions.
+
 The LSPD directory entry opens a dedicated department page with mission and
 expectations, a joining pathway, open department-interest applications, proposed units
 and command structure, and the owner's LSPD screenshot. See `docs/LSPD-PAGE.md` for editing

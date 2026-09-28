@@ -1,5 +1,5 @@
 {
-  "version": "4.0-mascot-after-dark",
+  "version": "4.1-community-team",
   "date": "2026-09-28",
   "brandFinal": true,
   "githubInspected": "LucidWolfx/Cosmic-fbi",
@@ -26,5 +26,6 @@
   "rulesApproved": true,
   "minimumAge": 18,
   "portalDashboardLayout": true,
-  "portalTheme": "True black, charcoal, crimson, and Cosmic mascot"
+  "portalTheme": "True black, charcoal, crimson, and Cosmic mascot",
+  "communityTeamDirectory": true
 }
