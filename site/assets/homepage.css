@@ -1,3 +1,8 @@
+/* Preserve the full artwork instead of enlarging it to fill a wide banner. */
+body[data-page=index] .ad-stage{max-width:1680px;margin-inline:auto}
+body[data-page=index] .ad-art{right:0;width:100%;height:100%;object-fit:contain;object-position:right top}
+@media(max-width:470px){body[data-page=index] .ad-art{height:350px}}
+
 /* Two opposing text rows between the hero and the welcome section. */
 .ad-ticker{position:relative;max-width:100%;padding:38px 0 31px;border-block:1px solid #202024;background:#000;overflow:hidden}
 .ad-ticker-controls{position:absolute;top:3px;right:24px;z-index:1}

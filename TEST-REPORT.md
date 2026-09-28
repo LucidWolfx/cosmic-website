@@ -1,5 +1,17 @@
 # Cosmic v3 verification report
 
+## Homepage artwork scaling - 28 September 2026
+
+- The hero image now uses contain sizing at its original proportions with no
+  oversized width or negative horizontal offset. The full composition fits
+  inside the banner instead of cropping characters' heads on wide screens.
+- The hero layout is centered and capped at 1680 px to keep its text and artwork
+  together on wide displays. The scrolling strip retains its full width.
+- Browser previews at 2560, 1440, 390 and 320 px confirmed contain sizing and no
+  horizontal overflow. Desktop and phone screenshots showed all three heads.
+- Build/static validation passed for 31 pages. Existing artwork bytes, links,
+  scrolling behavior, and private systems are unchanged.
+
 ## Homepage opposing text rows - 28 September 2026
 
 - Replaced the three hero scene selectors with a full-width black text strip:
