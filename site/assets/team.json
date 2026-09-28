@@ -1,11 +1,13 @@
 {
   "members": [
     {
-      "name": ".white.wolf",
-      "role": "Owner",
+      "name": "Wolf",
+      "role": "Owner & Lead Developer",
       "group": "leadership",
-      "initials": "WW",
-      "bio": "Community direction and oversight."
+      "initials": "W",
+      "featured": true,
+      "focus": ["Community leadership", "Development"],
+      "bio": "Leading the community. Building the experience."
     }
   ]
 }

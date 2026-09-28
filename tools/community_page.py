@@ -26,10 +26,17 @@ def render_community(icon):
             initials = escape(member.get('initials') or ''.join(word[0] for word in member['name'].split())[:2].upper())
             handle = f'<p class="team-handle">{escape(member["handle"])}</p>' if member.get('handle') else ''
             bio = f'<p class="team-bio">{escape(member["bio"])}</p>' if member.get('bio') else ''
-            cards.append(f'''<article class="team-card" data-team-group="{group}">
-              <div class="team-avatar" aria-hidden="true">{initials}</div>
-              <div class="team-card-body"><span class="team-role">{role}</span><h3>{name}</h3>{handle}{bio}</div>
-            </article>''')
+            if member.get('featured'):
+                focus = ''.join(f'<span>{escape(item)}</span>' for item in member.get('focus', []))
+                cards.append(f'''<article class="team-card team-card-featured" data-team-group="{group}">
+                  <div class="team-profile-art" aria-hidden="true"><span class="team-profile-mark">{initials}</span><span class="team-profile-art-label">COSMIC ROLEPLAY</span></div>
+                  <div class="team-card-body"><span class="team-role">{role}</span><h3>{name}</h3>{handle}{bio}<div class="team-profile-focus">{focus}</div><a class="text-link" href="#get-in-touch">Get in touch <span aria-hidden="true">↗</span></a></div>
+                </article>''')
+            else:
+                cards.append(f'''<article class="team-card" data-team-group="{group}">
+                  <div class="team-avatar" aria-hidden="true">{initials}</div>
+                  <div class="team-card-body"><span class="team-role">{role}</span><h3>{name}</h3>{handle}{bio}</div>
+                </article>''')
         content = '<div class="team-grid">' + ''.join(cards) + '</div>' if cards else f'''<div class="team-unannounced">{icon('people')}<div><strong>More of the team, soon.</strong><p>Additional staff profiles will appear here as the directory is confirmed.</p></div></div>'''
         sections.append(f'''<section class="section team-section" id="{group}" aria-labelledby="team-{group}-title"><div class="wrap"><div class="section-head"><div><span class="eyebrow">{'Leading the community' if group == 'leadership' else 'Here for the community'}</span><h2 id="team-{group}-title">{title}</h2></div><p>{description}</p></div>{content}</div></section>''')
 

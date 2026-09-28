@@ -4,8 +4,8 @@
 
 - Replaced the events/creator overview with public leadership and staff profiles,
   support links, application tracking, and a link to LSPD command information.
-- Initial owner profile uses the confirmed .white.wolf display name. Other staff
-  names remain unpublished until provided. Public directory data is separate from
+- The owner profile now uses the requested public name Wolf and title Owner &
+  Lead Developer. Other staff names remain unpublished until provided. Public directory data is separate from
   the authenticated portal and private department roster.
 - Build/static validation passed for 31 pages. Browser checks confirmed section
   links, the owner card, contact destinations, and no horizontal overflow at

@@ -165,6 +165,92 @@ body[data-page=community] .team-contact-note a {color: #d5d5d5; text-decoration:
   body[data-page=community] .team-hero .button:hover,
   body[data-page=community] .team-help .button:hover {transform: none;}
 }
+/* A featured profile uses a typographic identity rather than an invented portrait. */
+body[data-page=community] .team-card.team-card-featured {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: 260px minmax(0, 1fr);
+  align-items: stretch;
+  gap: 0;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid #343034;
+  border-top: 2px solid #df2846;
+  border-radius: 5px;
+  background: #101010;
+}
+body[data-page=community] .team-card-featured .team-profile-art {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 290px;
+  overflow: hidden;
+  border-right: 1px solid #343034;
+  background: linear-gradient(135deg, transparent 50%, #df28460d 50%, #df28460d 69%, transparent 69%),
+    linear-gradient(#ffffff05 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, #ffffff05 1px, transparent 1px) 0 0 / 24px 24px, #0a0a0a;
+}
+body[data-page=community] .team-card-featured .team-profile-art::before {
+  content: '';
+  position: absolute;
+  inset: -20px 29px -20px auto;
+  width: 8px;
+  transform: skewX(-17deg);
+  background: #df2846;
+  opacity: .75;
+  z-index: -1;
+}
+body[data-page=community] .team-card-featured .team-profile-mark {
+  display: block;
+  margin-top: -18px;
+  padding-right: 13px;
+  color: #f1f1f1;
+  font: 900 154px/.95 'Segoe UI', Arial, sans-serif;
+  letter-spacing: -.085em;
+  transform: skewX(-8deg);
+  text-shadow: 5px 5px 0 #b31d36;
+}
+body[data-page=community] .team-card-featured .team-profile-art-label {
+  position: absolute;
+  bottom: 20px;
+  left: 24px;
+  color: #aaa;
+  font-size: 11px;
+  font-weight: 650;
+  line-height: 1.5;
+  letter-spacing: 2.2px;
+}
+body[data-page=community] .team-card-featured .team-card-body {padding: 34px 38px; align-self: center;}
+body[data-page=community] .team-card-featured .team-role {margin-bottom: 12px; font-size: 11px; letter-spacing: 1.1px;}
+body[data-page=community] .team-card-featured h3 {font-size: 48px; font-weight: 800; line-height: 1.04; letter-spacing: -.05em;}
+body[data-page=community] .team-card-featured .team-bio {max-width: 40ch; margin-top: 16px; color: #b9b9b9; font-size: 14px; line-height: 1.75;}
+body[data-page=community] .team-card-featured .team-profile-focus {display: flex; flex-wrap: wrap; gap: 8px 19px; margin-top: 22px; padding-top: 18px; border-top: 1px solid #303030;}
+body[data-page=community] .team-card-featured .team-profile-focus span {display: inline-flex; align-items: center; gap: 8px; color: #d3d3d3; font-size: 11px; line-height: 1.5;}
+body[data-page=community] .team-card-featured .team-profile-focus span::before {content: ''; display: block; flex: 0 0 4px; height: 4px; background: #df2846;}
+body[data-page=community] .team-card-featured .text-link {margin-top: 21px; min-height: 30px; color: #ff8097; font-size: 12px;}
+body[data-page=community] .team-card-featured .text-link:hover {color: #ffd3dd;}
+@media (max-width: 1100px) and (min-width: 621px) {
+  body[data-page=community] .team-card.team-card-featured {grid-template-columns: 225px minmax(0, 1fr);}
+  body[data-page=community] .team-card-featured .team-card-body {padding: 30px;}
+  body[data-page=community] .team-card-featured .team-profile-mark {font-size: 140px;}
+}
+@media (max-width: 620px) {
+  body[data-page=community] .team-card.team-card-featured {grid-template-columns: 1fr;}
+  body[data-page=community] .team-card-featured .team-profile-art {min-height: 130px; height: 130px; border-right: 0; border-bottom: 1px solid #343034; place-items: center start; padding-left: 26px;}
+  body[data-page=community] .team-card-featured .team-profile-art::before {right: 42px; width: 9px;}
+  body[data-page=community] .team-card-featured .team-profile-mark {margin-top: -2px; font-size: 110px; text-shadow: 4px 4px 0 #b31d36;}
+  body[data-page=community] .team-card-featured .team-profile-art-label {left: auto; right: 19px; bottom: 17px; max-width: 105px; font-size: 11px; text-align: right; letter-spacing: 1.5px;}
+  body[data-page=community] .team-card-featured .team-card-body {padding: 26px;}
+  body[data-page=community] .team-card-featured h3 {font-size: 43px;}
+  body[data-page=community] .team-card-featured .team-bio {font-size: 14px;}
+  body[data-page=community] .team-card-featured .text-link {min-height: 44px; margin-top: 14px;}
+}
+@media (max-width: 390px) {
+  body[data-page=community] .team-card-featured .team-card-body {padding: 25px 22px;}
+  body[data-page=community] .team-card-featured .team-role {font-size: 11px; letter-spacing: .9px;}
+  body[data-page=community] .team-card-featured .team-profile-focus {gap: 10px 16px;}
+}
 @media print {
   body[data-page=community] .team-hero,
   body[data-page=community] .team-card,
@@ -183,4 +269,10 @@ body[data-page=community] .team-contact-note a {color: #d5d5d5; text-decoration:
   body[data-page=community] .team-bio,
   body[data-page=community] .team-help p,
   body[data-page=community] .team-contact-note {color: #333;}
+  body[data-page=community] .team-card.team-card-featured {display: block; background: #fff; border-color: #aaa;}
+  body[data-page=community] .team-card-featured .team-profile-art {display: none;}
+  body[data-page=community] .team-card-featured h3,
+  body[data-page=community] .team-card-featured .team-profile-focus span {color: #111;}
+  body[data-page=community] .team-card-featured .team-bio,
+  body[data-page=community] .team-card-featured .text-link {color: #333;}
 }
