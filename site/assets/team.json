@@ -1,14 +1,9 @@
 {
+  "groups": [
+    {"id":"ownership","title":"Ownership","description":"Guiding the community, setting the standards, and shaping what comes next for Cosmic.","icon":"user","accent":"crimson"},
+    {"id":"development","title":"Development","description":"Building the systems behind the city and keeping the Cosmic experience moving forward.","icon":"grid","accent":"cyan"}
+  ],
   "members": [
-    {
-      "name": "Wolf",
-      "role": "Owner & Lead Developer",
-      "group": "leadership",
-      "initials": "W",
-      "avatarUrl": "https://mygpttrerwwexljgdiyq.supabase.co/functions/v1/staff-avatar/wolf",
-      "featured": true,
-      "focus": ["Community leadership", "Development"],
-      "bio": "Leading the community. Building the experience."
-    }
+    {"id":"wolf","name":"Wolf","role":"Owner & Lead Developer","roles":{"ownership":"Owner","development":"Lead Developer"},"initials":"W","avatarUrl":"https://mygpttrerwwexljgdiyq.supabase.co/functions/v1/staff-avatar/wolf","bio":"Leading the community. Building the experience.","roleBios":{"ownership":"Community leadership, standards, and the direction of Cosmic.","development":"The website, the portal, and the systems behind the experience."}}
   ]
 }

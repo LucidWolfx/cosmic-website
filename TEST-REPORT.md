@@ -1,5 +1,18 @@
 # Cosmic v3 verification report
 
+## Community role panels - 28 September 2026
+
+- Combined the supplied role-panel grid reference with compact individual cards:
+  hexagonal Discord pictures, names, role badges, bios, and actual support links.
+- Ownership and Development each list Wolf with the appropriate confirmed title.
+  Each panel counts its published members; both cards refer to one unique person.
+  Additional staff remain unpublished rather than borrowing reference-site names.
+- Build/static validation passed for 31 pages. Browser checks covered live avatar
+  loading, counts, role jump links, support destinations, and layout at 1440,
+  1024, 390 and 320 pixels without horizontal overflow.
+- Existing avatar code, authentication, department access, intake configuration,
+  and private records are unchanged. This update adds no new dependencies.
+
 ## Wolf's Discord profile picture - 28 September 2026
 
 - The public leadership card displays Wolf's Cosmic server avatar, falling back

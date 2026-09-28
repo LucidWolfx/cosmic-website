@@ -1,296 +1,209 @@
-/* The public Cosmic team directory. Staff identities and copy come from content data. */
-body[data-page=community] .team-hero {
-  position: relative;
-  overflow: hidden;
-  padding: 48px 0 42px;
-  border-bottom: 1px solid #292929;
-  background: #050505;
-}
-body[data-page=community] .team-hero > .wrap {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 210px;
-  align-items: center;
-  gap: 34px;
-}
+/* Public staff directory: confirmed role groups, compact member profiles. */
+body[data-page=community] .team-hero {padding: 34px 0 30px; border-bottom: 1px solid #29292d; background: #050505;}
+body[data-page=community] .team-hero > .wrap {display: grid; grid-template-columns: minmax(0, 1fr) 154px; align-items: center; gap: 32px;}
 body[data-page=community] .team-hero-copy {min-width: 0;}
-body[data-page=community] .team-hero h1 {
-  max-width: 15ch;
-  margin-top: 17px;
-  color: #fff;
-  font: 800 clamp(35px, 4.6vw, 60px)/1.06 'Segoe UI', Arial, sans-serif;
-  letter-spacing: -.045em;
-  overflow-wrap: anywhere;
-}
-body[data-page=community] .team-hero .lead {
-  max-width: 610px;
-  margin-top: 21px;
-  color: #aaa;
-  font-size: 15px;
-  line-height: 1.85;
-}
-body[data-page=community] .team-hero .button-row {margin-top: 26px; gap: 10px;}
-body[data-page=community] .team-hero-mark {display: grid; place-items: center; min-width: 0; padding: 8px;}
-body[data-page=community] .team-hero-mark img {display: block; width: 100%; max-width: 204px; max-height: 250px; object-fit: contain;}
-body[data-page=community] .team-page-jump {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px 29px;
-  padding-block: 14px;
-  border-bottom: 1px solid #292929;
-}
-body[data-page=community] .team-page-jump a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 38px;
-  padding-block: 8px;
-  color: #bbb;
-  font-size: 12px;
-  text-decoration: none;
-}
+body[data-page=community] .team-hero h1 {max-width: 22ch; margin-top: 14px; color: #fff; font: 800 clamp(32px, 3.7vw, 48px)/1.08 'Segoe UI', Arial, sans-serif; letter-spacing: -.045em; overflow-wrap: anywhere;}
+body[data-page=community] .team-hero .lead {max-width: 580px; margin-top: 16px; color: #aaa; font-size: 14px; line-height: 1.8;}
+body[data-page=community] .team-hero .button-row {margin-top: 21px; gap: 10px;}
+body[data-page=community] .team-hero-mark {display: grid; place-items: center; min-width: 0;}
+body[data-page=community] .team-hero-mark img {display: block; width: 100%; max-width: 148px; max-height: 170px; object-fit: contain;}
+body[data-page=community] .team-page-jump {display: flex; align-items: center; flex-wrap: wrap; gap: 5px 28px; padding-block: 10px; border-bottom: 1px solid #29292d;}
+body[data-page=community] .team-page-jump a {display: inline-flex; align-items: center; min-height: 38px; padding-block: 8px; color: #bbb; font-size: 12px; text-decoration: none;}
 body[data-page=community] .team-page-jump a:hover {color: #ff6480; text-decoration: underline; text-underline-offset: 5px;}
-body[data-page=community] .team-section {padding: 43px 0 0; scroll-margin-top: 30px;}
-body[data-page=community] .team-section .section-head {align-items: end; gap: 26px; margin-bottom: 22px;}
-body[data-page=community] .team-section .section-head h2 {font-size: clamp(25px, 2.8vw, 34px); line-height: 1.2; letter-spacing: -.035em;}
-body[data-page=community] .team-section .section-head p {max-width: 430px; color: #aaa; font-size: 13px; line-height: 1.8;}
-body[data-page=community] .team-grid {display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px;}
-body[data-page=community] .team-card {
+body[data-page=community] .team-section {padding: 35px 0 0; scroll-margin-top: 28px;}
+body[data-page=community] .team-section .section-head {flex-direction: row; align-items: end; gap: 23px; margin-bottom: 21px;}
+body[data-page=community] .team-section .section-head h2 {font-size: clamp(24px, 2.5vw, 31px); line-height: 1.2; letter-spacing: -.035em;}
+body[data-page=community] .team-section .section-head p {max-width: 420px; color: #aaa; font-size: 13px; line-height: 1.8;}
+
+/* Each panel represents a responsibility; a person can belong to more than one. */
+body[data-page=community] .team-role-grid {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 21px;}
+body[data-page=community] .team-role-panel {
+  --team-accent: #df2846;
+  --team-highlight: #ff8096;
+  --team-soft: #271218;
+  --team-edge: #713342;
+  --team-glow: #df284610;
   min-width: 0;
-  padding: 26px;
-  border: 1px solid #2b2b2b;
-  border-top: 2px solid #444;
-  border-radius: 5px;
-  background: #101010;
+  overflow: hidden;
+  border: 1px solid #333036;
+  border-top: 2px solid var(--team-accent);
+  border-radius: 7px;
+  background: #0c0c0e;
+  box-shadow: 0 7px 25px var(--team-glow);
+  scroll-margin-top: 28px;
 }
-body[data-page=community] .team-card[data-team-group=leadership] {border-top-color: #df2846; background: linear-gradient(145deg, #191013, #101010 65%);}
-body[data-page=community] .team-avatar {
+body[data-page=community] .team-role-panel[data-team-role=development],
+body[data-page=community] .team-role-panel[data-accent=cyan] {
+  --team-accent: #32c6d1;
+  --team-highlight: #83e5ec;
+  --team-soft: #102528;
+  --team-edge: #2a656b;
+  --team-glow: #32c6d10c;
+}
+body[data-page=community] .team-role-header {display: grid; grid-template-columns: 42px minmax(0, 1fr) auto; align-items: start; gap: 14px; padding: 22px; border-bottom: 1px solid #2b292e; background: linear-gradient(110deg, var(--team-glow), transparent 75%);}
+body[data-page=community] .team-role-icon {display: grid; place-items: center; width: 42px; height: 42px; border: 1px solid var(--team-edge); border-radius: 8px; background: var(--team-soft); color: var(--team-highlight);}
+body[data-page=community] .team-role-icon .icon {width: 23px; height: 23px; stroke-width: 1.6;}
+body[data-page=community] .team-role-copy {min-width: 0;}
+body[data-page=community] .team-role-copy h3 {margin: 0; color: #f3f3f5; font-size: 19px; font-weight: 700; line-height: 1.35; letter-spacing: -.025em;}
+body[data-page=community] .team-role-copy p {max-width: 32ch; margin: 6px 0 0; color: #a5a5ad; font-size: 12px; line-height: 1.7;}
+body[data-page=community] .team-member-count {min-width: 44px; padding-top: 1px; text-align: center;}
+body[data-page=community] .team-member-count strong {display: block; color: var(--team-highlight); font-size: 24px; font-weight: 650; line-height: 1.15; font-variant-numeric: tabular-nums;}
+body[data-page=community] .team-member-count span {display: block; margin-top: 4px; color: #aaa; font-size: 11px; line-height: 1.5;}
+body[data-page=community] .team-member-list {display: grid; gap: 13px; padding: 18px;}
+body[data-page=community] .team-member-card {display: grid; grid-template-columns: 82px minmax(0, 1fr); align-items: start; gap: 17px; min-width: 0; padding: 20px 18px; border: 1px solid #302d33; border-radius: 5px; background: #131315;}
+body[data-page=community] .team-profile-frame {
   display: grid;
   place-items: center;
-  width: 72px;
-  height: 72px;
-  margin-bottom: 23px;
+  width: 82px;
+  height: 92px;
+  padding: 3px;
   overflow: hidden;
-  border: 1px solid #454545;
-  border-radius: 50%;
-  background: #1c1c1c;
-  color: #f4f4f4;
-  font: 650 24px/1 'Segoe UI', Arial, sans-serif;
-  letter-spacing: -.045em;
+  clip-path: polygon(50% 0, 95% 24%, 95% 76%, 50% 100%, 5% 76%, 5% 24%);
+  background: var(--team-accent);
 }
-body[data-page=community] .team-card[data-team-group=leadership] .team-avatar {border-color: #70404b; background: #27141a; color: #ffd6df;}
-body[data-page=community] .team-avatar img {display: block; width: 100%; height: 100%; object-fit: cover;}
-body[data-page=community] .team-card-body {min-width: 0; overflow-wrap: anywhere;}
-body[data-page=community] .team-role {
-  display: block;
-  margin: 0 0 8px;
-  color: #ff6480;
-  font-size: 11px;
-  font-weight: 650;
-  letter-spacing: 1.2px;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-body[data-page=community] .team-card:only-child {grid-column: 1 / -1; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 24px;}
-body[data-page=community] .team-card:only-child .team-avatar {margin-bottom: 0;}
-body[data-page=community] .team-card h3 {margin: 0; color: #f5f5f5; font: 700 23px/1.25 'Segoe UI', Arial, sans-serif; letter-spacing: -.035em;}
-body[data-page=community] .team-handle {margin: 8px 0 0; color: #b9b9b9; font-size: 12px; line-height: 1.6;}
-body[data-page=community] .team-handle a {color: inherit; text-decoration: underline; text-underline-offset: 4px;}
-body[data-page=community] .team-handle a:hover {color: #ff6480;}
-body[data-page=community] .team-bio {margin: 16px 0 0; color: #aaa; font-size: 13px; line-height: 1.85;}
-body[data-page=community] .team-unannounced {
+body[data-page=community] .team-profile-mark {
   display: grid;
-  grid-template-columns: 32px minmax(0, 1fr);
-  gap: 5px 17px;
-  align-items: start;
-  padding: 23px 25px;
-  border: 1px solid #292929;
-  border-radius: 4px;
-  background: #0b0b0b;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0, 95% 24%, 95% 76%, 50% 100%, 5% 76%, 5% 24%);
+  background: #201d22;
+  color: #f4f4f4;
+  font: 750 37px/1 'Segoe UI', Arial, sans-serif;
+  letter-spacing: -.06em;
 }
-body[data-page=community] .team-unannounced > .icon {grid-column: 1; grid-row: 1 / span 2; width: 26px; height: 26px; margin-top: 2px; color: #aaa;}
+body[data-page=community] .team-profile-photo {display: block; width: 100%; height: 100%; object-fit: cover; clip-path: polygon(50% 0, 95% 24%, 95% 76%, 50% 100%, 5% 76%, 5% 24%);}
+body[data-page=community] .team-profile-frame [hidden] {display: none !important;}
+body[data-page=community] .team-card-body {min-width: 0; overflow-wrap: anywhere;}
+body[data-page=community] .team-member-heading {display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0;}
+body[data-page=community] .team-member-heading h4 {margin: 0; color: #f6f6f7; font: 700 22px/1.25 'Segoe UI', Arial, sans-serif; letter-spacing: -.03em;}
+body[data-page=community] .team-role {display: inline-flex; align-items: center; max-width: 100%; padding: 4px 9px; border: 1px solid var(--team-edge); border-radius: 4px; background: var(--team-soft); color: var(--team-highlight); font-size: 11px; font-weight: 550; letter-spacing: 0; line-height: 1.45;}
+body[data-page=community] .team-bio {margin: 12px 0 0; color: #aaa; font-size: 13px; line-height: 1.75;}
+body[data-page=community] .team-member-links {display: flex; flex-wrap: wrap; gap: 6px 15px; margin-top: 13px;}
+body[data-page=community] .team-member-link {display: inline-flex; align-items: center; gap: 8px; min-height: 30px; color: #d2d2d8; font-size: 11px; line-height: 1.5; text-decoration: none;}
+body[data-page=community] .team-member-link:hover {color: var(--team-highlight); text-decoration: underline; text-underline-offset: 4px;}
+body[data-page=community] .team-member-link .icon {width: 14px; height: 14px;}
+
+/* An honest unfilled section and useful contact routes, without placeholder people. */
+body[data-page=community] .team-unannounced {display: grid; grid-template-columns: 30px minmax(0, 1fr); align-items: start; gap: 5px 16px; padding: 22px 24px; border: 1px solid #29292d; border-radius: 5px; background: #0b0b0d;}
+body[data-page=community] .team-unannounced > .icon {grid-column: 1; grid-row: 1 / span 2; width: 25px; height: 25px; margin-top: 2px; color: #aaa;}
 body[data-page=community] .team-unannounced > div {grid-column: 2; grid-row: 1 / span 2; min-width: 0;}
-body[data-page=community] .team-unannounced strong {grid-column: 2; color: #dedede; font-size: 15px; font-weight: 600; line-height: 1.5;}
+body[data-page=community] .team-unannounced strong {grid-column: 2; color: #ddd; font-size: 15px; font-weight: 600; line-height: 1.5;}
+body[data-page=community] .team-unannounced h2 {margin: 0; color: #ddd; font: 600 16px/1.5 'Segoe UI', Arial, sans-serif; letter-spacing: -.015em;}
 body[data-page=community] .team-unannounced p {grid-column: 2; max-width: 75ch; margin: 0; color: #aaa; font-size: 13px; line-height: 1.8;}
 body[data-page=community] .team-unannounced > div p {margin-top: 5px;}
 body[data-page=community] .team-help-grid {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px;}
-body[data-page=community] .team-help {min-width: 0; padding: 27px; border: 1px solid #303030; border-radius: 5px; background: #101010;}
-body[data-page=community] .team-help h3 {margin: 0; color: #f1f1f1; font-size: 21px; line-height: 1.3; letter-spacing: -.03em;}
-body[data-page=community] .team-help p {margin-top: 13px; color: #aaa; font-size: 13px; line-height: 1.85;}
-body[data-page=community] .team-help .button {margin-top: 22px; max-width: 100%;}
-body[data-page=community] .team-contact-note {padding: 24px 0 43px; color: #999; font-size: 12px; line-height: 1.8;}
+body[data-page=community] .team-help {min-width: 0; padding: 25px; border: 1px solid #303034; border-radius: 5px; background: #101012;}
+body[data-page=community] .team-help h3 {margin: 0; color: #f1f1f3; font-size: 20px; line-height: 1.35; letter-spacing: -.03em;}
+body[data-page=community] .team-help p {margin-top: 12px; color: #aaa; font-size: 13px; line-height: 1.8;}
+body[data-page=community] .team-help .button {margin-top: 21px; max-width: 100%;}
+body[data-page=community] .team-contact-note {padding: 22px 0 38px; color: #999; font-size: 12px; line-height: 1.8;}
 body[data-page=community] .team-contact-note a {color: #d5d5d5; text-decoration: underline; text-underline-offset: 4px;}
 
-@media (max-width: 1250px) {
-  body[data-page=community] .team-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
-  body[data-page=community] .team-hero > .wrap {grid-template-columns: minmax(0, 1fr) 175px; gap: 23px;}
-  body[data-page=community] .team-hero-mark img {max-width: 170px;}
+@media (max-width: 1200px) {
+  body[data-page=community] .team-role-grid {gap: 17px;}
+  body[data-page=community] .team-role-header {grid-template-columns: 36px minmax(0, 1fr) auto; gap: 11px; padding: 19px;}
+  body[data-page=community] .team-role-icon {width: 36px; height: 36px;}
+  body[data-page=community] .team-role-icon .icon {width: 21px; height: 21px;}
+  body[data-page=community] .team-role-copy h3 {font-size: 18px;}
+  body[data-page=community] .team-member-list {padding: 14px;}
+  body[data-page=community] .team-member-card {grid-template-columns: 74px minmax(0, 1fr); gap: 14px; padding: 18px 15px;}
+  body[data-page=community] .team-profile-frame {width: 74px; height: 83px;}
 }
-@media (max-width: 900px) {
-  body[data-page=community] .team-hero {padding-block: 35px;}
-  body[data-page=community] .team-hero h1 {font-size: 45px;}
-  body[data-page=community] .team-section {scroll-margin-top: 110px; padding-top: 35px;}
+@media (max-width: 1000px) {
+  body[data-page=community] .team-role-grid {grid-template-columns: 1fr; gap: 20px;}
+  body[data-page=community] .team-role-header {grid-template-columns: 42px minmax(0, 1fr) auto; gap: 14px; padding: 22px;}
+  body[data-page=community] .team-role-icon {width: 42px; height: 42px;}
+  body[data-page=community] .team-role-copy h3 {font-size: 20px;}
+  body[data-page=community] .team-role-copy p {max-width: 55ch;}
+  body[data-page=community] .team-member-list {padding: 18px;}
+  body[data-page=community] .team-member-card {grid-template-columns: 82px minmax(0, 1fr); gap: 19px; padding: 21px;}
+  body[data-page=community] .team-profile-frame {width: 82px; height: 92px;}
   body[data-page=community] .team-section .section-head {align-items: start; flex-direction: column; gap: 13px;}
   body[data-page=community] .team-section .section-head p {max-width: 66ch; margin-top: 0;}
 }
-@media (max-width: 620px) {
-  body[data-page=community] .team-hero > .wrap {grid-template-columns: minmax(0, 1fr) 85px; gap: 15px; align-items: start;}
-  body[data-page=community] .team-hero-copy {grid-row: 1; grid-column: 1 / -1;}
-  body[data-page=community] .team-hero .eyebrow {max-width: calc(100% - 95px); min-height: 66px; align-content: center; font-size: 10px; line-height: 1.6; letter-spacing: 1.2px;}
-  body[data-page=community] .team-hero-mark {grid-row: 1; grid-column: 2; padding: 0; align-self: start;}
-  body[data-page=community] .team-hero-mark img {width: 78px; max-height: 86px;}
-  body[data-page=community] .team-hero h1 {max-width: 16ch; margin-top: 16px; font-size: clamp(34px, 7.3vw, 42px);}
-  body[data-page=community] .team-hero .lead {margin-top: 18px; font-size: 14px;}
-  body[data-page=community] .team-hero .button-row {margin-top: 23px;}
-  body[data-page=community] .team-page-jump {gap: 5px 23px; padding-block: 10px;}
+@media (max-width: 900px) {
+  body[data-page=community] .team-hero {padding-block: 29px;}
+  body[data-page=community] .team-hero > .wrap {grid-template-columns: minmax(0, 1fr) 126px; gap: 24px;}
+  body[data-page=community] .team-hero h1 {font-size: 39px;}
+  body[data-page=community] .team-hero-mark img {max-width: 124px; max-height: 145px;}
+  body[data-page=community] .team-section, body[data-page=community] .team-role-panel {scroll-margin-top: 110px;}
   body[data-page=community] .team-page-jump a {min-height: 44px;}
-  body[data-page=community] .team-grid, body[data-page=community] .team-help-grid {grid-template-columns: 1fr; gap: 16px;}
-  body[data-page=community] .team-card {padding: 25px;}
-  body[data-page=community] .team-avatar {width: 66px; height: 66px; margin-bottom: 20px;}
-  body[data-page=community] .team-card h3 {font-size: 23px;}
-  body[data-page=community] .team-help {padding: 24px;}
-  body[data-page=community] .team-contact-note {padding-bottom: 34px;}
 }
-@media (max-width: 390px) {
-  body[data-page=community] .team-hero h1 {font-size: 34px;}
+@media (max-width: 620px) {
+  body[data-page=community] .team-hero > .wrap {grid-template-columns: minmax(0, 1fr) 73px; gap: 15px; align-items: start;}
+  body[data-page=community] .team-hero-copy {grid-row: 1; grid-column: 1 / -1;}
+  body[data-page=community] .team-hero .eyebrow {max-width: calc(100% - 90px); min-height: 61px; font-size: 11px; line-height: 1.6; letter-spacing: 1px;}
+  body[data-page=community] .team-hero-mark {grid-row: 1; grid-column: 2; align-self: start;}
+  body[data-page=community] .team-hero-mark img {width: 69px; max-height: 76px;}
+  body[data-page=community] .team-hero h1 {max-width: 19ch; margin-top: 15px; font-size: clamp(31px, 7vw, 39px);}
+  body[data-page=community] .team-hero .lead {margin-top: 14px;}
+  body[data-page=community] .team-hero .button-row {margin-top: 21px;}
+  body[data-page=community] .team-page-jump {gap: 3px 21px;}
+  body[data-page=community] .team-section {padding-top: 28px;}
+  body[data-page=community] .team-role-header {grid-template-columns: 34px minmax(0, 1fr) 40px; gap: 11px; padding: 18px 16px;}
+  body[data-page=community] .team-role-icon {width: 34px; height: 36px; border-radius: 6px;}
+  body[data-page=community] .team-role-icon .icon {width: 20px; height: 20px;}
+  body[data-page=community] .team-role-copy h3 {font-size: 18px;}
+  body[data-page=community] .team-role-copy p {font-size: 12px; line-height: 1.65;}
+  body[data-page=community] .team-member-count {min-width: 0;}
+  body[data-page=community] .team-member-count strong {font-size: 22px;}
+  body[data-page=community] .team-member-list {padding: 13px;}
+  body[data-page=community] .team-member-card {grid-template-columns: 72px minmax(0, 1fr); gap: 14px; padding: 18px 15px;}
+  body[data-page=community] .team-profile-frame {width: 72px; height: 81px;}
+  body[data-page=community] .team-profile-mark {font-size: 33px;}
+  body[data-page=community] .team-member-heading {align-items: start; flex-direction: column; gap: 8px;}
+  body[data-page=community] .team-member-heading h4 {font-size: 21px;}
+  body[data-page=community] .team-bio {font-size: 12px;}
+  body[data-page=community] .team-help-grid {grid-template-columns: 1fr; gap: 16px;}
+  body[data-page=community] .team-help {padding: 23px;}
+  body[data-page=community] .team-contact-note {padding-bottom: 32px;}
+}
+@media (max-width: 360px) {
   body[data-page=community] .team-hero .button-row {align-items: stretch; flex-direction: column;}
   body[data-page=community] .team-hero .button-row .button {justify-content: space-between;}
-  body[data-page=community] .team-unannounced {padding: 21px; grid-template-columns: 25px minmax(0, 1fr); gap: 6px 12px;}
+  body[data-page=community] .team-member-card {grid-template-columns: 1fr; gap: 16px; padding: 20px;}
+  body[data-page=community] .team-member-heading {align-items: center; flex-direction: row; flex-wrap: wrap;}
+  body[data-page=community] .team-member-list {padding: 12px;}
+  body[data-page=community] .team-role-header {grid-template-columns: 32px minmax(0, 1fr) 35px; gap: 9px; padding: 17px 14px;}
+  body[data-page=community] .team-role-icon {width: 32px; height: 34px;}
+  body[data-page=community] .team-role-copy h3 {font-size: 17px;}
+  body[data-page=community] .team-unannounced {grid-template-columns: 24px minmax(0, 1fr); gap: 6px 12px; padding: 20px;}
   body[data-page=community] .team-unannounced > .icon {width: 22px; height: 22px;}
-  body[data-page=community] .team-card, body[data-page=community] .team-help {padding: 22px;}
+}
+@media (pointer: coarse) {
+  body[data-page=community] .team-member-link {min-height: 44px;}
 }
 @media (prefers-reduced-motion: reduce) {
   body[data-page=community] .team-page-jump a,
+  body[data-page=community] .team-member-link,
   body[data-page=community] .team-hero .button,
   body[data-page=community] .team-help .button {transition: none;}
   body[data-page=community] .team-hero .button:hover,
   body[data-page=community] .team-help .button:hover {transform: none;}
 }
-/* A featured profile uses the public Discord picture, with a typographic fallback. */
-body[data-page=community] .team-card.team-card-featured {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: 260px minmax(0, 1fr);
-  align-items: stretch;
-  gap: 0;
-  overflow: hidden;
-  padding: 0;
-  border: 1px solid #343034;
-  border-top: 2px solid #df2846;
-  border-radius: 5px;
-  background: #101010;
-}
-body[data-page=community] .team-card-featured .team-profile-art {
-  position: relative;
-  isolation: isolate;
-  display: grid;
-  place-items: center;
-  min-height: 290px;
-  overflow: hidden;
-  border-right: 1px solid #343034;
-  background: linear-gradient(135deg, transparent 50%, #df28460d 50%, #df28460d 69%, transparent 69%),
-    linear-gradient(#ffffff05 1px, transparent 1px) 0 0 / 24px 24px,
-    linear-gradient(90deg, #ffffff05 1px, transparent 1px) 0 0 / 24px 24px, #0a0a0a;
-}
-body[data-page=community] .team-card-featured .team-profile-art::before {
-  content: '';
-  position: absolute;
-  inset: -20px 29px -20px auto;
-  width: 8px;
-  transform: skewX(-17deg);
-  background: #df2846;
-  opacity: .75;
-  z-index: -1;
-}
-body[data-page=community] .team-card-featured .team-profile-mark {
-  display: block;
-  margin-top: -18px;
-  padding-right: 13px;
-  color: #f1f1f1;
-  font: 900 154px/.95 'Segoe UI', Arial, sans-serif;
-  letter-spacing: -.085em;
-  transform: skewX(-8deg);
-  text-shadow: 5px 5px 0 #b31d36;
-}
-body[data-page=community] .team-card-featured .team-profile-frame {
-  display: grid;
-  place-items: center;
-  width: 200px;
-  height: 200px;
-  overflow: hidden;
-  border: 1px solid #69404a;
-  border-radius: 12px;
-  background: #111;
-  box-shadow: 0 0 0 5px #0008, 0 12px 35px #0005;
-}
-body[data-page=community] .team-card-featured .team-profile-frame .team-profile-mark {margin: 0; padding-right: 11px; font-size: 140px;}
-body[data-page=community] .team-card-featured .team-profile-photo {display: block; width: 100%; height: 100%; object-fit: cover;}
-body[data-page=community] .team-card-featured .team-profile-frame.is-loaded {border-color: #9b4255;}
-body[data-page=community] .team-card-featured .team-profile-art-label {
-  position: absolute;
-  bottom: 20px;
-  left: 24px;
-  color: #aaa;
-  font-size: 11px;
-  font-weight: 650;
-  line-height: 1.5;
-  letter-spacing: 2.2px;
-}
-body[data-page=community] .team-card-featured .team-card-body {padding: 34px 38px; align-self: center;}
-body[data-page=community] .team-card-featured .team-role {margin-bottom: 12px; font-size: 11px; letter-spacing: 1.1px;}
-body[data-page=community] .team-card-featured h3 {font-size: 48px; font-weight: 800; line-height: 1.04; letter-spacing: -.05em;}
-body[data-page=community] .team-card-featured .team-bio {max-width: 40ch; margin-top: 16px; color: #b9b9b9; font-size: 14px; line-height: 1.75;}
-body[data-page=community] .team-card-featured .team-profile-focus {display: flex; flex-wrap: wrap; gap: 8px 19px; margin-top: 22px; padding-top: 18px; border-top: 1px solid #303030;}
-body[data-page=community] .team-card-featured .team-profile-focus span {display: inline-flex; align-items: center; gap: 8px; color: #d3d3d3; font-size: 11px; line-height: 1.5;}
-body[data-page=community] .team-card-featured .team-profile-focus span::before {content: ''; display: block; flex: 0 0 4px; height: 4px; background: #df2846;}
-body[data-page=community] .team-card-featured .text-link {margin-top: 21px; min-height: 30px; color: #ff8097; font-size: 12px;}
-body[data-page=community] .team-card-featured .text-link:hover {color: #ffd3dd;}
-@media (max-width: 1100px) and (min-width: 621px) {
-  body[data-page=community] .team-card.team-card-featured {grid-template-columns: 225px minmax(0, 1fr);}
-  body[data-page=community] .team-card-featured .team-card-body {padding: 30px;}
-  body[data-page=community] .team-card-featured .team-profile-mark {font-size: 140px;}
-  body[data-page=community] .team-card-featured .team-profile-frame {width: 180px; height: 180px;}
-}
-@media (max-width: 620px) {
-  body[data-page=community] .team-card.team-card-featured {grid-template-columns: 1fr;}
-  body[data-page=community] .team-card-featured .team-profile-art {min-height: 174px; height: 174px; border-right: 0; border-bottom: 1px solid #343034; place-items: center start; padding-left: 26px;}
-  body[data-page=community] .team-card-featured .team-profile-art::before {right: 42px; width: 9px;}
-  body[data-page=community] .team-card-featured .team-profile-mark {margin-top: -2px; font-size: 110px; text-shadow: 4px 4px 0 #b31d36;}
-  body[data-page=community] .team-card-featured .team-profile-frame {width: 130px; height: 130px; border-radius: 9px;}
-  body[data-page=community] .team-card-featured .team-profile-frame .team-profile-mark {font-size: 95px; padding-right: 7px;}
-  body[data-page=community] .team-card-featured .team-profile-art-label {left: auto; right: 19px; bottom: 17px; max-width: 105px; font-size: 11px; text-align: right; letter-spacing: 1.5px;}
-  body[data-page=community] .team-card-featured .team-card-body {padding: 26px;}
-  body[data-page=community] .team-card-featured h3 {font-size: 43px;}
-  body[data-page=community] .team-card-featured .team-bio {font-size: 14px;}
-  body[data-page=community] .team-card-featured .text-link {min-height: 44px; margin-top: 14px;}
-}
-@media (max-width: 390px) {
-  body[data-page=community] .team-card-featured .team-card-body {padding: 25px 22px;}
-  body[data-page=community] .team-card-featured .team-role {font-size: 11px; letter-spacing: .9px;}
-  body[data-page=community] .team-card-featured .team-profile-focus {gap: 10px 16px;}
-  body[data-page=community] .team-card-featured .team-profile-art-label {max-width: 80px; letter-spacing: 1.2px;}
-}
 @media print {
   body[data-page=community] .team-hero,
-  body[data-page=community] .team-card,
-  body[data-page=community] .team-card[data-team-group=leadership],
+  body[data-page=community] .team-role-panel,
+  body[data-page=community] .team-role-header,
+  body[data-page=community] .team-member-card,
   body[data-page=community] .team-help,
-  body[data-page=community] .team-unannounced {background: #fff; color: #111; border-color: #aaa; break-inside: avoid;}
+  body[data-page=community] .team-unannounced {background: #fff; color: #111; border-color: #aaa; box-shadow: none; break-inside: avoid;}
   body[data-page=community] .team-hero-mark,
   body[data-page=community] .team-page-jump {display: none;}
-  body[data-page=community] .team-hero > .wrap {display: block;}
+  body[data-page=community] .team-hero > .wrap,
+  body[data-page=community] .team-role-grid {display: block;}
+  body[data-page=community] .team-role-panel {margin-bottom: 20px;}
   body[data-page=community] .team-hero h1,
-  body[data-page=community] .team-card h3,
-  body[data-page=community] .team-role,
+  body[data-page=community] .team-role-copy h3,
+  body[data-page=community] .team-member-heading h4,
+  body[data-page=community] .team-unannounced h2,
   body[data-page=community] .team-help h3 {color: #111;}
   body[data-page=community] .team-hero .lead,
-  body[data-page=community] .team-handle,
+  body[data-page=community] .team-role-copy p,
+  body[data-page=community] .team-member-count strong,
+  body[data-page=community] .team-member-count span,
   body[data-page=community] .team-bio,
   body[data-page=community] .team-help p,
   body[data-page=community] .team-contact-note {color: #333;}
-  body[data-page=community] .team-card.team-card-featured {display: block; background: #fff; border-color: #aaa;}
-  body[data-page=community] .team-card-featured .team-profile-art {display: none;}
-  body[data-page=community] .team-card-featured h3,
-  body[data-page=community] .team-card-featured .team-profile-focus span {color: #111;}
-  body[data-page=community] .team-card-featured .team-bio,
-  body[data-page=community] .team-card-featured .text-link {color: #333;}
 }

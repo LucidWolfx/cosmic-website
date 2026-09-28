@@ -1,5 +1,5 @@
 {
-  "version": "4.1.2-discord-avatar",
+  "version": "4.2.0-team-role-panels",
   "date": "2026-09-28",
   "brandFinal": true,
   "githubInspected": "LucidWolfx/Cosmic-fbi",
@@ -29,5 +29,6 @@
   "portalTheme": "True black, charcoal, crimson, and Cosmic mascot",
   "communityTeamDirectory": true,
   "staffAvatarAutomatedTestsPassed": 12,
-  "communityDiscordAvatar": true
+  "communityDiscordAvatar": true,
+  "communityTeamRolePanels": true
 }

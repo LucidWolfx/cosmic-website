@@ -3,18 +3,25 @@
 The Community page introduces the public leadership and staff team.
 Edit `site/assets/team.json`, then run `python tools/build.py`.
 
-Each member has a public `name`, `role`, and `group` (`leadership` or `staff`).
-Optional fields are `initials`, `handle` (public Discord username), and `bio`.
-Featured profiles also support `avatarUrl`, an HTTPS image URL. The picture
-replaces the initials only after it loads successfully; unavailable images
-keep the styled initials fallback.
-Set `featured` to `true` for a full-width leadership profile. Optional `focus`
-labels describe that person's confirmed responsibilities.
-Array order controls display order within each group.
+The directory combines role panels (title, description, icon, member count)
+with individual profile cards (hexagonal avatar, name, role badge, and bio).
+The base remains black with crimson Ownership and cyan Development accents.
+
+`groups` defines each panel with a unique URL-safe `id`, `title`, `description`,
+`icon` from the existing icon set, and `accent` (`crimson` or `cyan`).
+Each member has a unique `id`, public `name`, full `role`, and a `roles` mapping
+from group ID to the title shown in that group. Optional `roleBios` overrides
+the general `bio` for a particular panel. Array order controls display order.
+
+Optional `avatarUrl` must be an HTTPS image URL. The picture replaces `initials`
+only after it loads successfully; unavailable images retain the styled fallback.
+All member cards use the existing avatar loader and public picture endpoint.
 
 Only publish confirmed names and titles. An empty group shows a short directory
 update message; it does not create fictional staff or imply a vacant position.
-The owner is listed publicly as **Wolf — Owner & Lead Developer**, as requested.
+Wolf appears in Ownership as **Owner** and Development as **Lead Developer**.
+Those are two roles held by one person. Panel counts count each role's published
+members independently; they are not an overall unique staff total.
 The Discord username is not part of the public profile.
 
 This public directory is separate from website authorization and private
