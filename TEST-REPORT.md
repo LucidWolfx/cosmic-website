@@ -1,5 +1,20 @@
 # Cosmic v3 verification report
 
+## Black portal theme - 28 September 2026
+
+- Changed portal and design preview to neutral black/charcoal surfaces, white text,
+  silver controls, and restrained colored approval/warning/error indicators.
+- Covered shared forms, notices, helper text, dialogs, department tabs and roster
+  styles; public website colors and all JavaScript/backend behavior are unchanged.
+- Browser checks confirmed desktop dashboard appearance, application table status
+  readability, mobile navigation at 390 px, and form fit at 320 px without overflow.
+- Main text contrast is 18.37:1; muted panel text 8.69:1; dim text on the lighter
+  panel 5.48:1; primary button text 16.13:1. Input borders are 3.16:1 against fields.
+  These sampled checks are not a complete accessibility audit.
+- Build and static validation passed for all 31 HTML files. Existing backend tests
+  remain in the GitHub publishing workflow; no new behavior tests were added for
+  this color-only change.
+
 ## Portal dashboard layout - 28 September 2026
 
 - Adopted the approved sidebar/dashboard layout while retaining the current

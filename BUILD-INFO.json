@@ -1,5 +1,5 @@
 {
-  "version": "3.7-portal-dashboard-provisional-brand",
+  "version": "3.8-black-portal-theme",
   "date": "2026-09-28",
   "brandFinal": false,
   "githubInspected": "LucidWolfx/Cosmic-fbi",
@@ -25,5 +25,6 @@
   "rulesVersion": "cosmic-rules-1.0-2026-09-28",
   "rulesApproved": true,
   "minimumAge": 18,
-  "portalDashboardLayout": true
+  "portalDashboardLayout": true,
+  "portalTheme": "Black and charcoal with white/silver accents"
 }

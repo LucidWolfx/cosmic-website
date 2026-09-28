@@ -1,25 +1,28 @@
 /* Portal presentation only. Account access and department permissions remain
    controlled by the existing authenticated services. */
 :is(body[data-page="portal"], body[data-page="portal-preview"]) {
-  --bg: #090f1c;
-  --panel: #182335;
-  --panel2: #1e2c41;
-  --text: #ecf2fb;
-  --muted: #a6b6cc;
-  --dim: #90a2bb;
-  --line: #2b3950;
-  --accent: #9ad4ff;
+  color-scheme: dark;
+  accent-color: #ededed;
+  --bg: #080808;
+  --panel: #141414;
+  --panel2: #1c1c1c;
+  --text: #f5f5f5;
+  --muted: #b2b2b2;
+  --dim: #929292;
+  --line: #2a2a2a;
+  --accent: #ededed;
   --radius: 9px;
   --body: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
   --display: var(--body);
-  --portal-side: #121c2c;
-  --portal-active: #273f59;
-  --portal-green: #8addb1;
-  --portal-amber: #f5cf86;
+  --portal-side: #0f0f0f;
+  --portal-active: #252525;
+  --portal-green: #a2cfb3;
+  --portal-amber: #dfc28e;
   background: var(--bg);
   color: var(--text);
   font: 14px/1.55 var(--body);
 }
+:is(body[data-page="portal"], body[data-page="portal-preview"]) ::selection {background: #dedede; color: #101010;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(h1, h2, h3, h4) {
   font-family: var(--body);
   font-weight: 650;
@@ -46,7 +49,7 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .wordmark {font-size: 18px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .wordmark small {font-size: 7px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar :is(.reference-brand, .brand-logo) {width: 100px; height: 42px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .right {font-size: 12px; gap: 16px; min-width: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .right {color: var(--muted); font-size: 12px; gap: 16px; min-width: 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .right > a {font-size: 12px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-top-brand {color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 1.35px; white-space: nowrap;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-top-brand:hover {color: var(--accent);}
@@ -101,7 +104,7 @@
   white-space: normal;
 }
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a):hover {background: var(--panel2); color: var(--text);}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a)[aria-current="page"] {background: var(--portal-active); color: var(--accent) !important; border-color: #355575; box-shadow: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a)[aria-current="page"] {background: var(--portal-active); color: var(--accent) !important; border-color: #505050; box-shadow: inset 2px 0 0 #d4d4d4;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(.icon, svg) {display: inline-block; width: 17px; height: 17px; flex-shrink: 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-account {display: flex; align-items: center; gap: 10px; margin-top: auto; padding: 17px 7px 0; border-top: 1px solid var(--line); min-width: 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .account-avatar {display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 9px; background: var(--portal-active); color: var(--accent); font-size: 12px; font-weight: 650; overflow: hidden;}
@@ -151,21 +154,21 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main .card > p {font-size: 12px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-list > :is(a, button, div) {padding: 15px 0; border-color: var(--line); gap: 14px; font-size: 12px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-list small {font-size: 11px; color: var(--muted);}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .button {min-height: 39px; padding: 9px 13px; gap: 8px; border: 1px solid #41536b; border-radius: 6px; background: transparent; color: var(--text); font-size: 12px; font-weight: 550; line-height: 1.45; text-align: center; box-shadow: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button {min-height: 39px; padding: 9px 13px; gap: 8px; border: 1px solid #626262; border-radius: 6px; background: transparent; color: var(--text); font-size: 12px; font-weight: 550; line-height: 1.45; text-align: center; box-shadow: none;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .button:hover {background: var(--panel2); transform: none;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.primary {background: var(--accent); color: #0b1c2b; border-color: var(--accent); box-shadow: none;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.primary:hover {background: #b6e0ff; border-color: #b6e0ff; filter: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.primary {background: var(--accent); color: #111111; border-color: var(--accent); box-shadow: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.primary:hover {background: #ffffff; border-color: #ffffff; filter: none;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .button.small {min-height: 35px; padding: 7px 11px; font-size: 11px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.danger {color: #f5baba; border-color: #865865;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.danger {color: #f5baba; border-color: #805050;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .button-row {gap: 9px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .text-link {color: var(--accent); font-size: 12px; gap: 9px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill {max-width: 100%; padding: 4px 8px; border: 1px solid #40516a; border-radius: 5px; background: #1d2c40; color: var(--muted); font-size: 10px; letter-spacing: 0; line-height: 1.45; white-space: normal;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill {max-width: 100%; padding: 4px 8px; border: 1px solid #454545; border-radius: 5px; background: #202020; color: var(--muted); font-size: 10px; letter-spacing: 0; line-height: 1.45; white-space: normal;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .pill::before {display: none;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill[data-status] {color: var(--portal-amber); border-color: #655c45; background: #2c2a25;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="approved"], [data-status="active"]) {color: var(--portal-green); border-color: #365f54; background: #19342f;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="under_review"], [data-status="submitted"], [data-status="leave"]) {color: var(--accent); border-color: #365a78; background: #1c344a;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="denied"], [data-status="suspended"]) {color: #f1b5bd; border-color: #74505c; background: #35232e;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="draft"], [data-status="withdrawn"], [data-status="archived"], [data-status="inactive"]) {color: var(--muted); border-color: #40516a; background: #1d2c40;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill[data-status] {color: var(--portal-amber); border-color: #60563f; background: #252219;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="approved"], [data-status="active"]) {color: var(--portal-green); border-color: #405e49; background: #18241c;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="under_review"], [data-status="submitted"], [data-status="leave"]) {color: var(--accent); border-color: #565656; background: #242424;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="denied"], [data-status="suspended"]) {color: #e7b1b1; border-color: #704949; background: #291d1d;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="draft"], [data-status="withdrawn"], [data-status="archived"], [data-status="inactive"]) {color: var(--muted); border-color: #454545; background: #202020;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-toolbar {display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin: 20px 0 15px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-filter-search {flex: 1 1 240px; max-width: 360px; min-width: 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-filter-status {flex: 0 1 195px; min-width: 0;}
@@ -177,38 +180,38 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) :is(th, td) {padding: 14px 16px; vertical-align: middle; overflow-wrap: anywhere;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) th {color: var(--muted); background: var(--panel2); font-size: 10px; font-weight: 550; letter-spacing: .015em; text-align: left;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) td {border-top: 1px solid var(--line);}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) tbody tr:hover {background: #1c2a3e;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) tbody tr:hover {background: #1d1d1d;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) td :is(strong, b) {font-weight: 550;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-row-detail, .portal-table td small, .hub-roster-table td small) {display: block; margin-top: 4px; color: var(--muted); font-size: 10px; line-height: 1.6;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table-empty, .empty-state) {padding: 36px 20px; border: 1px dashed #41536b; border-radius: var(--radius); background: #121f30; text-align: center; color: var(--muted); font-size: 13px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table-empty, .empty-state) {padding: 36px 20px; border: 1px dashed #626262; border-radius: var(--radius); background: #101010; text-align: center; color: var(--muted); font-size: 13px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-table-wrap .portal-table-empty {border: 0; border-top: 1px solid var(--line); border-radius: 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .empty-state h3 {color: var(--text); font-size: 16px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .empty-state p {font-size: 12px; line-height: 1.7;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(input, select, textarea) {min-width: 0; max-width: 100%; background: #0e1827; color: var(--text); border: 1px solid #41516a; border-radius: 6px; padding: 10px 12px; font-size: 13px; line-height: 1.5;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(input, textarea)::placeholder {color: #93a5bc; opacity: 1;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(input, select, textarea) {min-width: 0; max-width: 100%; background: #0c0c0c; color: var(--text); border: 1px solid #616161; border-radius: 6px; padding: 10px 12px; font-size: 13px; line-height: 1.5;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(input, textarea)::placeholder {color: #999999; opacity: 1;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) label {color: var(--text); font-size: 12px; font-weight: 500;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(label small, .field-help, .muted-text) {color: var(--muted); font-size: 11px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .fields {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .field {margin-top: 21px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-form {max-width: 900px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-form textarea {min-height: 145px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) fieldset {min-width: 0; border: 1px solid #435772; border-radius: 7px; padding: 17px 20px 22px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) fieldset {min-width: 0; border: 1px solid #555555; border-radius: 7px; padding: 17px 20px 22px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) legend {font-size: 12px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .answer {background: #0e1827; border-color: var(--line); border-radius: 6px; color: var(--text); font-size: 13px; line-height: 1.8; overflow-wrap: anywhere;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .answer {background: #0c0c0c; border-color: var(--line); border-radius: 6px; color: var(--text); font-size: 13px; line-height: 1.8; overflow-wrap: anywhere;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.notice, .notice.warning, .notice.error) {border-radius: 7px; padding: 14px 17px; font-size: 12px; line-height: 1.7; overflow-wrap: anywhere;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .notice {background: #15263b; border-color: #3c5a78; color: #bdd1e5;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .notice {background: #191919; border-color: #4f4f4f; color: #d0d0d0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .notice.warning {background: #2c281e; border-color: #6d5b3e; color: #e8d8b9;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .notice.error {background: #32212c; border-color: #82505f; color: #f1bbc6;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .notice.error {background: #291b1b; border-color: #805050; color: #edbaba;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .progress {margin-top: 0; gap: 20px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-step small {color: var(--muted); font-size: 11px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-marker {border-color: #536984; color: var(--muted);}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-step.done .progress-marker {background: var(--portal-active); color: var(--accent); border-color: #577b9d;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-marker {border-color: #606060; color: var(--muted);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-step.done .progress-marker {background: var(--portal-active); color: var(--accent); border-color: #707070;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .message {color: var(--muted); font-size: 12px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .message.error {color: #f1bbc6;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .message.error {color: #edbaba;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-load {max-width: 780px; padding: 65px 24px; margin: 0 auto;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-load h1 {font-size: 30px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .preview-banner {background: #182c42; color: #c4daec; border-bottom: 1px solid #375572; font-size: 11px; padding: 11px 26px; flex-wrap: wrap;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .preview-banner select {background: #102034; color: var(--text); border-color: #42617e; margin-top: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .preview-banner {background: #1a1a1a; color: #d5d5d5; border-bottom: 1px solid #454545; font-size: 11px; padding: 11px 26px; flex-wrap: wrap;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .preview-banner select {background: #0e0e0e; color: var(--text); border-color: #616161; margin-top: 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .department-hub {max-width: none;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-heading {background: transparent; border: 0; border-radius: 0; padding: 0; align-items: center;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-heading h2 {font-size: 25px; line-height: 1.3; letter-spacing: -.7px; margin: 8px 0 10px;}
@@ -216,13 +219,13 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-access {color: var(--accent);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs {display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 19px; padding-bottom: 17px; border-bottom: 1px solid var(--line);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button {min-height: 39px; padding: 9px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; color: var(--muted); font-size: 12px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button[aria-pressed="true"] {background: var(--portal-active); color: var(--accent); border-color: #648eaf;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button[aria-pressed="true"] {background: var(--portal-active); color: var(--accent); border-color: #707070;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button:hover {background: var(--panel2); color: var(--text);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-section {margin-top: 20px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-section-heading {margin-bottom: 16px; flex-wrap: wrap;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-section-heading h2 {font-size: 18px; margin: 5px 0 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .department-hub .card h3 {margin: 14px 0 11px; font-size: 17px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-notice-body {color: #c4d2e4; line-height: 1.8; font-size: 13px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-notice-body {color: #cecece; line-height: 1.8; font-size: 13px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-notice-meta {color: var(--muted); font-size: 11px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-roster-search {display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin: 17px 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-roster-search label {flex: 1 1 230px; max-width: 360px; min-width: 0; margin-top: 0;}
@@ -231,8 +234,18 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-roster-table .button-row {margin-top: 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-discord {font-size: 12px; margin-top: 0;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-callsign {font-size: 12px; letter-spacing: .02em;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-editor {margin-top: 24px; border-color: #6088ab !important;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-editor {margin-top: 24px; border-color: #777777 !important;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .pager {display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 18px;}
+
+/* Neutral surfaces for shared portal dialogs and form helper text. */
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .no-script {background: var(--panel); color: var(--muted);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .search-results a {border-color: var(--line);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .search-results small {color: var(--muted);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .muted-text {color: var(--muted) !important;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) dialog {background: var(--panel); border-color: #616161; color: var(--text);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) dialog::backdrop {background: #000000b3;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dialog-close {color: var(--muted);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(input[type="checkbox"], input[type="radio"]) {accent-color: var(--accent);}
 
 @media (max-width: 1100px) {
   :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-shell {grid-template-columns: 208px minmax(0, 1fr);}
