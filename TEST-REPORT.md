@@ -1,5 +1,26 @@
 # Cosmic v3 verification report
 
+## Department enrollment and Discord departures - 28 September 2026
+
+- All 48 automated checks pass, including signed Discord approval modals,
+  verified applicant identity, command permissions, atomic roster creation,
+  duplicate prevention, stale decisions, immutable identity links, and departure
+  archiving. Permission failures, outages and rate limits never remove employees.
+- Migration 004 and all three Edge Function updates deployed successfully.
+- A live database transaction verified linked approval, departure archival and
+  audit history, then rolled back every fictional record. This simulated service
+  inputs at the database boundary; no real Discord departure was staged.
+- The existing scheduled worker returned HTTP 200 with zero roster errors at
+  00:06, 00:07 and 00:08 UTC. The live roster is empty, so these were idle checks.
+- Local browser checks verified approval field collection, conditional required
+  fields, non-approval submission, and 390/320 px layouts without overflow.
+- End-to-end approval from a real Discord reviewer still awaits an account with
+  the configured review and department command roles and a submitted application.
+  Intake remains closed, and this update did not change any Discord roles.
+- Departures are periodically detected, not instantaneous. Confirmed departures
+  leave a private archived record; rejoining requires a new approval. Open
+  department pages refresh content every minute when no edit form is open.
+
 ## Internal LSPD workspace - 28 September 2026
 
 - All 35 automated checks pass: 20 existing Discord/application checks and 15

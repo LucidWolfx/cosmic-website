@@ -1,9 +1,9 @@
 const API = 'https://discord.com/api/v10';
 const ID = /^[0-9]{17,20}$/;
 const UUID = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}';
-const ACTION = new RegExp(`^cosmic:(approve|deny|changes):(${UUID}):([1-9][0-9]{0,8})(?::([0-9]{17,20}))?$`);
-const DECISIONS = { approve: 'approved', deny: 'denied', changes: 'changes_requested' };
-const TITLES = { approve: 'Approve application', deny: 'Deny application', changes: 'Request changes' };
+const ACTION = new RegExp(`^cosmic:(approve|enroll|deny|changes):(${UUID}):([1-9][0-9]{0,8})(?::([0-9]{17,20}))?$`);
+const DECISIONS = { approve: 'approved', enroll:'approved', deny: 'denied', changes: 'changes_requested' };
+const TITLES = { approve: 'Approve application', enroll:'Approve department & add employee', deny: 'Deny application', changes: 'Request changes' };
 const TYPES = { whitelist: 'Whitelist application', department: 'Department interest', business: 'Business proposal', organization: 'Organization proposal', creator: 'Creator inquiry', support: 'Support request' };
 const STATUS = { submitted: 'Awaiting review', under_review: 'Under review', changes_requested: 'Changes requested', approved: 'Approved', denied: 'Denied', withdrawn: 'Withdrawn' };
 const QUESTIONS = { character: 'Your character', motivation: 'Why Cosmic?', scenario: 'Unexpected roleplay scenario', teamwork: 'Helping the community', title: 'Request title', details: 'Request details', rules_ack: 'Rules acknowledged', rules_version_ack: 'Rules version' };
@@ -54,7 +54,7 @@ export function reviewMessage(job) {
     content:'',allowed_mentions:{parse:[]},
     embeds:[{title:TYPES[a.kind]||'Application',description:'Read the attached application, then choose a decision below. Feedback is visible to the applicant on the website.',color:a.status==='approved'?0x5ac99c:a.status==='denied'?0xe27979:0x8ac7f3,fields,footer:{text:`Cosmic | submission ${job.revision}`}}],
     components:open?[{type:1,components:[
-      {type:2,style:3,label:'Approve',custom_id:`cosmic:approve:${a.id}:${job.revision}`},
+      {type:2,style:3,label:a.kind==='department'?'Approve & add employee':'Approve',custom_id:`cosmic:${a.kind==='department'?'enroll':'approve'}:${a.id}:${job.revision}`},
       {type:2,style:4,label:'Deny',custom_id:`cosmic:deny:${a.id}:${job.revision}`},
       {type:2,style:2,label:'Request changes',custom_id:`cosmic:changes:${a.id}:${job.revision}`},
     ]}]:[],
@@ -69,7 +69,7 @@ class RemoteError extends Error {
   constructor(service,status,retrySeconds=60) {super(`${service} request failed (${status}).`);this.status=status;this.retrySeconds=retrySeconds;}
 }
 
-export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()=>Date.now(),log=console.error}) {
+export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()=>Date.now(),log=console.error,syncRoster=null}) {
   function configured() {
     try{return new URL(c.supabaseUrl).protocol==='https:'&&Boolean(c.serviceKey&&c.botToken)&&
       [c.guildId,c.channelId,c.appId].every(v=>ID.test(v||''))&&
@@ -103,15 +103,22 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
       (i.channel_id||i.channel?.id)===c.channelId&&ID.test(i.member?.user?.id||'')&&roleAllowed(i.member?.roles);
   }
   function modal(action,id,revision,messageId) {
+    if(action==='enroll')return json({type:9,data:{custom_id:`cosmic:enroll:${id}:${revision}:${messageId}`,title:'Approve & add department employee',components:[
+      {type:18,label:'Character name',component:{type:4,custom_id:'name',style:1,required:true,min_length:2,max_length:80}},
+      {type:18,label:'Call sign',component:{type:4,custom_id:'callsign',style:1,required:true,min_length:1,max_length:24}},
+      {type:18,label:'Rank',description:'The employee starts with In training status.',component:{type:4,custom_id:'rank',style:1,required:true,min_length:1,max_length:60}},
+      {type:18,label:'Division (optional)',component:{type:4,custom_id:'division',style:1,required:false,max_length:80}},
+      {type:18,label:'Feedback for the applicant (optional)',component:{type:4,custom_id:'feedback',style:2,required:false,max_length:4000}}
+    ]}});
     return json({type:9,data:{custom_id:`cosmic:${action}:${id}:${revision}:${messageId}`,
       title:TITLES[action],components:[{type:18,label:'Feedback for the applicant',
         description:action==='approve'?'Submit to confirm approval. Feedback is optional.':'Explain your decision or the changes needed.',
         component:{type:4,custom_id:'feedback',style:2,required:action!=='approve',min_length:action==='approve'?0:5,max_length:4000}}]}});
   }
-  function feedbackOf(components) {
+  function feedbackOf(components,key='feedback') {
     for(const item of components||[]){
-      if(item.custom_id==='feedback'&&typeof item.value==='string')return item.value.trim();
-      const nested=feedbackOf(item.component?[item.component]:item.components);
+      if(item.custom_id===key&&typeof item.value==='string')return item.value.trim();
+      const nested=feedbackOf(item.component?[item.component]:item.components,key);
       if(nested!==null)return nested;
     }
     return null;
@@ -123,18 +130,27 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
     });
     if(!response.ok)throw new RemoteError('Discord acknowledgement',response.status);
   }
-  async function decide(i,action,id,revision,messageId,feedback) {
+  async function decide(i,action,id,revision,messageId,feedback,roster) {
     let content;
     try {
       // Recheck current roles when the modal is submitted, not just when it opens.
       const member=await discord(`/guilds/${c.guildId}/members/${i.member.user.id}`);
       if(!roleAllowed(member.roles))content='Your Discord account no longer has an authorized review role. No decision was saved.';
       else {
-        const result=await rpc('cosmic_discord_review_application',{
+        let result;
+        if(action==='enroll'){
+          const context=await rpc('cosmic_department_approval_context',{p_id:id});
+          if(!context.viewer_roles.some(r=>member.roles.includes(r))||!context.editor_roles.some(r=>member.roles.includes(r)))throw {userMessage:'Department approval requires both the department access and command roles.'};
+          const applicant=await discord(`/guilds/${c.guildId}/members/${context.discord_id}`);
+          if(applicant.user?.id!==context.discord_id||applicant.pending===true)throw {userMessage:'The applicant must complete Discord server membership before approval.'};
+          result=await rpc('cosmic_approve_department_application',{p_id:id,p_revision:revision,p_interaction:i.id,p_reviewer:i.member.user.id,
+            p_channel:c.channelId,p_message:messageId,p_roles:member.roles,p_member_id:applicant.user.id,
+            p_member_name:applicant.user.username||applicant.user.id,p_roster:roster,p_feedback:feedback});
+        }else result=await rpc('cosmic_discord_review_application',{
           p_id:id,p_revision:revision,p_interaction:i.id,p_reviewer:i.member.user.id,
           p_channel:c.channelId,p_message:messageId,p_decision:DECISIONS[action],p_feedback:feedback,
         });
-        content=result.already_recorded?'This decision was already recorded.':`Decision saved: ${STATUS[result.status]||result.status}. The applicant can see it on the website. This channel message will update shortly.`;
+        content=result.already_recorded?'This decision was already recorded.':action==='enroll'?'Department approved and the linked employee roster entry was saved. Assign the department Discord access role as needed. This review message will update shortly.':`Decision saved: ${STATUS[result.status]||result.status}. The applicant can see it on the website. This channel message will update shortly.`;
       }
     } catch(error) {
       content=error.userMessage||'The review could not be confirmed. Check the application status before retrying.';
@@ -162,9 +178,15 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
     if(i.type===5){
       const feedback=feedbackOf(i.data.components)??'';
       if(!modalMessage||!ID.test(i.id||'')||!i.token)return privateReply('The review form is incomplete. Reopen it from the application message.');
-      if(feedback.length>4000||(action!=='approve'&&feedback.length<5))return privateReply('Please provide at least five characters of feedback for a denial or change request (maximum 4,000).');
+      if(feedback.length>4000||(['deny','changes'].includes(action)&&feedback.length<5))return privateReply('Please provide at least five characters of feedback for a denial or change request (maximum 4,000).');
+      let roster;
+      if(action==='enroll'){
+        roster=Object.fromEntries(['name','callsign','rank','division'].map(key=>[key,feedbackOf(i.data.components,key)||'']));
+        if(roster.name.length<2||roster.name.length>80||!roster.callsign||roster.callsign.length>24||!roster.rank||roster.rank.length>60||roster.division.length>80)return privateReply('Enter a character name, call sign and rank within the field limits.');
+        roster.status='training';
+      }
       // Acknowledge immediately; Discord allows only three seconds for this response.
-      waitUntil(decide(i,action,id,Number(revision),modalMessage,feedback));
+      waitUntil(decide(i,action,id,Number(revision),modalMessage,feedback,roster));
       return json({type:5,data:{flags:64}});
     }
     return privateReply('This interaction is not supported.');
@@ -188,6 +210,7 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
     const schedulerAuthorized=(c.schedulerKeys||[]).some(key=>/^sb_secret_[A-Za-z0-9_-]{20,}$/.test(key)&&request.headers.get('apikey')===key);
     if(!workerAuthorized&&!schedulerAuthorized)return json({error:'Unauthorized'},401);
     if(!configured())return json({error:'Integration is not configured'},503);
+    const rosterReport=syncRoster?await syncRoster().catch(()=>({failed:1,error:'Roster synchronization unavailable.'})):null;
     try {
       const channel=await discord(`/channels/${c.channelId}`);
       const everyone=channel.permission_overwrites?.find(p=>p.id===c.guildId&&p.type===0);
@@ -209,7 +232,7 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
           if(error.status===429)break;
         }
       }
-      return json({delivered,failed},failed?503:200);
+      return json({delivered,failed,...(rosterReport?{roster:rosterReport}:{})},failed||rosterReport?.failed?503:200);
     } catch(error){log('Cosmic Discord delivery failed',error.status||'configuration/network');return json({error:'Delivery unavailable'},503);}
   }
   return {interactions,delivery};

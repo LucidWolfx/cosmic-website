@@ -26,10 +26,10 @@
         host.querySelector('[data-hub-retry]')?.addEventListener('click',directory);
       }catch(error){fail(error);}
     }
-    async function load(message=''){
+    async function load(message='',quiet=false){
       if(!active())return;busy=true;
       // Clear previous private content before refreshing access, including failures.
-      host.innerHTML='<div class="notice" role="status">Opening your department...</div>';
+      if(!quiet)host.innerHTML='<div class="notice" role="status">Opening your department...</div>';
       try{const data=await api('read',{roster_offset:rosterOffset,notice_offset:noticeOffset,archived});if(!active())return;
         snapshot=data;current=data.department;if(!current.can_edit)archived=false;draw();if(message)setMessage(message);
       }catch(error){fail(error);}finally{busy=false;}
@@ -44,8 +44,8 @@
           ${snapshot.notices.length?snapshot.notices.map(n=>`<article class="card hub-notice"><div class="hub-notice-meta">${n.pinned?'<span class="pill">Pinned</span>':''}${!n.published?'<span class="pill">Draft</span>':''}<span>Updated ${E(stamp(n.updated_at))}</span></div><h3>${E(n.title)}</h3><div class="hub-notice-body">${E(n.body)}</div>${edit?`<div class="button-row">${!archived?`<button class="button small" data-hub-edit-notice="${E(n.id)}">Edit</button>`:''}<button class="button small" data-hub-archive-notice="${E(n.id)}">${archived?'Restore':'Archive'}</button></div>`:''}</article>`).join(''):'<div class="empty-state"><h3>No notices here yet.</h3><p>'+ (edit?'Use New notice to prepare a draft or publish an update.':'Published department updates will appear here.')+'</p></div>'}
           <div class="pager"><button class="button small" data-hub-notices-prev ${noticeOffset?'':'disabled'}>Previous notices</button><button class="button small" data-hub-notices-next ${snapshot.notices_more?'':'disabled'}>Next notices</button></div>
         </section>
-        <section class="hub-section" aria-labelledby="hub-roster-title"><div class="hub-section-heading"><div><span class="eyebrow">THE PEOPLE BEHIND THE BADGE</span><h2 id="hub-roster-title">${archived?'Archived roster':'Employee roster'}</h2></div>${edit&&!archived?'<button class="button primary small" data-hub-add-roster>Add employee</button>':''}</div>
-          ${snapshot.roster.length?`<div class="hub-roster">${snapshot.roster.map(r=>`<article class="hub-employee"><div><span class="hub-callsign">${E(r.callsign||'No call sign')}</span><h3>${E(r.name)}</h3><p>${E(r.rank)}${r.division?' · '+E(r.division):''}</p></div><span class="pill">${E(STATES[r.status]||r.status)}</span>${edit?`<div class="button-row">${!archived?`<button class="button small" data-hub-edit-roster="${E(r.id)}">Edit</button>`:''}<button class="button small" data-hub-archive-roster="${E(r.id)}">${archived?'Restore':'Archive'}</button></div>`:''}</article>`).join('')}</div>`:'<div class="empty-state"><h3>No roster entries here yet.</h3><p>'+ (edit?'Add roleplay names, ranks, and call signs for your department.':'The command team will publish the department roster here.')+'</p></div>'}
+        <section class="hub-section" aria-labelledby="hub-roster-title"><div class="hub-section-heading"><div><span class="eyebrow">THE PEOPLE BEHIND THE BADGE</span><h2 id="hub-roster-title">${archived?'Archived roster':'Employee roster'}</h2></div></div>
+          ${snapshot.roster.length?`<div class="hub-roster">${snapshot.roster.map(r=>`<article class="hub-employee"><div><span class="hub-callsign">${E(r.callsign||'No call sign')}</span><h3>${E(r.name)}</h3><p>${E(r.rank)}${r.division?' · '+E(r.division):''}</p>${r.discord_id&&/^[0-9]{17,20}$/.test(r.discord_id)?`<p class="hub-discord"><a href="https://discord.com/users/${E(r.discord_id)}" target="_blank" rel="noopener noreferrer">Discord: ${E(r.discord_name||r.discord_id)} ↗</a><small>${E(r.discord_id)}</small></p>`:'<p class="muted-text">Legacy entry: no Discord account linked</p>'}${r.archive_reason==='discord_left'?'<p class="hub-departure">Left the Discord server</p>':''}</div><span class="pill">${E(STATES[r.status]||r.status)}</span>${edit?`<div class="button-row">${!archived?`<button class="button small" data-hub-edit-roster="${E(r.id)}">Edit</button>`:''}${archived&&r.archive_reason==='discord_left'?'<span class="muted-text">New approval required</span>':`<button class="button small" data-hub-archive-roster="${E(r.id)}">${archived?'Restore':'Archive'}</button>`}</div>`:''}</article>`).join('')}</div>`:'<div class="empty-state"><h3>No roster entries here yet.</h3><p>'+ (edit?'Approve a department application to add a Discord-linked employee.':'The command team will publish the department roster here.')+'</p></div>'}
           <div class="pager"><button class="button small" data-hub-roster-prev ${rosterOffset?'':'disabled'}>Previous employees</button><button class="button small" data-hub-roster-next ${snapshot.roster_more?'':'disabled'}>Next employees</button></div>
         </section></div>`;
       const on=(selector,fn)=>host.querySelector(selector)?.addEventListener('click',fn);
@@ -84,7 +84,23 @@
       const data=await api('list',{},null);if(!active())return;const allowed=data.departments.find(d=>d.id===current?.id);
       if(!allowed)throw new Error('Your Discord role no longer grants department access.');
       if(current.can_edit&&!allowed.can_edit)await load('Your account now has read-only department access.');
+      else if(!host.querySelector('form'))await load('',true);
     }catch(error){fail(error);}},60000);
   }
-  window.CosmicDepartments={mount,unmount};
+  function configureReview(form,application){
+    if(application?.kind!=='department')return;
+    form.dataset.department=application.department_id||application.answers?.department||'';
+    const panel=document.createElement('fieldset');panel.className='card hub-editor';panel.dataset.enrollment='';
+    panel.innerHTML='<legend>Department employee details</legend><p>Approval adds this character to the roster and links the applicant’s verified Discord account automatically. Department access and command roles are required.</p><div class="grid-2"><label class="field">Character name<input name="employee_name" minlength="2" maxlength="80" required></label><label class="field">Call sign<input name="employee_callsign" maxlength="24" required></label><label class="field">Rank<input name="employee_rank" maxlength="60" required></label><label class="field">Division<input name="employee_division" maxlength="80"></label></div><label class="field">Employee status<select name="employee_status"><option value="training">In training</option><option value="active">Active</option><option value="reserve">Reserve</option><option value="leave">On leave</option></select></label>';
+    form.querySelector('[name="decision"]').closest('label').after(panel);
+    const toggle=()=>{const show=form.elements.decision.value==='approved';panel.hidden=!show;panel.disabled=!show;};
+    form.elements.decision.addEventListener('change',toggle);toggle();
+  }
+  async function approve(client,form){
+    const fields=new FormData(form),roster=Object.fromEntries(['name','callsign','rank','division','status'].map(key=>[key,fields.get('employee_'+key)]));
+    const {data,error}=await client.functions.invoke('department-hub',{body:{action:'approve',department:form.dataset.department,payload:{application_id:form.dataset.id,roster,feedback:fields.get('feedback')||''}}});
+    if(error){let message='Department approval could not be confirmed. Refresh the queue before retrying.';try{message=(await error.context.json()).error||message;}catch{}throw new Error(message);}
+    return data;
+  }
+  window.CosmicDepartments={mount,unmount,configureReview,approve};
 })();

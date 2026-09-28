@@ -25,6 +25,9 @@ application drafts, submission, withdrawal, progress history, applicant-visible
 feedback, protected member/staff resources, requests, and a staff review queue.
 The **My departments** area includes private LSPD notices and an employee roster,
 with live Discord membership checks and separate command editing permissions.
+Department approvals collect character details and automatically link the
+applicant's Discord account to the employee roster. Scheduled membership checks
+archive employees who leave the Discord server.
 See `docs/DEPARTMENT-HUB.md` for the role mapping and publishing instructions.
 A Supabase SQL migration supplies tables, authorization policies, and checked
 write operations. Website whitelist approval grants portal membership, not

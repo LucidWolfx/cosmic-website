@@ -46,6 +46,13 @@ entries are command-only. The server verifies current Discord roles on every
 request; suspended accounts and unavailable role verification are denied.
 See `DEPARTMENT-HUB.md` for operation and the tested authorization design.
 
-These department permissions apply only to department notices and rosters.
+Department approval now requires the existing review permission plus both
+department roles. It saves the assigned character details and automatically
+links the verified applicant Discord ID to the roster. Ordinary website review
+RPCs cannot approve a department request without this enrollment step.
+The scheduled service archives linked employees after a confirmed Discord
+departure; errors never remove them. Archived departures require reapproval.
+
+These department permissions apply to department notices, rosters and enrollment.
 Authorized application reviewers still share all submissions, and general
 resource audiences remain member or staff.

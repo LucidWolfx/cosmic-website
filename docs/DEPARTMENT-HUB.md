@@ -7,7 +7,7 @@ applicant/member/staff/admin role.
 | Capability | Discord roles required |
 | --- | --- |
 | Read published LSPD notices and the active employee roster | `1449442096955002982` |
-| Create/edit notices and employees, view drafts, archive and restore | Both `1449442096955002982` and `1449494268329852938` |
+| Edit notices and employees, view drafts, archive and restore | Both `1449442096955002982` and `1449494268329852938` |
 
 Website administrators have no department bypass. Suspended website accounts
 are denied. Command membership alone does not grant entry without the LSPD role.
@@ -16,24 +16,52 @@ are denied. Command membership alone does not grant entry without the LSPD role.
 
 - **New notice:** enter a title and plain-text notice. Leave Publish unchecked
   for a command-only draft. Pin important published notices above other updates.
-- **Add employee:** enter a character name, rank, call sign, division, and status
-  (active, in training, reserve, or on leave). The roster is maintained manually;
-  it does not import all Discord members or change Discord ranks.
+- **Approve & add employee:** approve a department application in Discord or the
+  portal Staff review view. Enter character name, rank, call sign, and optionally
+  division. Discord approval starts the employee at In training; the website
+  also offers active, reserve, and on leave. Staff can edit these details later.
+  The reviewer needs their existing review permission plus both department roles.
+- The applicant's verified Discord account is linked automatically. Each employee
+  displays a Discord profile link, username and stable user ID. Identity cannot
+  be reassigned by editing the roster. One employee is allowed per Discord account
+  per department. Approval and roster creation succeed or fail together.
+- A department application must select a department. Older requests without a
+  selected department need to be returned for changes and resubmitted.
 - **Archive:** removes an entry from the active list. Command can use Show
   archived entries to restore it. There is no permanent-delete button.
 - **Refresh:** reloads current content and rechecks roles. Concurrent edits use
   revision checks so one editor cannot silently overwrite another's saved work.
 
+## Automatic departure handling
+
+The existing one-minute `cosmic-discord-delivery` scheduled job now also checks
+roster membership, up to 30 due entries per run with a 45-second work budget.
+Successful checks are due again after two minutes. Larger rosters and Discord
+rate limits may take longer; this is periodic synchronization, not an instant
+Discord gateway event.
+
+A confirmed HTTP 404 with Discord code `10007` (Unknown Member) archives the
+entry and marks it **Left the Discord server**. Permission failures, unknown
+guilds, outages and rate limits never remove employees. Archives retain the
+character details and audit history. Returning members require a new department
+approval; stale checks cannot remove a freshly re-approved entry.
+
+This creates roster entries and links identities. Discord role assignment still
+uses the server's existing staff process; the bot does not have Manage Roles.
+
 Notices paginate at 20 and roster entries at 50. Titles allow 120 characters;
 notice bodies allow 8,000. Use roleplay information rather than real-world
-employment or personal details. This feature sends no Discord messages.
+employment or personal details. Notice edits and roster maintenance do not post
+Discord messages; application review messages continue through the existing integration.
 
 ## Deployment and access enforcement
 
-1. Apply `backend/003_department_hub.sql` after migrations 001 and 002.
-2. Deploy `supabase/functions/department-hub`. It reuses the existing
+1. Apply `backend/003_department_hub.sql` and `004_department_enrollment.sql`
+   after migrations 001 and 002.
+2. Deploy `department-hub`, `discord-interactions`, and `discord-delivery`.
+   The delivery entry point includes `_shared/roster-sync.mjs`. They reuse the existing
    `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `DISCORD_BOT_TOKEN`, and
-   `DISCORD_GUILD_ID` secrets. Never put these credentials in public source.
+   `DISCORD_GUILD_ID` secrets and review configuration. Never put credentials in public source.
 3. Use the function configuration in `supabase/config.toml`. Gateway JWT
    verification is disabled because the handler verifies the bearer session
    with Supabase Auth on every request before reading private data.
@@ -57,8 +85,9 @@ checked inside the database transaction.
 `npm test` covers the HTTP authorization flow and PostgreSQL permissions,
 draft visibility, role removal, editing, revisions, archive/restore, and audit.
 
-Application reviews and general Core Hub resources retain their existing access
-model; the new department roles do not change those permissions or open intake.
+General application review permissions and Core Hub access retain their existing
+model. Department approval additionally requires command roles to create the
+roster entry. Other decisions remain with the existing reviewers. Intake stays closed.
 
 Provider references: [Discord guild membership](https://docs.discord.com/developers/resources/guild#get-guild-member),
 [Supabase session verification](https://supabase.com/docs/reference/javascript/auth-getuser).

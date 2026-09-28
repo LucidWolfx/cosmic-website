@@ -1,6 +1,6 @@
 const ID=/^[0-9]{17,20}$/;
 const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const ACTIONS=new Set(['list','read','notice_save','notice_archive','roster_save','roster_archive']);
+const ACTIONS=new Set(['list','read','notice_save','notice_archive','roster_save','roster_archive','approve']);
 class Failure extends Error {constructor(status,message){super(message);this.status=status;}}
 
 export function departmentConfig(get){return {supabaseUrl:get('SUPABASE_URL'),serviceKey:get('SUPABASE_SERVICE_ROLE_KEY'),botToken:get('DISCORD_BOT_TOKEN'),guildId:get('DISCORD_GUILD_ID'),origin:'https://lucidwolfx.github.io'};}
@@ -45,6 +45,19 @@ export function createDepartmentHandler({config:c,fetchImpl=fetch}){
       const member=await memberResponse.json();
       if(member.user?.id!==discordId||member.pending===true||!Array.isArray(member.roles)||member.roles.some(r=>typeof r!=='string'||!ID.test(r)))throw new Failure(403,'Your Discord membership could not be verified.');
       const roles=member.roles.filter(r=>r!==c.guildId);
+      if(input.action==='approve'){
+        if(!UUID.test(input.payload?.application_id||''))throw new Failure(400,'Select a valid department application.');
+        const context=await rpc('cosmic_department_approval_context',{p_id:input.payload.application_id,p_user:user.id});
+        if(context.department_id!==input.department||!context.viewer_roles.some(r=>roles.includes(r))||!context.editor_roles.some(r=>roles.includes(r)))throw new Failure(403,'The department access and command roles are required to approve its roster.');
+        const target=await fetchImpl(`https://discord.com/api/v10/guilds/${c.guildId}/members/${context.discord_id}`,{headers:{Authorization:`Bot ${c.botToken}`},signal:AbortSignal.timeout(8000)});
+        if(target.status===404)throw new Failure(409,'The applicant must be a member of the Cosmic Discord server before approval.');
+        if(!target.ok)throw new Failure(503,'The applicant’s Discord membership could not be checked. Try again shortly.');
+        const applicant=await target.json();
+        if(applicant.user?.id!==context.discord_id||applicant.pending===true)throw new Failure(409,'The applicant’s Discord membership is not ready for approval.');
+        return reply(await rpc('cosmic_approve_department_application',{p_id:input.payload.application_id,p_reviewer:discordId,p_roles:roles,
+          p_member_id:applicant.user.id,p_member_name:applicant.user.username||applicant.user.id,p_roster:input.payload.roster||{},
+          p_feedback:input.payload.feedback||'',p_portal_user:user.id}));
+      }
       const result=await rpc('cosmic_department_request',{p_user:user.id,p_roles:roles,p_action:input.action,p_department:input.department||null,p_payload:input.payload||{}});
       return reply(result);
     }catch(error){return reply({error:error instanceof Failure?error.message:'Department verification could not be completed. Please try again.'},error instanceof Failure?error.status:503);}

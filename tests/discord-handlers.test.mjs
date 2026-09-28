@@ -23,6 +23,33 @@ const deliveryRequest=()=>new Request('https://example.test/delivery',{method:'P
 const job={application_id:id,revision:1,version:1,lease_id:'bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb',attempts:1,
   display_name:'Applicant @everyone',discord_id:'100000000000000004',application:{id,kind:'whitelist',status:'submitted',answers:{character:'Full character answer '.repeat(200)},feedback:''}};
 
+test('department approvals open employee fields and validate the applicant before saving',async()=>{
+  const viewer='1449442096955002982',editor='1449494268329852938',pending=[],calls=[];
+  const h=createHandlers({config,waitUntil:p=>pending.push(p),log:()=>{},fetchImpl:async(url,options)=>{
+    calls.push({url,options});
+    if(url.endsWith('/members/'+base.member.user.id))return reply({roles:[config.reviewerRoles[0],viewer,editor]});
+    if(url.endsWith('cosmic_department_approval_context'))return reply({viewer_roles:[viewer],editor_roles:[editor],discord_id:job.discord_id});
+    if(url.endsWith('/members/'+job.discord_id))return reply({user:{id:job.discord_id,username:'verified.applicant'}});
+    if(url.endsWith('cosmic_approve_department_application'))return reply({status:'approved',roster_id:id});
+    return reply({});
+  }});
+  const message=reviewMessage({...job,application:{...job.application,kind:'department'}}).payload;
+  assert.match(message.components[0].components[0].custom_id,/:enroll:/);
+  const modal=await (await h.interactions(await request({...click,data:{custom_id:`cosmic:enroll:${id}:1`}}))).json();
+  assert.equal(modal.type,9);assert.equal(modal.data.components.length,5);
+  const submission=submitted('enroll');submission.data.components.push(...Object.entries({name:'Fictional Officer',callsign:'TEST-01',rank:'Officer',division:'Patrol'}).map(([custom_id,value])=>({type:18,component:{type:4,custom_id,value}})));
+  assert.equal((await (await h.interactions(await request(submission))).json()).type,5);await Promise.all(pending);
+  const saved=JSON.parse(calls.find(c=>c.url.endsWith('cosmic_approve_department_application')).options.body);
+  assert.equal(saved.p_member_id,job.discord_id);assert.equal(saved.p_roster.name,'Fictional Officer');assert.equal(saved.p_roster.status,'training');
+  assert.equal((await (await h.interactions(await request(submitted('enroll')))).json()).type,4);
+});
+
+test('scheduled roster checking requires worker authentication and runs even if review channel access fails',async()=>{
+  let checks=0;const h=createHandlers({config,syncRoster:async()=>{checks++;return {checked:0,archived:0,failed:0};},fetchImpl:async()=>reply({})});
+  await h.delivery(new Request('https://test',{method:'POST'}));assert.equal(checks,0);
+  assert.equal((await h.delivery(deliveryRequest())).status,409);assert.equal(checks,1);
+});
+
 test('built-in Cron secret authenticates delivery but public or arbitrary keys do not',async()=>{
   const serverKey='sb_secret_test_only_abcdefghijklmnopqrstuvwxyz';
   const env=configFromEnv(name=>name==='SUPABASE_SECRET_KEYS'?JSON.stringify({default:serverKey,invalid:'sb_publishable_public_only'}):undefined);

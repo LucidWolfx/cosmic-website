@@ -1,5 +1,5 @@
 {
-  "version": "3.2-department-hub-provisional-brand",
+  "version": "3.3-department-enrollment-provisional-brand",
   "date": "2026-09-28",
   "brandFinal": false,
   "githubInspected": "LucidWolfx/Cosmic-fbi",
@@ -10,7 +10,7 @@
   "authConfigured": true,
   "backendPermissionTestsExecuted": true,
   "discordAutomatedTestsPassed": 20,
-  "departmentAutomatedTestsPassed": 15,
+  "departmentAutomatedTestsPassed": 28,
   "departmentHubConfigured": true,
   "liveDiscordReviewVerified": true,
   "discordApplicationId": "1399288433595252777",

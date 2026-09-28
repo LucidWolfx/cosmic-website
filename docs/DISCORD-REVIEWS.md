@@ -6,6 +6,13 @@ attachment to the private review channel, with Approve, Deny, and Request
 changes buttons. Reviews update the website's application status and feedback.
 Approval of a whitelist application grants portal membership only.
 
+Department requests use **Approve & add employee**. The confirmation form asks
+for character name, call sign, rank, optional division, and feedback. The reviewer
+must also hold both department access and command roles. The applicant must be
+a current Discord server member. Approval atomically creates the linked roster
+entry; it does not grant Discord roles. The scheduled delivery service also
+archives roster entries for confirmed Discord departures. See `DEPARTMENT-HUB.md`.
+
 ## Cosmic deployment
 
 - GitHub Pages: https://lucidwolfx.github.io/cosmic-website/
