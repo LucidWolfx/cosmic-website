@@ -7,7 +7,9 @@ Edit copy, proposed divisions, command roles, and ranks in
 `tools/department_pages.py`, then run `python tools/build.py`. The layout is in
 `site/assets/departments.css`; it does not change portal permissions or intake.
 
-Recruit, reserve, and transfer routes are displayed as closed. Leadership names
+Community applications and LSPD department-interest applications are open.
+Approved members apply through Requests; the recruit route links to that
+existing flow. Reserve and transfer routes remain closed. Leadership names
 are intentionally unfilled, and units and ranks are labeled as proposed until
 the owner supplies the confirmed structure. No other community's staff names,
 logos, video embeds, or server screenshots were copied from the references.

@@ -1,5 +1,15 @@
 # Launch checklist
 
+## Current Cosmic deployment
+
+Cosmic is published and its Discord login and private review services are
+configured. The owner authorized opening whitelist applications and
+member/support requests on 28 September 2026, after adopting rules version 1.0.
+Approved members can submit LSPD department interest. Reserve and transfer
+routes remain closed, and game-server admission is a separate step.
+The checklist below also covers setup of a new copy; default database values
+do not describe the live intake state.
+
 ## 1. Agree on the content and access model
 
 The public navigation matches the requested twelve sections. Core Hub currently
@@ -118,5 +128,5 @@ verified player identifiers, verify approvals on connection, revoke access on
 suspension, authenticate any service-to-service request, and keep bot/service
 keys out of both browser code and client-side FiveM resources.
 
-No launch has been performed by this package. Hosting, billing, monitoring,
-backups, content ownership, and final security review remain operator tasks.
+The Cosmic website is published. Hosting, billing, monitoring, backups,
+content ownership, and continuing security review remain operator tasks.

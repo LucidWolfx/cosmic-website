@@ -44,6 +44,13 @@ Reviewed 28 September 2026:
 
 ## Publication and acknowledgement
 
+The initial rule publication was completed while intake was closed. The owner
+subsequently authorized opening whitelist applications and member/support
+requests on 28 September 2026. This operational change does not revise rules
+version 1.0 or its acknowledgement token. `publish_rules.sql` is the guarded
+initial-publication script, not an intake switch; do not rerun it against open
+intake. The sequence below documents that original publication.
+
 1. Update the canonical content, visible version and effective date together.
 2. Build, inspect the desktop and mobile page, and verify search, categories,
    direct links and the downloadable text.

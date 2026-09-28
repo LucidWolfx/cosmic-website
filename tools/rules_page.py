@@ -30,7 +30,7 @@ def render_rules(hero, section):
     tools = '<div class="rules-tools" hidden id="rules-tools"><label for="rule-search">Find a rule<input type="search" id="rule-search" placeholder="Search NLR, hostages, reports..." autocomplete="off"></label><div class="button-row"><button type="button" class="button small" id="rules-expand">Expand shown rules</button><button type="button" class="button small" id="rules-collapse">Collapse shown rules</button></div></div>'
     return hero('THE RULEBOOK.', 'Serious roleplay. Shared standards. Room for everyone’s story.', 'Cosmic community rules') + section(
         f'<div class="rules-intro"><span class="pill">{E(meta)}</span><p>{E(book["intro"])}</p>'
-        '<p>These are Cosmic’s community rules. The limits below are our server settings; read the full sections for their scope and exceptions. Applications are currently closed. Check the <a href="join.html">Join page</a> for recruitment information.</p>'
+        '<p>These are Cosmic’s community rules. The limits below are our server settings; read the full sections for their scope and exceptions. Community applications are open. Visit the <a href="join.html">Join page</a> to get started.</p>'
         f'<a class="button small" href="rules-v{E(book["version"])}.txt" download>Download the full rulebook ↗</a></div>'
         + summary + tools + '<div id="rules-filters" hidden>' + filters + '</div>'
         f'<p id="rules-count" class="muted-text" aria-live="polite">{len(rules)} rules</p>'

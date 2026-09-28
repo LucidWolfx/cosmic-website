@@ -57,12 +57,12 @@ def build_lspd(page, icon, btn):
             <ol class="lspd-values">{value_rows}</ol>
           </section>
           <section class="lspd-panel" id="joining" aria-labelledby="lspd-joining">
-            <div class="lspd-heading"><div><span class="lspd-kicker">02 / YOUR NEXT CHAPTER</span><h2 id="lspd-joining">FIND YOUR PLACE.</h2></div><span class="lspd-status">Intake closed</span></div>
-            <p>The planned route into LSPD begins with Cosmic membership. Department requirements and training details will be published before recruitment opens.</p>
+            <div class="lspd-heading"><div><span class="lspd-kicker">02 / YOUR NEXT CHAPTER</span><h2 id="lspd-joining">FIND YOUR PLACE.</h2></div><span class="lspd-status">Applications open</span></div>
+            <p>The route into LSPD begins with Cosmic membership. Approved members can submit a department-interest application now; command will review the request and explain any next steps.</p>
             <ol class="lspd-pathway">
               <li><span>01</span><div><h3>Get to know Cosmic</h3><p>Explore the community and review the rulebook. Cosmic is an 18+ serious roleplay community.</p><a href="rules.html">Read the community rules {icon('arrow')}</a></div></li>
-              <li><span>02</span><div><h3>Become a community member</h3><p>Connect your Discord account and prepare your community application. Submissions are currently closed.</p><a href="portal.html#apply">Open your portal {icon('arrow')}</a></div></li>
-              <li><span>03</span><div><h3>Start your department journey</h3><p>When LSPD recruitment opens, follow the published application and training process. Community membership alone does not grant an LSPD position.</p></div></li>
+              <li><span>02</span><div><h3>Become a community member</h3><p>Connect your Discord account and submit your community application. Community intake is open; department requests become available after membership approval.</p><a href="portal.html#apply">Open your portal {icon('arrow')}</a></div></li>
+              <li><span>03</span><div><h3>Start your department journey</h3><p>As an approved member, open Requests in your portal and select Department interest, then Los Santos Police Department. A request does not grant a position, Discord role or duty access.</p><a href="portal.html#requests">Submit department interest {icon('arrow')}</a></div></li>
             </ol>
           </section>
           <section class="lspd-divisions" id="divisions" aria-labelledby="lspd-divisions">
@@ -82,9 +82,9 @@ def build_lspd(page, icon, btn):
             <span class="lspd-kicker">YOUR NEXT SHIFT STARTS HERE</span>
             <h2 id="lspd-recruit-title">ANSWER<br>THE CALL.</h2>
             <p>A place for people who enjoy service, teamwork, and a story worth returning to.</p>
-            <dl class="lspd-intakes"><div><dt>Recruit</dt><dd>Closed</dd></div><div><dt>Reserve</dt><dd>Closed</dd></div><div><dt>Transfer</dt><dd>Closed</dd></div></dl>
-            <p class="lspd-small">Recruitment is paused while the rules and department requirements are finalized.</p>
-            {btn('How to prepare', '#joining', True)}
+            <dl class="lspd-intakes"><div><dt>Recruit</dt><dd>Open</dd></div><div><dt>Reserve</dt><dd>Closed</dd></div><div><dt>Transfer</dt><dd>Closed</dd></div></dl>
+            <p class="lspd-small">Approved community members can submit LSPD department interest now. Reserve and transfer routes remain closed. Command will confirm training and onboarding requirements during review.</p>
+            {btn('Apply through your portal', 'portal.html#requests', True)}
           </section>
           <section class="lspd-panel" id="leadership" aria-labelledby="lspd-command">
             <span class="lspd-kicker">THE PEOPLE WHO LEAD</span><h2 id="lspd-command">COMMAND.</h2>
@@ -102,4 +102,4 @@ def build_lspd(page, icon, btn):
       </div>
       <div class="lspd-bottom"><p>One department. Part of something bigger.</p><a class="text-link" href="departments.html">Explore all departments {icon('arrow')}</a></div>
     </div>'''
-    page('department-lspd.html', 'Los Santos Police Department', 'Discover Cosmic’s Los Santos Police Department (LSPD): its mission, proposed divisions, leadership, and recruitment pathway. Applications are currently closed.', body, extra_css='assets/departments.css')
+    page('department-lspd.html', 'Los Santos Police Department', 'Discover Cosmic’s Los Santos Police Department (LSPD): its mission, proposed divisions, leadership, and recruitment pathway. Approved Cosmic members can submit department-interest applications.', body, extra_css='assets/departments.css')

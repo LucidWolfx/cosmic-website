@@ -23,8 +23,10 @@ files. The build preserves config.js and content.js.
 
 The Cosmic deployment already has Supabase, Discord login, and private Discord
 application reviews configured. See DISCORD-REVIEWS.md for the deployed setup
-and TEST-REPORT.md for verification. Intake remains closed at the owner's request
-until the owner explicitly opens intake. The version 1.0 rulebook is now published. Publishing a separate copy alone does not
+and TEST-REPORT.md for verification. Whitelist applications and member/support
+requests are open at the owner’s direction on 28 September 2026, including LSPD
+department interest for approved members. The version 1.0 rulebook remains
+current; reserve and transfer routes remain closed. Publishing a separate copy alone does not
 configure its backend. Keep all server secrets out of this public repository.
 Portal membership does not grant FiveM access or Discord roles automatically.
 

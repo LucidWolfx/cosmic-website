@@ -1,5 +1,18 @@
 # Cosmic v3 verification report
 
+## Application intake opened - 28 September 2026
+
+- The owner authorized opening applications after publication of rules v1.0.
+- The live database returned `whitelist_open=true`, `requests_open=true`,
+  `rules_approved=true` and `rules_version=cosmic-rules-1.0-2026-09-28`.
+  The guarded owner operation changes only the two intake switches.
+- The signed-in live portal displayed "Intake is open" on the LSPD department
+  request form with an enabled Submit for review button and the Discord
+  notification explanation. No test application was submitted in this check.
+- Existing sign-in, membership, rules acknowledgement, reviewer and department
+  role requirements remain in force. This does not assign roles or FiveM access.
+- Prior closed-intake verification below is historical; this opening supersedes it.
+
 ## Community rules version 1.0 - 28 September 2026
 
 - The owner confirmed 18+ and story-focused serious RP. The 25-section rulebook

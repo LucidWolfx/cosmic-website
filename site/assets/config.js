@@ -9,7 +9,7 @@ window.COSMIC = {
   links: { discord: '', connect: '', support: '', youtube: '', twitch: '', instagram: '', tiktok: '' },
   auth: { supabaseUrl: 'https://mygpttrerwwexljgdiyq.supabase.co', publishableKey: 'sb_publishable_0nTViuh_6URRrT0UBMbdPA_iOqq5nXc' },
   // Authoritative submission settings live in backend cosmic_settings, not this file.
-  launch: { label: 'Whitelist transition planned', rulesApproved: true },
+  launch: { label: 'Whitelist applications open', rulesApproved: true },
   status: { endpoint: '', maxAgeSeconds: 180 },
   heroImage: '', // Final standalone cover. Empty displays the top of the supplied reference.
   enableDesignPreview: true

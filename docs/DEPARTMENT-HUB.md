@@ -87,7 +87,9 @@ draft visibility, role removal, editing, revisions, archive/restore, and audit.
 
 General application review permissions and Core Hub access retain their existing
 model. Department approval additionally requires command roles to create the
-roster entry. Other decisions remain with the existing reviewers. Intake stays closed.
+roster entry. Other decisions remain with the existing reviewers. Whitelist and
+member/support-request intake is open at the owner’s direction, including LSPD
+department interest for approved members. Reserve and transfer routes remain closed.
 
 Provider references: [Discord guild membership](https://docs.discord.com/developers/resources/guild#get-guild-member),
 [Supabase session verification](https://supabase.com/docs/reference/javascript/auth-getuser).

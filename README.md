@@ -16,7 +16,7 @@ public guides, editorial previews, login, an OAuth callback, privacy information
 a member portal, and a separate fictional design preview.
 
 The LSPD directory entry opens a dedicated department page with mission and
-expectations, a joining pathway, closed recruitment indicators, proposed units
+expectations, a joining pathway, open department-interest applications, proposed units
 and command structure, and the owner's LSPD screenshot. See `docs/LSPD-PAGE.md` for editing
 the content and replacing the artwork with approved server media.
 
@@ -43,8 +43,11 @@ Decisions update the same application records used by the portal. See
 
 The live website is https://lucidwolfx.github.io/cosmic-website/. Discord sign-in
 and private reviews are configured and verified. The review channel is currently
-named **#website-applications**. Submissions remain closed at the owner's request
-until the owner explicitly opens intake. Cosmic’s version 1.0 rules are published for an 18+ serious RP community. Read `TEST-REPORT.md` for verified behavior
+named **#website-applications**. Whitelist applications and member/support requests
+are open at the owner's direction on 28 September 2026, including LSPD department
+interest for approved members. Reserve and transfer routes remain closed.
+Cosmic’s version 1.0 rules are published for an 18+ serious RP community.
+Read `TEST-REPORT.md` for verified behavior
 and remaining test limits. Public pages and fictional previews also work without
 a backend when using a separate copy of this project.
 
