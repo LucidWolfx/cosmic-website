@@ -35,7 +35,9 @@ automatic FiveM admission or Discord roles.
 
 Discord review integration is implemented in `supabase/functions/` and
 `backend/002_discord_reviews.sql`. Submitted applications are queued for a
-private review channel with Approve, Deny, and Request changes buttons.
+private review channel with Approve, Deny, and Request changes buttons for
+non-department requests. Department requests send only an embed and LSPD Command
+mention to **#department-apps**, linking to website Staff review.
 Decisions update the same application records used by the portal. See
 `docs/DISCORD-REVIEWS.md` for configuration, tests, and operation.
 

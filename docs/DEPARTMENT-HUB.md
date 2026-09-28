@@ -16,10 +16,9 @@ are denied. Command membership alone does not grant entry without the LSPD role.
 
 - **New notice:** enter a title and plain-text notice. Leave Publish unchecked
   for a command-only draft. Pin important published notices above other updates.
-- **Approve & add employee:** approve a department application in Discord or the
+- **Approve & add employee:** approve a department application in the
   portal Staff review view. Enter character name, rank, call sign, and optionally
-  division. Discord approval starts the employee at In training; the website
-  also offers active, reserve, and on leave. Staff can edit these details later.
+  division and duty status (in training, active, reserve, or on leave). Staff can edit these details later.
   The reviewer needs their existing review permission plus both department roles.
 - The applicant's verified Discord account is linked automatically. Each employee
   displays a Discord profile link, username and stable user ID. Identity cannot
@@ -52,12 +51,13 @@ uses the server's existing staff process; the bot does not have Manage Roles.
 Notices paginate at 20 and roster entries at 50. Titles allow 120 characters;
 notice bodies allow 8,000. Use roleplay information rather than real-world
 employment or personal details. Notice edits and roster maintenance do not post
-Discord messages; application review messages continue through the existing integration.
+Discord messages. Department submissions notify #department-apps and mention
+LSPD Command with a website review link; full answers stay on the website.
 
 ## Deployment and access enforcement
 
 1. Apply `backend/003_department_hub.sql` and `004_department_enrollment.sql`
-   after migrations 001 and 002.
+   after migrations 001 and 002, followed by `005_department_notifications.sql`.
 2. Deploy `department-hub`, `discord-interactions`, and `discord-delivery`.
    The delivery entry point includes `_shared/roster-sync.mjs`. They reuse the existing
    `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `DISCORD_BOT_TOKEN`, and

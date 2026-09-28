@@ -46,7 +46,9 @@ entries are command-only. The server verifies current Discord roles on every
 request; suspended accounts and unavailable role verification are denied.
 See `DEPARTMENT-HUB.md` for operation and the tested authorization design.
 
-Department approval now requires the existing review permission plus both
+Department applications are reviewed on the website; Discord receives only a
+notification in #department-apps mentioning LSPD Command. The notification does
+not grant website permissions. Approval requires website staff/admin access plus both
 department roles. It saves the assigned character details and automatically
 links the verified applicant Discord ID to the roster. Ordinary website review
 RPCs cannot approve a department request without this enrollment step.

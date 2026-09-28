@@ -1,5 +1,22 @@
 # Cosmic v3 verification report
 
+## Department notification routing - 28 September 2026
+
+- All 54 automated checks pass. Department requests use the specified channel
+  and role mention, contain no answers or review buttons, and link to Staff review.
+- PostgreSQL tests verify service-only access, revision tracking, stale leases,
+  status updates, resubmissions, and rejection of legacy Discord department decisions.
+- Static checks pass for 31 HTML pages. The migration and delivery/interaction
+  updates have been deployed. Both intake settings were verified closed.
+- Channel access for Cosmic Server#2118 and LSPD Command was approved by the
+  owner. Bot sending, embed and role-mention permissions are scoped to #department-apps.
+- The live scheduled worker sent exactly one labeled setup alert to
+  #department-apps, mentioning LSPD Command with one embed and a Staff review
+  link. Message ID: `1554025123164463166`. No answers, attachments or decision
+  buttons were included. The fictional request is retained as test evidence.
+- Permission and delivery verification does not confirm every recipient's push
+  notification preferences. Website staff/admin access is still required for review.
+
 ## Department enrollment and Discord departures - 28 September 2026
 
 - All 48 automated checks pass, including signed Discord approval modals,

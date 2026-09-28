@@ -21,6 +21,8 @@ export function configFromEnv(get) {
     publicKey:get('DISCORD_PUBLIC_KEY'), appId:get('DISCORD_APPLICATION_ID'),
     botToken:get('DISCORD_BOT_TOKEN'), guildId:get('DISCORD_GUILD_ID'),
     channelId:get('DISCORD_REVIEW_CHANNEL_ID'),
+    departmentChannelId:get('DISCORD_DEPARTMENT_CHANNEL_ID')||'1449966318072627362',
+    departmentNotifyRoleId:get('DISCORD_DEPARTMENT_NOTIFY_ROLE_ID')||'1449494268329852938',
     reviewerRoles:(get('DISCORD_REVIEWER_ROLE_IDS')||'').split(',').map(s=>s.trim()).filter(Boolean),
     deliverySecret:get('DISCORD_DELIVERY_SECRET'),
     schedulerKeys,
@@ -41,6 +43,7 @@ export async function verifySignature(request, body, publicKey, now=Date.now()) 
 
 export function reviewMessage(job) {
   const a=job.application;
+  if(a.kind==='department')throw new Error('Department requests use website notifications only.');
   const open=['submitted','under_review'].includes(a.status);
   const fields=[
     {name:'Applicant',value:text(job.display_name,120),inline:true},
@@ -54,7 +57,7 @@ export function reviewMessage(job) {
     content:'',allowed_mentions:{parse:[]},
     embeds:[{title:TYPES[a.kind]||'Application',description:'Read the attached application, then choose a decision below. Feedback is visible to the applicant on the website.',color:a.status==='approved'?0x5ac99c:a.status==='denied'?0xe27979:0x8ac7f3,fields,footer:{text:`Cosmic | submission ${job.revision}`}}],
     components:open?[{type:1,components:[
-      {type:2,style:3,label:a.kind==='department'?'Approve & add employee':'Approve',custom_id:`cosmic:${a.kind==='department'?'enroll':'approve'}:${a.id}:${job.revision}`},
+      {type:2,style:3,label:'Approve',custom_id:`cosmic:approve:${a.id}:${job.revision}`},
       {type:2,style:4,label:'Deny',custom_id:`cosmic:deny:${a.id}:${job.revision}`},
       {type:2,style:2,label:'Request changes',custom_id:`cosmic:changes:${a.id}:${job.revision}`},
     ]}]:[],
@@ -63,6 +66,15 @@ export function reviewMessage(job) {
   const answers=Object.entries(a.answers||{}).map(([key,value])=>`${QUESTIONS[key]||key}\n${typeof value==='object'?JSON.stringify(value):clean(value)}`).join('\n\n');
   const attachment=`COSMIC APPLICATION\nReference: ${a.id}\nSubmission: ${job.revision}\nApplicant: ${clean(job.display_name)}\nDiscord account: ${job.discord_id||'Not linked'}\nType: ${TYPES[a.kind]||a.kind}\nStatus: ${STATUS[a.status]||a.status}\n\n${answers}\n\nStaff feedback\n${clean(a.feedback)||'None yet'}\n`;
   return {payload,attachment};
+}
+
+export function departmentNotification(roleId,setupTest=false) {
+  if(!ID.test(roleId||''))throw new Error('Invalid department notification role.');
+  const url='https://lucidwolfx.github.io/cosmic-website/portal.html#review';
+  return {
+    content:`<@&${roleId}>`,allowed_mentions:{parse:[],roles:[roleId],users:[],replied_user:false},
+    embeds:[{title:setupTest?'Setup test � Department application':'New department application',description:setupTest?`This is a fictional setup test. No application needs review.\n\n[Open Staff review](${url})`:`A new department application is ready to review on the Cosmic website.\n\n[Open Staff review](${url})`,url,color:0x8ac7f3,footer:{text:'Cosmic Roleplay � Department applications'}}],
+  };
 }
 
 class RemoteError extends Error {
@@ -103,13 +115,6 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
       (i.channel_id||i.channel?.id)===c.channelId&&ID.test(i.member?.user?.id||'')&&roleAllowed(i.member?.roles);
   }
   function modal(action,id,revision,messageId) {
-    if(action==='enroll')return json({type:9,data:{custom_id:`cosmic:enroll:${id}:${revision}:${messageId}`,title:'Approve & add department employee',components:[
-      {type:18,label:'Character name',component:{type:4,custom_id:'name',style:1,required:true,min_length:2,max_length:80}},
-      {type:18,label:'Call sign',component:{type:4,custom_id:'callsign',style:1,required:true,min_length:1,max_length:24}},
-      {type:18,label:'Rank',description:'The employee starts with In training status.',component:{type:4,custom_id:'rank',style:1,required:true,min_length:1,max_length:60}},
-      {type:18,label:'Division (optional)',component:{type:4,custom_id:'division',style:1,required:false,max_length:80}},
-      {type:18,label:'Feedback for the applicant (optional)',component:{type:4,custom_id:'feedback',style:2,required:false,max_length:4000}}
-    ]}});
     return json({type:9,data:{custom_id:`cosmic:${action}:${id}:${revision}:${messageId}`,
       title:TITLES[action],components:[{type:18,label:'Feedback for the applicant',
         description:action==='approve'?'Submit to confirm approval. Feedback is optional.':'Explain your decision or the changes needed.',
@@ -130,27 +135,18 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
     });
     if(!response.ok)throw new RemoteError('Discord acknowledgement',response.status);
   }
-  async function decide(i,action,id,revision,messageId,feedback,roster) {
+  async function decide(i,action,id,revision,messageId,feedback) {
     let content;
     try {
       // Recheck current roles when the modal is submitted, not just when it opens.
       const member=await discord(`/guilds/${c.guildId}/members/${i.member.user.id}`);
       if(!roleAllowed(member.roles))content='Your Discord account no longer has an authorized review role. No decision was saved.';
       else {
-        let result;
-        if(action==='enroll'){
-          const context=await rpc('cosmic_department_approval_context',{p_id:id});
-          if(!context.viewer_roles.some(r=>member.roles.includes(r))||!context.editor_roles.some(r=>member.roles.includes(r)))throw {userMessage:'Department approval requires both the department access and command roles.'};
-          const applicant=await discord(`/guilds/${c.guildId}/members/${context.discord_id}`);
-          if(applicant.user?.id!==context.discord_id||applicant.pending===true)throw {userMessage:'The applicant must complete Discord server membership before approval.'};
-          result=await rpc('cosmic_approve_department_application',{p_id:id,p_revision:revision,p_interaction:i.id,p_reviewer:i.member.user.id,
-            p_channel:c.channelId,p_message:messageId,p_roles:member.roles,p_member_id:applicant.user.id,
-            p_member_name:applicant.user.username||applicant.user.id,p_roster:roster,p_feedback:feedback});
-        }else result=await rpc('cosmic_discord_review_application',{
+        const result=await rpc('cosmic_discord_review_application',{
           p_id:id,p_revision:revision,p_interaction:i.id,p_reviewer:i.member.user.id,
           p_channel:c.channelId,p_message:messageId,p_decision:DECISIONS[action],p_feedback:feedback,
         });
-        content=result.already_recorded?'This decision was already recorded.':action==='enroll'?'Department approved and the linked employee roster entry was saved. Assign the department Discord access role as needed. This review message will update shortly.':`Decision saved: ${STATUS[result.status]||result.status}. The applicant can see it on the website. This channel message will update shortly.`;
+        content=result.already_recorded?'This decision was already recorded.':`Decision saved: ${STATUS[result.status]||result.status}. The applicant can see it on the website. This channel message will update shortly.`;
       }
     } catch(error) {
       content=error.userMessage||'The review could not be confirmed. Check the application status before retrying.';
@@ -171,6 +167,7 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
     const match=ACTION.exec(i.data?.custom_id||'');
     if(!match)return privateReply('This review control is not recognized.');
     const [,action,id,revision,modalMessage]=match;
+    if(action==='enroll')return privateReply('Review department applications on the Cosmic website: https://lucidwolfx.github.io/cosmic-website/portal.html#review');
     if(i.type===3){
       if(modalMessage||!ID.test(i.message?.id||'')||i.message?.author?.id!==c.appId)return privateReply('Use the application message posted by the Cosmic bot.');
       return modal(action,id,revision,i.message.id);
@@ -179,17 +176,24 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
       const feedback=feedbackOf(i.data.components)??'';
       if(!modalMessage||!ID.test(i.id||'')||!i.token)return privateReply('The review form is incomplete. Reopen it from the application message.');
       if(feedback.length>4000||(['deny','changes'].includes(action)&&feedback.length<5))return privateReply('Please provide at least five characters of feedback for a denial or change request (maximum 4,000).');
-      let roster;
-      if(action==='enroll'){
-        roster=Object.fromEntries(['name','callsign','rank','division'].map(key=>[key,feedbackOf(i.data.components,key)||'']));
-        if(roster.name.length<2||roster.name.length>80||!roster.callsign||roster.callsign.length>24||!roster.rank||roster.rank.length>60||roster.division.length>80)return privateReply('Enter a character name, call sign and rank within the field limits.');
-        roster.status='training';
-      }
       // Acknowledge immediately; Discord allows only three seconds for this response.
-      waitUntil(decide(i,action,id,Number(revision),modalMessage,feedback,roster));
+      waitUntil(decide(i,action,id,Number(revision),modalMessage,feedback));
       return json({type:5,data:{flags:64}});
     }
     return privateReply('This interaction is not supported.');
+  }
+
+  async function sendDepartmentNotification(job) {
+    if(!ID.test(c.departmentChannelId||'')||!ID.test(c.departmentNotifyRoleId||'')||c.departmentNotifyRoleId===c.guildId)throw new Error('Department notifications are not configured.');
+    const channel=await discord(`/channels/${c.departmentChannelId}`);
+    const everyone=channel.permission_overwrites?.find(p=>p.id===c.guildId&&p.type===0);
+    if(channel.guild_id!==c.guildId||channel.type!==0||!everyone||
+      (BigInt(everyone.deny||0)&1024n)===0n||(BigInt(everyone.allow||0)&1024n)!==0n)throw new Error('Department notifications require a private channel in the configured server.');
+    // Stable per-submission nonce prevents duplicate pings during immediate retries.
+    const hash=await crypto.subtle.digest('SHA-256',encoder.encode(`${job.application_id}:${job.revision}`));
+    const nonce=Array.from(new Uint8Array(hash),v=>v.toString(16).padStart(2,'0')).join('').slice(0,24);
+    return discord(`/channels/${c.departmentChannelId}/messages`,{method:'POST',headers:{'content-type':'application/json'},
+      body:JSON.stringify({...departmentNotification(c.departmentNotifyRoleId,job.notification_test===true),nonce,enforce_nonce:true})});
   }
 
   async function sendJob(job) {
@@ -222,8 +226,17 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
       for(let n=0;n<5;n++){
         const job=await rpc('cosmic_claim_discord_review');if(!job)break;
         try {
-          const message=await sendJob(job);
-          const recorded=await rpc('cosmic_finish_discord_review',{p_id:job.application_id,p_lease:job.lease_id,p_version:job.version,p_channel:c.channelId,p_message:message.id});
+          let recorded;
+          if(job.application.kind==='department'){
+            // Status changes never re-ping staff; each resubmission has a new revision.
+            const notify=(job.notified_revision||0)<job.revision&&['submitted','under_review'].includes(job.application.status);
+            const message=notify?await sendDepartmentNotification(job):null;
+            recorded=await rpc('cosmic_finish_department_notification',{p_id:job.application_id,p_lease:job.lease_id,p_version:job.version,p_revision:job.revision,
+              p_channel:message?c.departmentChannelId:null,p_message:message?.id||null});
+          }else{
+            const message=await sendJob(job);
+            recorded=await rpc('cosmic_finish_discord_review',{p_id:job.application_id,p_lease:job.lease_id,p_version:job.version,p_channel:c.channelId,p_message:message.id});
+          }
           if(recorded)delivered++;
         } catch(error) {
           failed++;
