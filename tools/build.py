@@ -53,6 +53,7 @@ def page(file,title,description,body,portal=False,preview=False,extra_css=''):
  if file=='index.html':scripts+='<script defer src="assets/homepage.js"></script>'
  if file=='setup.html':scripts+='<script defer src="assets/setup.js"></script>'
  if file=='rules.html':scripts+='<script defer src="assets/rules.js"></script>'
+ if file=='community.html':scripts+='<script defer src="assets/team-avatars.js"></script>'
  if portal:scripts+='<script defer src="assets/department-hub.js"></script><script defer src="assets/portal.js"></script>'
  if preview:scripts+='<script defer src="assets/preview.js"></script>'
  noindex='<meta name="robots" content="noindex,nofollow">' if portal or file in ('login.html','auth-callback.html','portal-preview.html','setup.html') else ''

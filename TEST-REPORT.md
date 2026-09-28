@@ -1,5 +1,19 @@
 # Cosmic v3 verification report
 
+## Wolf's Discord profile picture - 28 September 2026
+
+- The public leadership card displays Wolf's Cosmic server avatar, falling back
+  to his global Discord avatar. Name and title remain Wolf / Owner & Lead Developer.
+- Deployed the dedicated staff-avatar function and verified anonymous image/png
+  delivery (HTTP 200, five-minute cache) using the existing bot configuration.
+- All 66 backend tests passed, including 12 new avatar checks for fixed identity,
+  image validation, credential isolation, caching, rate limits and departure.
+- Build/static checks passed for 31 pages. Browser checks verified the live image,
+  unavailable-image fallback, and no horizontal overflow at desktop, 390 and 320 px.
+  The displayed photo is 200 px on desktop and 130 px on phones.
+- Only the owner-approved profile picture is public. No private profiles, role
+  lists, application records, credentials, or messages are exposed by this endpoint.
+
 ## Community team page - 28 September 2026
 
 - Replaced the events/creator overview with public leadership and staff profiles,

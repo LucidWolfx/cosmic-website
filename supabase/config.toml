@@ -11,3 +11,7 @@ verify_jwt = false
 # The handler validates the caller with Supabase Auth and checks live Discord roles.
 [functions.department-hub]
 verify_jwt = false
+
+# Public image proxy for a fixed, owner-approved staff identity. No profile data.
+[functions.staff-avatar]
+verify_jwt = false

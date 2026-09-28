@@ -2,6 +2,7 @@
 from pathlib import Path
 from html import escape
 import json
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -17,6 +18,10 @@ def render_community(icon):
             raise ValueError('Public team members must belong to leadership or staff.')
         if not member.get('name') or not member.get('role'):
             raise ValueError('Public team members require a name and role.')
+        if member.get('avatarUrl'):
+            avatar = urlsplit(member['avatarUrl'])
+            if avatar.scheme != 'https' or not avatar.netloc or avatar.username or avatar.password:
+                raise ValueError('Public team avatars require an HTTPS image URL without credentials.')
 
     sections = []
     for group, title, description in groups:
@@ -28,8 +33,9 @@ def render_community(icon):
             bio = f'<p class="team-bio">{escape(member["bio"])}</p>' if member.get('bio') else ''
             if member.get('featured'):
                 focus = ''.join(f'<span>{escape(item)}</span>' for item in member.get('focus', []))
+                avatar = f'<img class="team-profile-photo" data-team-avatar src="{escape(member["avatarUrl"])}" alt="{name}’s Discord profile picture" width="512" height="512" decoding="async" hidden>' if member.get('avatarUrl') else ''
                 cards.append(f'''<article class="team-card team-card-featured" data-team-group="{group}">
-                  <div class="team-profile-art" aria-hidden="true"><span class="team-profile-mark">{initials}</span><span class="team-profile-art-label">COSMIC ROLEPLAY</span></div>
+                  <div class="team-profile-art"><div class="team-profile-frame" data-team-avatar-frame><span class="team-profile-mark" data-team-avatar-fallback aria-hidden="true">{initials}</span>{avatar}</div><span class="team-profile-art-label" aria-hidden="true">COSMIC ROLEPLAY</span></div>
                   <div class="team-card-body"><span class="team-role">{role}</span><h3>{name}</h3>{handle}{bio}<div class="team-profile-focus">{focus}</div><a class="text-link" href="#get-in-touch">Get in touch <span aria-hidden="true">↗</span></a></div>
                 </article>''')
             else:
