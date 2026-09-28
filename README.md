@@ -44,7 +44,7 @@ Decisions update the same application records used by the portal. See
 The live website is https://lucidwolfx.github.io/cosmic-website/. Discord sign-in
 and private reviews are configured and verified. The review channel is currently
 named **#website-applications**. Submissions remain closed at the owner's request
-while the draft rules are reviewed. Read `TEST-REPORT.md` for verified behavior
+until the owner explicitly opens intake. Cosmic’s version 1.0 rules are published for an 18+ serious RP community. Read `TEST-REPORT.md` for verified behavior
 and remaining test limits. Public pages and fictional previews also work without
 a backend when using a separate copy of this project.
 
@@ -95,7 +95,7 @@ Clear the reference-sheet path to remove board-derived imagery. The favicon is
 also temporary. Check color contrast again after changing accents.
 
 Edit approved businesses, organizations, and media in `site/assets/content.js`.
-Edit public page copy in `tools/build.py`, then run `python tools/build.py` to
+Edit the rulebook in `content/rules.json` and other public page copy in `tools/build.py`, then run `python tools/build.py` to
 regenerate public HTML. The build preserves your configuration and content file.
 Auth, portal, setup, and CSS source files are maintained separately. Do not place
 private resources in public source. Private resource publishing currently uses
@@ -104,7 +104,7 @@ the Supabase dashboard or SQL, not a visual content-management system.
 ## Intentional boundaries
 
 - No invented active businesses, organizations, player counts, or launch dates.
-- Current rules and news copy are visibly marked as drafts.
+- The community rulebook is published; news previews remain drafts.
 - Core Hub is provisionally treated as a guides and resources area.
 - Roles are applicant, member, staff, and admin, plus account suspension. All
   authorized staff share the review queue. LSPD notices and roster use separate

@@ -60,7 +60,7 @@ def build_lspd(page, icon, btn):
             <div class="lspd-heading"><div><span class="lspd-kicker">02 / YOUR NEXT CHAPTER</span><h2 id="lspd-joining">FIND YOUR PLACE.</h2></div><span class="lspd-status">Intake closed</span></div>
             <p>The planned route into LSPD begins with Cosmic membership. Department requirements and training details will be published before recruitment opens.</p>
             <ol class="lspd-pathway">
-              <li><span>01</span><div><h3>Get to know Cosmic</h3><p>Explore the community and review the rulebook. Its current wording is still under review.</p><a href="rules.html">Read the draft rules {icon('arrow')}</a></div></li>
+              <li><span>01</span><div><h3>Get to know Cosmic</h3><p>Explore the community and review the rulebook. Cosmic is an 18+ serious roleplay community.</p><a href="rules.html">Read the community rules {icon('arrow')}</a></div></li>
               <li><span>02</span><div><h3>Become a community member</h3><p>Connect your Discord account and prepare your community application. Submissions are currently closed.</p><a href="portal.html#apply">Open your portal {icon('arrow')}</a></div></li>
               <li><span>03</span><div><h3>Start your department journey</h3><p>When LSPD recruitment opens, follow the published application and training process. Community membership alone does not grant an LSPD position.</p></div></li>
             </ol>

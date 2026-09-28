@@ -1,0 +1,266 @@
+{
+  "version": "1.0",
+  "acknowledgement_version": "cosmic-rules-1.0-2026-09-28",
+  "effective_date": "28 September 2026",
+  "minimum_age": 18,
+  "intro": "Cosmic is an 18+ community for story-focused serious roleplay. Build believable characters, make room for other players, and accept that a good scene can end in a loss. These rules apply in the game, on the website, and in Cosmic community spaces. Everyone, including staff, follows them.",
+  "defaults": [
+    [
+      "18+",
+      "Players and playable characters"
+    ],
+    [
+      "4 people",
+      "Maximum criminal team per incident"
+    ],
+    [
+      "60 minutes",
+      "Minimum return restriction after respawning"
+    ],
+    [
+      "15 minutes",
+      "No new planned crime either side of a restart"
+    ]
+  ],
+  "categories": {
+    "community": "Community",
+    "roleplay": "Roleplay",
+    "conflict": "Conflict & injuries",
+    "crime": "Crime & departments",
+    "fairplay": "Fair play",
+    "staff": "Reports & appeals"
+  },
+  "rules": [
+    {
+      "id": "eligibility",
+      "category": "community",
+      "title": "Be ready to participate.",
+      "paragraphs": [
+        "You must be at least 18 to join and play. Use your own legitimate game and platform accounts, follow their applicable terms, and keep your Cosmic Discord account connected to your website identity. Do not share accounts, misrepresent your age, or bypass an access restriction.",
+        "You need to communicate clearly in English and normally use a working microphone. Contact staff privately about accessibility accommodations before playing; do not post medical records or identity documents in applications or public channels. Website approval, Discord access, and permission to connect to the game are separate steps."
+      ]
+    },
+    {
+      "id": "respect",
+      "category": "community",
+      "title": "Respect the player behind the character.",
+      "paragraphs": [
+        "Character conflict never excuses harassment, discriminatory slurs, sexual harassment, real threats, stalking, doxxing, or sharing someone’s private information. This applies to voice, text, images, names and behavior, including abuse aimed at someone through a character.",
+        "Do not turn a disagreement into a Discord argument, stream-chat attack, coordinated report campaign, or retaliation against a reporter. Keep disputes private and give other players the same consideration you expect for yourself."
+      ]
+    },
+    {
+      "id": "restricted-content",
+      "category": "community",
+      "title": "Keep restricted content out of Cosmic.",
+      "paragraphs": [
+        "Erotic or explicit sexual roleplay, sexual assault, sexual coercion, sexual content involving minors, and roleplay depicting harm to children are prohibited. Do not act out suicide, self-harm, graphic torture, or graphic mutilation. Consent does not make these subjects permitted.",
+        "Non-explicit adult relationships are allowed. Do not recreate real mass-casualty events, promote extremist causes, or use current tragedies to provoke people. Keep real-world political or religious arguments out of scenes and community channels."
+      ]
+    },
+    {
+      "id": "boundaries",
+      "category": "community",
+      "title": "Respect boundaries and permanent consequences.",
+      "paragraphs": [
+        "Before a permitted scene involving a sensitive subject, obtain clear out-of-character agreement from every affected participant. Anyone may withdraw that agreement. Stop or move away from the sensitive detail without pressuring them to explain why.",
+        "You cannot force a permanent injury, permanent character death, or a lasting change to another player’s character. Permanent death requires that player’s agreement and staff confirmation. Boundary rules do not cancel ordinary robbery, arrest, or other permitted consequences simply because a character is losing. A player may leave an abusive or prohibited scene immediately and report it."
+      ]
+    },
+    {
+      "id": "characters",
+      "category": "roleplay",
+      "title": "Create a believable, independent character.",
+      "paragraphs": [
+        "Playable characters must be adults aged 18 or older, with plausible names, motives and limits for modern San Andreas. Do not impersonate a real person or another community member, claim supernatural powers, or create a character solely to troll. Special character concepts require staff approval before use.",
+        "Keep each character’s possessions, relationships and knowledge separate. Do not transfer assets between your characters, including through a friend, or switch characters to help in the same incident. A new character is not a fresh start around a punishment."
+      ]
+    },
+    {
+      "id": "stay-in-character",
+      "category": "roleplay",
+      "title": "Stay in character and share the scene.",
+      "paragraphs": [
+        "In character (IC) means what your character says, knows and does. Out of character (OOC) means the player’s real-world discussion. Keep routine OOC questions and rule disputes out of active scenes. Use a brief OOC clarification only when needed for a technical problem, accessibility, consent, or safety.",
+        "Give other people time to speak and act. Do not shout over scenes, spam sounds, or rush every interaction toward a mechanical reward. Losing property, being arrested, or failing a plan can still lead to worthwhile roleplay."
+      ]
+    },
+    {
+      "id": "metagaming",
+      "category": "roleplay",
+      "title": "No metagaming or stream sniping.",
+      "paragraphs": [
+        "Your character can act only on information obtained through legitimate IC interaction. Do not use streams, spectator views, Discord messages, player names above heads, or another character’s knowledge to locate people, avoid police, or influence a scene. Keep live streams of the server closed while playing.",
+        "Use the game’s intended voice, phone and radio systems for active RP communication. External voice or text cannot provide a hidden tactical channel. Staff-designated IC documents may supply background information, but their existence does not authorize live OOC coordination."
+      ]
+    },
+    {
+      "id": "powergaming",
+      "category": "roleplay",
+      "title": "No powergaming or forced outcomes.",
+      "paragraphs": [
+        "Do not give yourself impossible abilities, ignore physical limitations, or declare another character’s reaction as a guaranteed result. For actions without a game mechanic, describe an attempt and allow a reasonable response. You cannot invent equipment, evidence or access your character never obtained.",
+        "Honor restraints and the actions supported by the game. Do not abuse animations, carrying, doors, inventory screens or inaccessible interiors to become untouchable. A mechanical limitation is not permission to trap someone in a scene they cannot meaningfully respond to."
+      ]
+    },
+    {
+      "id": "value-life",
+      "category": "conflict",
+      "title": "Value life and credible danger.",
+      "paragraphs": [
+        "Treat your character’s safety, freedom, and other people’s lives as important. When faced with an immediate credible threat and no realistic escape, cooperate. Resist or escape only when the situation provides a believable opening; being threatened from a distance does not automatically make all movement forbidden.",
+        "Do not choose certain death to protect a small amount of loot, charge a controlled gunpoint situation, or treat severe crashes and dangerous falls as harmless. Police and criminals must both consider the risk their actions create for bystanders."
+      ]
+    },
+    {
+      "id": "violence",
+      "category": "conflict",
+      "title": "Build conflict before using force. No RDM.",
+      "paragraphs": [
+        "Random deathmatch (RDM) is attacking or killing without a sufficient IC reason and appropriate interaction. Before initiating violence, make the threat understandable to the people affected and allow a realistic chance to respond. A rushed countdown, minor insult, routine traffic stop, or refusal to socialize is not a license to kill.",
+        "Force must fit the threat. A compliant victim is not a target for execution simply to end the scene or erase witnesses. Immediate defense against an attack already in progress does not require a fresh speech. Prior initiation is not permanent permission to attack someone after the encounter has ended, and gang clothing alone is never shoot-on-sight permission."
+      ]
+    },
+    {
+      "id": "vehicles",
+      "category": "conflict",
+      "title": "Drive for the scene. No VDM.",
+      "paragraphs": [
+        "Vehicle deathmatch (VDM) includes using a vehicle to attack people without a justified scene, repeatedly running someone over, or plowing through a crowd. Do not deliberately turn a vehicle into a weapon except as a last-resort escape from an immediate threat to life when no safer route is realistically available.",
+        "Vehicles still have limits. Roleplay serious collisions, damage and unsuitable terrain. Pursuit interventions must be proportionate and plausible; this rule does not prohibit a justified, controlled police maneuver. Do not use stunt jumps, repeated ramming, or indestructible game behavior to bypass danger."
+      ]
+    },
+    {
+      "id": "injuries",
+      "category": "conflict",
+      "title": "Injuries have consequences.",
+      "paragraphs": [
+        "Roleplay injuries that fit what happened and cooperate with medical scenes. Treatment is not an instant reset to full fighting ability. After being incapacitated, you are out of active combat for the rest of that incident, even if treated; continue the medical, custody, or recovery roleplay that follows.",
+        "An unconscious character cannot talk, use a phone or radio, or transmit enemy positions. If the scene reasonably leaves you conscious but injured, limit speech and actions accordingly; incapacitation still rules out tactical callouts. Do not finish off, move, or conceal a body just to deny medical roleplay or force permanent death. Moving someone out of immediate danger or to treatment is allowed."
+      ]
+    },
+    {
+      "id": "new-life",
+      "category": "conflict",
+      "title": "Follow the New Life Rule after respawning.",
+      "paragraphs": [
+        "The New Life Rule (NLR) starts when you use a respawn or hospital reset after incapacitation. Your character loses memory of the incident that led to that incapacitation and events while unconscious. Ordinary medical rescue without a respawn does not automatically erase memory; the injury and combat restrictions still apply.",
+        "After a respawn, stay away from that incident’s location and do not assist anyone in continuing that incident for at least 60 real minutes AND until the incident has ended. Do not use another character or outside messages to rejoin. The timer does not restore lost memories, and a friend cannot brief you so you can resume that same conflict or take revenge for the forgotten incident.",
+        "Do not respawn to escape an active arrest, robbery or treatment scene. Wait for the scene to finish or staff to resolve a technical problem. A disconnect does not reset these obligations."
+      ]
+    },
+    {
+      "id": "group-limit",
+      "category": "crime",
+      "title": "Criminal incidents have a four-person team limit.",
+      "paragraphs": [
+        "A criminal side may involve at most four players in a planned robbery, kidnapping, heist, ambush, or other coordinated hostile incident. Drivers, scouts, lookouts, snipers and people giving remote support all count. Downed, arrested or disconnected participants still occupy their place until the incident ends; no replacement waves.",
+        "An incident includes the connected pursuit, attempted rescue and continuing conflict. Moving location, briefly pausing, a restart, or calling it a new scene does not reset participant or injury limits. It ends when the connected action has genuinely resolved and the parties have disengaged.",
+        "Do not split into allied groups, call in reinforcements, or lead a pursuit to friends to bypass the limit. Larger social gatherings are allowed, but extra people must disengage if conflict begins rather than becoming an extra fighting team. Someone unexpectedly attacked may take immediate defensive action to reach safety; that does not permit a larger coordinated counterattack.",
+        "Police are not part of the criminal team cap. Their response must be proportionate to the threat and follow department procedures. Any different event or heist limit must be approved by staff and published to participants before the scene; there is no automatic exception for a large robbery."
+      ]
+    },
+    {
+      "id": "robbery",
+      "category": "crime",
+      "title": "Robberies must create roleplay, not wipe progress.",
+      "paragraphs": [
+        "Have a believable motive, use clear demands, allow a response, and leave a compliant victim a way for the scene to end. Do not chain-rob players, repeatedly target the same person, or camp spawn points and routine job locations for victims.",
+        "Take only items or cash reasonably relevant to the robbery that are already carried or in a vehicle physically involved in the scene, using supported mechanics. Do not empty every pocket just because you can. Leave basic food, water and medically necessary items. You may temporarily secure a weapon or communication device when the scene reasonably calls for it.",
+        "Never force bank or ATM withdrawals, invoices, transfers of property or business ownership, access to remote storage, or real-money payments. Do not use threats to demand passwords, private account access, or OOC information."
+      ]
+    },
+    {
+      "id": "hostages",
+      "category": "crime",
+      "title": "Use genuine hostages and reasonable demands.",
+      "paragraphs": [
+        "A hostage must be an unwilling character taken through a legitimate scene. Prearranged or cooperating friends, paid volunteers, accomplices and disguised members of your own team cannot be staged as hostages. Value the hostage’s life and give negotiators a meaningful opportunity to respond.",
+        "Keep demands achievable with available mechanics and consistent with the story. Do not use impossible demands as an excuse for execution, hold someone indefinitely for no developing scene, or carry victims into inaccessible spaces to block rescue. Release or otherwise resolve the hostage scene once its purpose is finished; contact staff privately if it has become stalled or abusive."
+      ]
+    },
+    {
+      "id": "protected-care",
+      "category": "crime",
+      "title": "Protect medical care and entry into the city.",
+      "paragraphs": [
+        "Do not start robberies, kidnappings or attacks inside medical treatment areas, at initial character spawn, or during an active staff assistance scene. Do not target on-duty medical or fire personnel providing care, steal their service equipment for profit, or make fake emergency calls just to ambush responders.",
+        "These protections are not an escape button. Entering a protected location does not erase an existing pursuit, lawful custody, or earlier consequences. Preserve treatment and bystander safety, then continue the scene appropriately outside the care area. A responder actively participating in crime or violence cannot use their job title as immunity. Self-defense against an immediate attack remains allowed."
+      ]
+    },
+    {
+      "id": "public-service",
+      "category": "crime",
+      "title": "Departments serve the roleplay.",
+      "paragraphs": [
+        "Police, fire, medical and government characters must use their authority credibly and follow their approved department procedures. Do not manufacture evidence, exploit access tools, or prolong detention solely to punish a player OOC. Suspects must be given a fair chance to participate in the scene; staff authority and IC rank are different things.",
+        "Do not repeatedly bait emergency services with pointless offenses just to farm chases or gunfights. Public-service corruption, leaking restricted equipment, or abusing official access as a storyline needs staff approval in advance, with department leadership involved where appropriate. Approval never permits cheating, harassment, or misuse of real private data."
+      ]
+    },
+    {
+      "id": "economy",
+      "category": "fairplay",
+      "title": "Keep property and progression fair.",
+      "paragraphs": [
+        "Use the intended systems for jobs, businesses, inventory and property. Do not duplicate items, farm payouts through staged incidents, trade assets between your characters, or use another account to multiply rewards. You may not buy or sell in-game assets or services for real money outside the server’s authorized systems.",
+        "Businesses, gangs and departments do not gain special privileges just by declaring themselves official. Follow the published application and approval process. Never promise game access, staff influence or special treatment in exchange for payment or favors."
+      ]
+    },
+    {
+      "id": "cheating",
+      "category": "fairplay",
+      "title": "No cheating, exploits or advantage mods.",
+      "paragraphs": [
+        "Cheats, unauthorized automation, bug abuse, duplication, and modifications that provide an unfair advantage are prohibited. Examples include revealing hidden players, removing environmental obstacles, altering weapon behavior, or automating gameplay rewards. Do not distribute exploit instructions in public channels.",
+        "Stop using a suspected exploit and report it privately with enough detail for staff to investigate. Cosmetic, audio or accessibility tools must not grant a competitive advantage or impersonate another player. If you are unsure whether a tool is permitted, ask staff before using it on Cosmic."
+      ]
+    },
+    {
+      "id": "disconnects",
+      "category": "fairplay",
+      "title": "Do not log out or hide assets to escape a scene.",
+      "paragraphs": [
+        "Combat logging includes deliberately leaving during conflict, pursuit, custody, medical treatment or other active consequences. Changing characters, storing a vehicle, using a garage or interior transition, or moving valuables into safe storage to make them unreachable during the scene is also prohibited. A normal IC escape through accessible spaces is different from abusing a loading transition.",
+        "After a genuine crash or connection loss, attempt to return within 10 minutes and resume the scene where practical. If that is not possible, tell staff through Discord as soon as you can, explaining the scene and approximate time. A genuine outage is not automatically a violation; do not fabricate technical problems to gain an advantage."
+      ]
+    },
+    {
+      "id": "restarts",
+      "category": "fairplay",
+      "title": "Respect restarts and scene continuity.",
+      "paragraphs": [
+        "Do not start new planned crime during the 15 minutes before a scheduled restart or the 15 minutes after the server returns. This covers robberies, kidnappings, heists and organized attacks. Routine driving and immediate self-defense are not a reason to manufacture a new criminal scene inside the buffer.",
+        "If a scene is already active, do not rush an outcome or use the restart to escape. Coordinate a sensible continuation after reconnecting, with staff help if needed. An unexpected outage does not erase custody, injuries or property consequences, and the restart buffer never overrides a longer activity cooldown shown by the server."
+      ]
+    },
+    {
+      "id": "recordings",
+      "category": "fairplay",
+      "title": "Keep recordings and reports honest.",
+      "paragraphs": [
+        "Do not stream snipe, pressure someone through their audience, or broadcast private staff discussions without permission. A player’s recording does not automatically become evidence their character possesses; IC footage needs an established in-world source. Staff may still use OOC recordings to investigate rule violations.",
+        "Preserve relevant clips, timestamps and context for a report. Do not edit evidence to mislead, fabricate screenshots, or expose unrelated private conversations. Share evidence privately with the staff handling the case. Ask before playing audio you do not have permission to broadcast."
+      ]
+    },
+    {
+      "id": "reports",
+      "category": "staff",
+      "title": "Report problems privately and let staff resolve them.",
+      "paragraphs": [
+        "For an ordinary rules dispute, finish the scene or disengage through legitimate IC actions and contact staff privately through the Cosmic Discord support area. An ordinary rule dispute does not permit logging out or refusing consequences. Do not announce punishments, argue rules in voice, or retaliate. For abuse, prohibited content or an immediate personal safety concern, stop participating and seek staff help immediately.",
+        "Include the approximate time, player or character identifiers you know, a short account of what happened, and relevant evidence if available. Lack of a recording does not prevent a report. Never post credentials, identity documents or sensitive personal details in a ticket. Website support requests are an additional option when request intake is open.",
+        "Follow a reasonable staff instruction during a live intervention. An instruction cannot require prohibited content or disclosure of private credentials. Ask for management review if the staff member is personally involved in the dispute."
+      ]
+    },
+    {
+      "id": "enforcement",
+      "category": "staff",
+      "title": "Consequences, appeals and rule changes.",
+      "paragraphs": [
+        "Staff consider context, severity, intent, impact and previous conduct. Action may include guidance, a warning, reversal of exploit gains, loss of a role or whitelist, a temporary suspension, or a permanent ban. Serious abuse or cheating can lead directly to removal; there is no guaranteed number of warnings. Good-faith mistakes should be distinguished from deliberate abuse.",
+        "Appeal privately through Discord support or the route provided in your moderation notice. If a restriction removes access to Discord support, staff must include a working private appeal contact outside the restricted server in the moderation notice. Explain the decision you are appealing, your reasons and any new evidence. A staff member uninvolved in the original decision should review the appeal where possible; escalate conflicts of interest to ownership. Do not evade a restriction while it is under review, and do not punish someone for making a good-faith appeal.",
+        "This published rulebook takes priority over informal advice. Department procedures and approved event rules may add detail but cannot permit prohibited conduct. Staff should apply the purpose of a rule consistently rather than reward technical loopholes. Substantive changes must be versioned and published before taking effect; players are responsible for reading the current version."
+      ]
+    }
+  ]
+}

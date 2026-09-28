@@ -4,9 +4,11 @@
 
 The public navigation matches the requested twelve sections. Core Hub currently
 means public guides plus protected member/staff resources. Confirm that meaning.
-Approve the rulebook, application questions, any eligibility criteria, reviewer
-permissions, retention policy, and operator/contact information. Current copy is
-not an adopted policy. Never announce that intake is open from this template alone.
+The owner selected an 18+ serious RP community and requested final rules.
+The adopted version 1.0 rulebook is maintained in content/rules.json. Review
+application questions, reviewer permissions, retention policy and operator/contact
+information before opening intake. Staff must include a reachable private appeal
+contact in restriction notices, especially for members removed from Discord. Never announce that intake is open from this template alone.
 
 ## 2. Publish the static front end
 

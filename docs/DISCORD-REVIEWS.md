@@ -37,7 +37,7 @@ to the owner's existing Cosmic Roleplay app, sign-in, delivery, and approval
 were verified again using submission 3 of the same fictional support request.
 The saved decision and Discord message are synchronized. One clearly
 labeled fictional support request remains as test evidence. Whitelist and
-member-request submissions are closed while the owner reviews the draft rules.
+member-request submissions remain closed until the owner explicitly opens intake. The version 1.0 rulebook is now published.
 The bot is connected but closed intake must remain closed until the owner asks
 to open it.
 

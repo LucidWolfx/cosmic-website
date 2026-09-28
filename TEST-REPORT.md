@@ -1,5 +1,22 @@
 # Cosmic v3 verification report
 
+## Community rules version 1.0 - 28 September 2026
+
+- The owner confirmed 18+ and story-focused serious RP. The 25-section rulebook
+  is original Cosmic policy, with numeric limits identified as Cosmic defaults.
+- The website, downloadable text and Markdown copy are generated from one
+  source. The portal acknowledgement includes minimum age and current rules.
+- All 54 automated backend checks pass. Static checks pass for 31 HTML pages;
+  JavaScript syntax checks pass for the new rule controls and portal update.
+- Local browser checks verified NLR search, category filtering, combined empty
+  results, expand/collapse, and direct links that reveal the requested section.
+  Desktop and 390/320 px layouts were inspected without horizontal overflow.
+- A separate content review found no publication blockers. The publication SQL
+  aborts if intake is open and updates only rule approval and version.
+- Opening applications remains a separate owner decision. No Discord
+  announcement or new application was sent as part of this rules update.
+- These checks do not constitute a full accessibility or physical-device audit.
+
 ## Department notification routing - 28 September 2026
 
 - All 54 automated checks pass. Department requests use the specified channel
