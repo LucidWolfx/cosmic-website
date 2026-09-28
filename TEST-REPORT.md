@@ -1,5 +1,23 @@
 # Cosmic v3 verification report
 
+## Homepage opposing text rows - 28 September 2026
+
+- Replaced the three hero scene selectors with a full-width black text strip:
+  bold uppercase text moves left, and smaller community text moves right.
+  Crimson separators and edge fades follow the supplied visual reference.
+- The hero keeps its original artwork, copy, and application link. New styling
+  loads on the homepage only; private systems and other page layouts are unchanged.
+- Matching repeated groups create continuous loops. Repeated text is hidden
+  from assistive technology. A keyboard/touch pause control stops both rows,
+  hover pauses the text, and reduced motion displays a static wrapped layout.
+- Build/static validation passed for 31 pages; JavaScript syntax passed.
+  CUA browser checks verified both animation names, equal loop-group widths,
+  pause/resume, desktop appearance, and no horizontal overflow at 390 and 320 px.
+- Temporary previews of the reduced-motion rules and script-free markup at
+  320 px showed all labels without clipping. The OS motion preference was not changed.
+- Updated the legacy UI suite's scene-selector assertions for the new strip;
+  Python syntax passed. That legacy browser suite was not executed in this run.
+
 ## Staff card badge and order refinement - 28 September 2026
 
 - Cards omit the role already named by their section. Only additional staff

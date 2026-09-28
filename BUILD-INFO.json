@@ -1,5 +1,5 @@
 {
-  "version": "4.3.1-staff-card-order",
+  "version": "4.4.0-homepage-text-motion",
   "date": "2026-09-28",
   "brandFinal": true,
   "githubInspected": "LucidWolfx/Cosmic-fbi",
@@ -34,5 +34,6 @@
   "communityDiscordRoleSync": true,
   "staffDirectoryBackendTestsPassed": 16,
   "staffDirectoryFrontendTestsPassed": 11,
-  "automatedTestsPassed": 93
+  "automatedTestsPassed": 93,
+  "homepageOpposingTextRows": true
 }

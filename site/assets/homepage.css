@@ -1,0 +1,41 @@
+/* Two opposing text rows between the hero and the welcome section. */
+.ad-ticker{position:relative;max-width:100%;padding:38px 0 31px;border-block:1px solid #202024;background:#000;overflow:hidden}
+.ad-ticker-controls{position:absolute;top:3px;right:24px;z-index:1}
+.ad-ticker-toggle{min-height:30px;padding:4px 8px;border:0;border-radius:3px;background:#000;color:#92929d;font:500 10px/1.4 var(--body);letter-spacing:.6px;cursor:pointer}
+.ad-ticker-toggle:hover{color:#fff;background:#111114}
+.ad-ticker-toggle:focus-visible{outline:2px solid var(--highlight);outline-offset:2px;color:#fff}
+.ad-ticker-toggle[hidden]{display:none}
+.ad-ticker-window{overflow:hidden}
+.ad-ticker-row+.ad-ticker-row{margin-top:17px}
+.ad-ticker-group{display:flex;flex-wrap:wrap;align-items:center;gap:14px 32px;list-style:none;margin:0;padding:0 24px}
+.ad-ticker-group li{display:flex;align-items:center;gap:32px;margin:0;padding:0}
+.ad-ticker-group li::after{content:'•';color:var(--accent);font-size:.36em;font-weight:700}
+.ad-ticker-primary{color:#f4f4f6;font:850 clamp(30px,3.4vw,64px)/1.15 var(--body);letter-spacing:-1.6px;text-transform:uppercase}
+.ad-ticker-secondary{color:#a5a5af;font:650 11px/1.7 var(--body);letter-spacing:2.1px;text-transform:uppercase}
+.ad-ticker-secondary .ad-ticker-group li::after{content:'/';font-size:13px;color:#a9233a}
+.ad-ticker-copy{display:none}
+.ad-ticker[data-motion-ready=true] .ad-ticker-window{mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.ad-ticker[data-motion-ready=true] .ad-ticker-track{display:flex;width:max-content;animation:cosmic-ticker-left 54s linear infinite}
+.ad-ticker[data-motion-ready=true] .ad-ticker-group{display:flex;flex-wrap:nowrap;flex-shrink:0;justify-content:space-around;min-width:100vw;padding:0 40px 0 0;gap:40px;white-space:nowrap}
+.ad-ticker[data-motion-ready=true] .ad-ticker-group li{flex-shrink:0;gap:40px}
+.ad-ticker[data-motion-ready=true] .ad-ticker-secondary .ad-ticker-track{animation-name:cosmic-ticker-right;animation-duration:78s}
+.ad-ticker[data-paused=true] .ad-ticker-track{animation-play-state:paused}
+@media(hover:hover){.ad-ticker-window:hover .ad-ticker-track{animation-play-state:paused}}
+@keyframes cosmic-ticker-left{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes cosmic-ticker-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(max-width:600px){
+  .ad-ticker{padding:45px 0 28px}
+  .ad-ticker-controls{top:0;right:10px}
+  .ad-ticker-toggle{min-height:40px}
+  .ad-ticker-primary{font-size:32px;letter-spacing:-1px}
+  .ad-ticker-secondary{font-size:10px;letter-spacing:1.6px}
+  .ad-ticker-row+.ad-ticker-row{margin-top:14px}
+}
+@media(prefers-reduced-motion:reduce),print{
+  .ad-ticker .ad-ticker-track{animation:none!important;transform:none!important;display:block!important;width:auto!important}
+  .ad-ticker .ad-ticker-window{mask-image:none!important}
+  .ad-ticker .ad-ticker-group{flex-wrap:wrap!important;justify-content:flex-start!important;min-width:0!important;white-space:normal!important;padding:0 24px!important;gap:12px 24px!important}
+  .ad-ticker .ad-ticker-copy,.ad-ticker .ad-ticker-toggle{display:none!important}
+  .ad-ticker .ad-ticker-group li{gap:24px!important}
+  .ad-ticker-primary{font-size:clamp(24px,3vw,42px);letter-spacing:-.7px}
+}
