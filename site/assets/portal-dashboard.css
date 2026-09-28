@@ -1,0 +1,327 @@
+/* Portal presentation only. Account access and department permissions remain
+   controlled by the existing authenticated services. */
+:is(body[data-page="portal"], body[data-page="portal-preview"]) {
+  --bg: #090f1c;
+  --panel: #182335;
+  --panel2: #1e2c41;
+  --text: #ecf2fb;
+  --muted: #a6b6cc;
+  --dim: #90a2bb;
+  --line: #2b3950;
+  --accent: #9ad4ff;
+  --radius: 9px;
+  --body: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: var(--body);
+  --portal-side: #121c2c;
+  --portal-active: #273f59;
+  --portal-green: #8addb1;
+  --portal-amber: #f5cf86;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.55 var(--body);
+}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(h1, h2, h3, h4) {
+  font-family: var(--body);
+  font-weight: 650;
+  letter-spacing: -.025em;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(h2, h3) {font-size: 16px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(p, small) {overflow-wrap: anywhere;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(button, input, select, textarea) {font-family: var(--body);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(a, button, input, select, textarea, summary):focus-visible {outline: 2px solid var(--accent); outline-offset: 3px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  min-height: 64px;
+  height: auto;
+  padding: 10px 28px;
+  gap: 18px;
+  background: var(--portal-side);
+  border-bottom: 1px solid var(--line);
+}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .brand {transform: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .wordmark {font-size: 18px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .wordmark small {font-size: 7px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar :is(.reference-brand, .brand-logo) {width: 100px; height: 42px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .right {font-size: 12px; gap: 16px; min-width: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .right > a {font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-top-brand {color: var(--muted); font-size: 11px; font-weight: 600; letter-spacing: 1.35px; white-space: nowrap;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-top-brand:hover {color: var(--accent);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-icon {display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; width: 18px; height: 18px; color: inherit;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-icon svg {width: 17px; height: 17px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-shell {display: grid; grid-template-columns: 228px minmax(0, 1fr); min-height: calc(100dvh - 64px);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar {
+  position: sticky;
+  top: 64px;
+  height: calc(100dvh - 64px);
+  max-height: calc(100dvh - 64px);
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 27px 15px 19px;
+  gap: 24px;
+  background: var(--portal-side);
+  border-right: 1px solid var(--line);
+  border-bottom: 0;
+}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar .portal-identity {
+  display: block;
+  width: auto;
+  padding: 0 11px;
+  color: var(--accent);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: 25px;
+  font-weight: 750;
+  letter-spacing: 2px;
+  line-height: 1.25;
+}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-identity small {display: block; margin-top: 5px; color: var(--muted); font-size: 9px; font-weight: 500; letter-spacing: 1.9px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-nav {display: grid; gap: 5px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-label {display: block; padding: 9px 12px 7px; color: var(--dim); font-size: 10px; letter-spacing: 1.4px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a:not(.portal-identity)) {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 43px;
+  gap: 11px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  text-align: left;
+  white-space: normal;
+}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a):hover {background: var(--panel2); color: var(--text);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a)[aria-current="page"] {background: var(--portal-active); color: var(--accent) !important; border-color: #355575; box-shadow: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(.icon, svg) {display: inline-block; width: 17px; height: 17px; flex-shrink: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-account {display: flex; align-items: center; gap: 10px; margin-top: auto; padding: 17px 7px 0; border-top: 1px solid var(--line); min-width: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .account-avatar {display: grid; place-items: center; flex-shrink: 0; width: 36px; height: 36px; border-radius: 9px; background: var(--portal-active); color: var(--accent); font-size: 12px; font-weight: 650; overflow: hidden;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .account-avatar img {width: 100%; height: 100%; object-fit: cover;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .account-info {min-width: 0; font-size: 12px; overflow-wrap: anywhere;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .account-info :is(strong, b) {display: block; font-weight: 600;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .account-info small {display: block; color: var(--muted); font-size: 10px; margin-top: 3px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-bottom {margin-top: auto; padding-top: 17px; border-color: var(--line);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-bottom p {color: var(--muted); font-size: 10px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-footer-note {color: var(--dim); font-size: 10px; line-height: 1.6; margin: 0; padding: 0 8px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main {padding: 28px clamp(22px, 3vw, 42px) 45px; min-width: 0; background: var(--bg);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-heading {display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 25px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-heading h1 {font: 650 25px/1.3 var(--body); letter-spacing: -.7px; margin-top: 10px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-heading p {color: var(--muted); font-size: 11px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-breadcrumb {color: var(--dim); font-size: 11px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-connection {display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; text-align: right;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-connection .icon {width: 16px; height: 16px; color: var(--accent);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-kicker {color: var(--dim); font-size: 10px; font-weight: 500; letter-spacing: 1.3px; text-transform: uppercase;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-intro {display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; margin-bottom: 22px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-intro h2 {font-size: 25px; letter-spacing: -.7px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-intro p {margin-top: 7px; color: var(--muted); font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-welcome {padding: 24px; margin-bottom: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-welcome h2 {font: 650 25px/1.3 var(--body); letter-spacing: -.7px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-welcome p {font-size: 12px; color: var(--muted);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-welcome::after, .portal-scene) {display: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .metrics {display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 0 0 23px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .metric {min-width: 0; padding: 17px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .metric small {display: block; font-size: 11px; font-weight: 500; color: var(--muted); line-height: 1.45;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .metric strong {display: block; margin: 7px 0 3px; font-size: 27px; font-weight: 650; letter-spacing: -.7px; line-height: 1.3; color: var(--text); overflow-wrap: anywhere;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .metric span {display: block; font-size: 10px; color: var(--muted); line-height: 1.5;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-grid {display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 18px; align-items: start;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.dashboard-panel, .portal-main .card, .application-card) {min-width: 0; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); box-shadow: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-panel {overflow: hidden;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .panel-heading {display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding: 17px 19px; border-bottom: 1px solid var(--line);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .panel-heading :is(h2, h3) {font-size: 15px; margin: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .panel-heading > a {font-size: 12px; color: var(--accent);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .panel-body {padding: 19px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .panel-body > p {font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-row {display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 19px; border-bottom: 1px solid var(--line); font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-row:last-child {border-bottom: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-row > :first-child {min-width: 0; overflow-wrap: anywhere;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-row :is(strong, b) {display: block; font-size: 13px; font-weight: 550;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-row small {display: block; margin-top: 4px; color: var(--muted); font-size: 11px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-row > :is(a, button) {flex-shrink: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main .card {padding: 23px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main .card h3 {font-size: 16px; margin: 0 0 16px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main .card > p {font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-list > :is(a, button, div) {padding: 15px 0; border-color: var(--line); gap: 14px; font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-list small {font-size: 11px; color: var(--muted);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button {min-height: 39px; padding: 9px 13px; gap: 8px; border: 1px solid #41536b; border-radius: 6px; background: transparent; color: var(--text); font-size: 12px; font-weight: 550; line-height: 1.45; text-align: center; box-shadow: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button:hover {background: var(--panel2); transform: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.primary {background: var(--accent); color: #0b1c2b; border-color: var(--accent); box-shadow: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.primary:hover {background: #b6e0ff; border-color: #b6e0ff; filter: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.small {min-height: 35px; padding: 7px 11px; font-size: 11px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button.danger {color: #f5baba; border-color: #865865;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .button-row {gap: 9px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .text-link {color: var(--accent); font-size: 12px; gap: 9px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill {max-width: 100%; padding: 4px 8px; border: 1px solid #40516a; border-radius: 5px; background: #1d2c40; color: var(--muted); font-size: 10px; letter-spacing: 0; line-height: 1.45; white-space: normal;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill::before {display: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill[data-status] {color: var(--portal-amber); border-color: #655c45; background: #2c2a25;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="approved"], [data-status="active"]) {color: var(--portal-green); border-color: #365f54; background: #19342f;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="under_review"], [data-status="submitted"], [data-status="leave"]) {color: var(--accent); border-color: #365a78; background: #1c344a;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="denied"], [data-status="suspended"]) {color: #f1b5bd; border-color: #74505c; background: #35232e;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pill:is([data-status="draft"], [data-status="withdrawn"], [data-status="archived"], [data-status="inactive"]) {color: var(--muted); border-color: #40516a; background: #1d2c40;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-toolbar {display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin: 20px 0 15px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-filter-search {flex: 1 1 240px; max-width: 360px; min-width: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-filter-status {flex: 0 1 195px; min-width: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-filter-search, .portal-filter-status) :is(input, select) {margin-top: 6px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-subtle {font-size: 11px; color: var(--muted);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table-wrap, .hub-roster-table) {max-width: 100%; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-panel > .portal-table-wrap {border: 0; border-radius: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) {width: 100%; border-collapse: collapse; border-spacing: 0; text-align: left; font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) :is(th, td) {padding: 14px 16px; vertical-align: middle; overflow-wrap: anywhere;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) th {color: var(--muted); background: var(--panel2); font-size: 10px; font-weight: 550; letter-spacing: .015em; text-align: left;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) td {border-top: 1px solid var(--line);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) tbody tr:hover {background: #1c2a3e;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) td :is(strong, b) {font-weight: 550;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-row-detail, .portal-table td small, .hub-roster-table td small) {display: block; margin-top: 4px; color: var(--muted); font-size: 10px; line-height: 1.6;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table-empty, .empty-state) {padding: 36px 20px; border: 1px dashed #41536b; border-radius: var(--radius); background: #121f30; text-align: center; color: var(--muted); font-size: 13px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-table-wrap .portal-table-empty {border: 0; border-top: 1px solid var(--line); border-radius: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .empty-state h3 {color: var(--text); font-size: 16px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .empty-state p {font-size: 12px; line-height: 1.7;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(input, select, textarea) {min-width: 0; max-width: 100%; background: #0e1827; color: var(--text); border: 1px solid #41516a; border-radius: 6px; padding: 10px 12px; font-size: 13px; line-height: 1.5;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(input, textarea)::placeholder {color: #93a5bc; opacity: 1;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) label {color: var(--text); font-size: 12px; font-weight: 500;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(label small, .field-help, .muted-text) {color: var(--muted); font-size: 11px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .fields {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .field {margin-top: 21px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-form {max-width: 900px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-form textarea {min-height: 145px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) fieldset {min-width: 0; border: 1px solid #435772; border-radius: 7px; padding: 17px 20px 22px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) legend {font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .answer {background: #0e1827; border-color: var(--line); border-radius: 6px; color: var(--text); font-size: 13px; line-height: 1.8; overflow-wrap: anywhere;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.notice, .notice.warning, .notice.error) {border-radius: 7px; padding: 14px 17px; font-size: 12px; line-height: 1.7; overflow-wrap: anywhere;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .notice {background: #15263b; border-color: #3c5a78; color: #bdd1e5;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .notice.warning {background: #2c281e; border-color: #6d5b3e; color: #e8d8b9;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .notice.error {background: #32212c; border-color: #82505f; color: #f1bbc6;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .progress {margin-top: 0; gap: 20px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-step small {color: var(--muted); font-size: 11px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-marker {border-color: #536984; color: var(--muted);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .progress-step.done .progress-marker {background: var(--portal-active); color: var(--accent); border-color: #577b9d;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .message {color: var(--muted); font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .message.error {color: #f1bbc6;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-load {max-width: 780px; padding: 65px 24px; margin: 0 auto;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-load h1 {font-size: 30px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .preview-banner {background: #182c42; color: #c4daec; border-bottom: 1px solid #375572; font-size: 11px; padding: 11px 26px; flex-wrap: wrap;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .preview-banner select {background: #102034; color: var(--text); border-color: #42617e; margin-top: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .department-hub {max-width: none;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-heading {background: transparent; border: 0; border-radius: 0; padding: 0; align-items: center;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-heading h2 {font-size: 25px; line-height: 1.3; letter-spacing: -.7px; margin: 8px 0 10px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-heading p {font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-access {color: var(--accent);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs {display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 19px; padding-bottom: 17px; border-bottom: 1px solid var(--line);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button {min-height: 39px; padding: 9px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 6px; color: var(--muted); font-size: 12px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button[aria-pressed="true"] {background: var(--portal-active); color: var(--accent); border-color: #648eaf;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button:hover {background: var(--panel2); color: var(--text);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-section {margin-top: 20px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-section-heading {margin-bottom: 16px; flex-wrap: wrap;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-section-heading h2 {font-size: 18px; margin: 5px 0 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .department-hub .card h3 {margin: 14px 0 11px; font-size: 17px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-notice-body {color: #c4d2e4; line-height: 1.8; font-size: 13px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-notice-meta {color: var(--muted); font-size: 11px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-roster-search {display: flex; align-items: end; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin: 17px 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-roster-search label {flex: 1 1 230px; max-width: 360px; min-width: 0; margin-top: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-roster-search input {margin-top: 6px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-roster-search :is(p, output, small) {font-size: 11px; color: var(--muted);}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-roster-table .button-row {margin-top: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-discord {font-size: 12px; margin-top: 0;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-callsign {font-size: 12px; letter-spacing: .02em;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-editor {margin-top: 24px; border-color: #6088ab !important;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .pager {display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 18px;}
+
+@media (max-width: 1100px) {
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-shell {grid-template-columns: 208px minmax(0, 1fr);}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main {padding-inline: 24px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-grid {grid-template-columns: 1fr;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .metrics {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main .grid-3 {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) :is(th, td) {padding: 12px;}
+}
+@media (max-width: 800px) {
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-shell {display: block; min-height: calc(100dvh - 64px);}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar {position: static; height: auto; max-height: none; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 15px; padding: 18px 22px; border-right: 0; border-bottom: 1px solid var(--line); overflow: visible;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar .portal-identity {padding: 0; font-size: 21px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-identity small {font-size: 8px; letter-spacing: 1.3px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-nav {grid-column: 1 / -1; grid-row: 2; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-nav .sidebar-label {grid-column: 1 / -1; padding: 5px 2px 2px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar :is(button, a:not(.portal-identity)) {padding: 9px 10px; min-height: 42px; font-size: 12px; gap: 8px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-account {grid-column: 2; grid-row: 1; margin: 0; padding: 0; border: 0; max-width: 240px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-footer-note {grid-column: 1 / -1; padding: 0 2px; font-size: 10px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-bottom {grid-column: 1 / -1; padding-top: 12px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main {padding: 24px 22px 38px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-heading {margin-bottom: 23px; align-items: start;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main .grid-2 {grid-template-columns: 1fr;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-heading {display: flex; flex-wrap: wrap; gap: 15px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-heading > .button {margin-top: 0;}
+}
+@media (max-width: 560px) {
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar {padding: 10px 15px; gap: 10px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .right {gap: 9px; flex-wrap: wrap; justify-content: end;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .right > a {font-size: 11px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar .button {font-size: 11px; padding: 8px 10px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar {padding: 17px 15px; gap: 16px 12px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-nav {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-account {max-width: 140px; gap: 8px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .account-avatar {width: 31px; height: 31px; font-size: 10px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .account-info {font-size: 11px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .account-info small {font-size: 9px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main {padding: 23px 15px 35px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-heading {gap: 12px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-heading h1 {font-size: 22px; margin-top: 8px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-connection {max-width: 115px; align-items: start; font-size: 10px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-connection .icon {width: 14px; height: 14px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-intro {gap: 15px; margin-bottom: 20px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.dashboard-intro h2, .portal-welcome h2, .hub-heading h2) {font-size: 23px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .metrics {gap: 9px; margin-bottom: 19px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .metric {padding: 14px 12px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .metric strong {font-size: 24px; margin-top: 6px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .metric small {font-size: 10px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .metric span {font-size: 10px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-main .card, .portal-welcome, .panel-body) {padding: 19px 16px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.panel-heading, .dashboard-row) {padding: 16px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-main .grid-3 {grid-template-columns: 1fr;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .dashboard-row {flex-wrap: wrap;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-toolbar {gap: 12px; align-items: stretch;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-filter-search, .portal-filter-status) {flex: 1 1 100%; max-width: none; width: 100%;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) {display: block;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) thead {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) tbody {display: block;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) tbody tr {display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; padding: 17px 15px; border-top: 1px solid var(--line);}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) tbody tr:first-child {border-top: 0;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) td {display: block; min-width: 0; padding: 0; border: 0; font-size: 12px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) td::before {content: attr(data-label); display: block; color: var(--dim); font-size: 10px; font-weight: 500; margin-bottom: 5px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) td:is([data-label="Applicant"], [data-label="Application"], [data-label="Employee"], [data-label="Discord identity"], [data-label="Actions"]) {grid-column: 1 / -1;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-table, .hub-roster-table table) td[colspan] {grid-column: 1 / -1;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(input, select, textarea) {font-size: 16px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .preview-banner {padding: 12px 15px; gap: 10px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .preview-banner label {white-space: normal; flex-wrap: wrap; gap: 7px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .preview-banner select {font-size: 16px; max-width: 100%;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .fields {grid-template-columns: 1fr;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) fieldset {padding: 13px 13px 18px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs {gap: 7px; margin-top: 21px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-tabs button {flex: 1 1 auto; padding-inline: 11px;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-roster-search label {max-width: none; width: 100%;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .hub-editor .grid-2 {grid-template-columns: 1fr;}
+}
+@media (max-width: 360px) {
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-sidebar {grid-template-columns: minmax(0, 1fr);}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .sidebar-account {grid-row: 3; grid-column: 1; max-width: none; padding-top: 12px; border-top: 1px solid var(--line);}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-bar {flex-wrap: wrap;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-heading {flex-wrap: wrap;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-connection {max-width: none; text-align: left;}
+}
+@media (pointer: coarse) {
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(button, .button, .portal-sidebar a) {min-height: 44px;}
+}
+@media print {
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) {background: white; color: #111;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-bar, .portal-sidebar, .preview-banner, .portal-toolbar, .hub-tabs, .hub-roster-search, .button, .pager) {display: none !important;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.portal-shell, .portal-main) {display: block; padding: 0; background: white;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(.card, .dashboard-panel, .metric, .portal-table-wrap, .hub-roster-table) {background: white; color: #111; border-color: #aaa; box-shadow: none;}
+  :is(body[data-page="portal"], body[data-page="portal-preview"]) :is(p, small, .portal-row-detail, .metric strong, .portal-subtle, .hub-notice-body) {color: #333;}
+}

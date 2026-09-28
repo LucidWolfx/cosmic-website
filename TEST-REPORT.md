@@ -1,5 +1,29 @@
 # Cosmic v3 verification report
 
+## Portal dashboard layout - 28 September 2026
+
+- Adopted the approved sidebar/dashboard layout while retaining the current
+  Supabase authentication, application records, Discord notifications and role checks.
+  No third-party administration panel or replacement backend was installed.
+- Added role-aware overview cards, searchable application/review tables, and
+  department notice/employee tabs with a searchable roster.
+- All 54 backend checks passed. Static validation passed for 31 HTML pages.
+  Updated JavaScript syntax checks passed.
+- Browser checks covered applicant/member/staff previews, role-denied review access,
+  application search and combined status filters, empty results, dashboard review
+  shortcuts, department approval fields, and returning to the queue on the same route.
+- Fixed a review form name collision discovered during browser testing, and kept
+  the review route consistent when entering from a dashboard shortcut.
+- A local-only fixture loaded the actual department module with fictional records.
+  Verified roster search, Discord identity display, editor persistence between tabs,
+  saving employee edits, removal of command actions after role loss, and clearing
+  private content after a role verification failure. Fixture files are not published.
+- Desktop and 390/320 px portal layouts were checked; the department workspace also
+  fit at 320 px without horizontal overflow. This is browser viewport testing, not
+  a physical-device or full accessibility audit.
+- No live application decisions, Discord messages, permission changes, credentials
+  or database migrations were made for this presentation update. Applications stay open.
+
 ## Application intake opened - 28 September 2026
 
 - The owner authorized opening applications after publication of rules v1.0.
