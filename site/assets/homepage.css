@@ -37,3 +37,54 @@ body[data-page=index] .ad-art{right:0;width:100%;height:100%;object-fit:contain;
   .ad-ticker .ad-ticker-group li{gap:24px!important}
   .ad-ticker-primary{font-size:clamp(24px,3vw,42px);letter-spacing:-.7px}
 }
+
+/* Three character pathways, inspired by the supplied dark card layout. */
+.ad-paths{width:calc(100% - 96px);max-width:1320px;margin:0 auto;padding:90px 0 70px}
+.ad-paths-intro{display:grid;grid-template-columns:1.15fr 1fr;align-items:end;gap:70px;margin-bottom:72px}
+.ad-paths-eyebrow,.ad-path-label,.ad-path-caption,.ad-path-motto,.ad-paths-intro-copy>span{font-family:Consolas,'Courier New',monospace;font-size:10px;line-height:1.8;font-weight:600;letter-spacing:2.2px;text-transform:uppercase}
+.ad-paths-eyebrow{margin:0 0 24px;color:var(--highlight)}
+.ad-paths-eyebrow:before{content:'/';margin-right:16px;color:var(--accent)}
+.ad-paths h2{margin:0;font-size:clamp(44px,4.7vw,76px);font-weight:850;line-height:.99;letter-spacing:-3px;color:#f5f5f6}
+.ad-paths h2 span{color:var(--accent)}
+.ad-paths-intro-copy{padding-bottom:5px;max-width:450px}
+.ad-paths-intro-copy>p{margin:0;color:#b4b4bd;font-size:18px;line-height:1.65;font-weight:500}
+.ad-paths-intro-copy>span{display:block;margin-top:25px;color:#9797a2;font-size:10px;letter-spacing:1.7px}
+.ad-paths-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.ad-path-card{--path-glow:#102238;display:flex;flex-direction:column;min-width:0;min-height:570px;padding:28px 30px 24px;border:1px solid #282830;border-radius:28px;background:radial-gradient(ellipse at 10% 0%,var(--path-glow),transparent 78%),#050506;transition:border-color .2s ease}
+.ad-path-civilian{--path-glow:#271b0c}
+.ad-path-crime{--path-glow:#360e17;border-color:#49252e}
+.ad-path-card:hover,.ad-path-card:focus-within{border-color:#89505d}
+.ad-path-label{margin:0;color:var(--highlight)}
+.ad-path-caption{margin:7px 0 0;color:#a3a3ae;font-size:10px;letter-spacing:1.7px}
+.ad-path-body{display:flex;flex-direction:column;flex:1;margin-top:94px;min-width:0}
+.ad-path-card h3{margin:0;color:#f5f5f6;font-size:clamp(32px,3.05vw,46px);font-weight:800;line-height:1.02;letter-spacing:-1.6px;overflow-wrap:break-word}
+.ad-path-motto{min-height:36px;margin:18px 0 0;color:var(--highlight);font-size:10px;letter-spacing:1.5px}
+.ad-path-description{margin:18px 0 30px;color:#c7c7ce;font-size:14px;line-height:1.7}
+.ad-path-link{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:47px;margin-top:auto;padding-top:13px;border-top:1px solid #ffffff16;color:#f0f0f3;font-size:12px;font-weight:600;text-decoration:none}
+.ad-path-link span{color:var(--highlight);font-size:19px}
+.ad-path-link:hover{color:var(--highlight)}
+@media(max-width:1100px){
+  .ad-paths{width:calc(100% - 52px);padding-block:65px 45px}
+  .ad-paths-intro{gap:35px;margin-bottom:42px}
+  .ad-paths h2{font-size:50px;letter-spacing:-2px}
+  .ad-paths-intro-copy>p{font-size:16px}
+  .ad-paths-grid{grid-template-columns:1fr;gap:18px}
+  .ad-path-card{display:grid;grid-template-columns:minmax(140px,.65fr) minmax(0,1.35fr);gap:35px;min-height:0;padding:32px;border-radius:24px}
+  .ad-path-body{margin-top:0}
+  .ad-path-card h3{font-size:42px}
+  .ad-path-motto{min-height:0}
+}
+@media(max-width:600px){
+  .ad-paths{width:calc(100% - 36px);padding-block:52px 30px}
+  .ad-paths-intro{grid-template-columns:1fr;gap:26px;margin-bottom:34px}
+  .ad-paths-eyebrow{margin-bottom:18px;font-size:9px;letter-spacing:1.8px}
+  .ad-paths h2{font-size:clamp(40px,11vw,60px);letter-spacing:-1.8px}
+  .ad-paths-intro-copy>p{font-size:15px;line-height:1.65}
+  .ad-paths-intro-copy>span{font-size:9px;letter-spacing:1.2px;margin-top:18px}
+  .ad-path-card{display:flex;padding:25px 23px 20px;border-radius:23px}
+  .ad-path-body{margin-top:58px}
+  .ad-path-card h3{font-size:clamp(31px,9vw,43px);letter-spacing:-1.2px}
+  .ad-path-description{font-size:14px;margin-bottom:22px}
+}
+@media(prefers-reduced-motion:reduce){.ad-path-card{transition:none}}
+@media print{.ad-paths{width:100%;padding:25px 0}.ad-paths-intro{margin-bottom:25px}.ad-path-card{break-inside:avoid;background:#fff;color:#111}.ad-paths h2,.ad-path-card h3,.ad-path-description,.ad-path-link{color:#111}}

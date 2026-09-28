@@ -1,5 +1,19 @@
 # Cosmic v3 verification report
 
+## Homepage character pathways - 28 September 2026
+
+- Added a three-card section directly below the opposing text rows, using the
+  supplied reference's large heading, true-black base and subtle dark gradients.
+- Public service links to LSPD, civilian life to business proposals, and criminal
+  life to organizations. Copy does not promise unconfirmed jobs or mechanics and
+  retains the requirement for staff approval of criminal organizations.
+- CUA browser checks passed at 2560, 1440, 1024, 390 and 320 px: no page or card
+  overflow. Desktop cards have equal heights; tablet/phone cards use one column.
+  Desktop and phone screenshots were inspected; all three destination links
+  match the existing public pages. A separate source review found no blocking issue.
+- Build/static validation passed for 31 pages. No new tests were added for this
+  HTML/CSS change. Existing hero framing and continuous banner behavior remain.
+
 ## Continuous banner and compact spacing - 28 September 2026
 
 - Removed the pause button and hover pause at the owner's request. Both rows
