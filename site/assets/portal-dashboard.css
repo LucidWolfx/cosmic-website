@@ -116,7 +116,7 @@
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-heading {display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 25px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-heading h1 {font: 650 25px/1.3 var(--body); letter-spacing: -.7px; margin-top: 10px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-heading p {color: var(--muted); font-size: 11px;}
-:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-breadcrumb {color: var(--dim); font-size: 11px;}
+:is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-breadcrumb {display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--dim); font-size: 11px;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-connection {display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 11px; text-align: right;}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-connection .icon {width: 16px; height: 16px; color: var(--accent);}
 :is(body[data-page="portal"], body[data-page="portal-preview"]) .portal-kicker {color: var(--dim); font-size: 10px; font-weight: 500; letter-spacing: 1.3px; text-transform: uppercase;}
