@@ -1,9 +1,9 @@
 {
   "groups": [
-    {"id":"ownership","title":"Ownership","description":"Guiding the community, setting the standards, and shaping what comes next for Cosmic.","icon":"user","accent":"crimson"},
-    {"id":"development","title":"Development","description":"Building the systems behind the city and keeping the Cosmic experience moving forward.","icon":"grid","accent":"cyan"}
-  ],
-  "members": [
-    {"id":"wolf","name":"Wolf","role":"Owner & Lead Developer","roles":{"ownership":"Owner","development":"Lead Developer"},"initials":"W","avatarUrl":"https://mygpttrerwwexljgdiyq.supabase.co/functions/v1/staff-avatar/wolf","bio":"Leading the community. Building the experience.","roleBios":{"ownership":"Community leadership, standards, and the direction of Cosmic.","development":"The website, the portal, and the systems behind the experience."}}
+    {"id":"ownership","title":"Owners","description":"Guiding the community, setting its standards, and shaping what comes next.","icon":"user","accent":"crimson"},
+    {"id":"management","title":"Cosmic Management","description":"Coordinating the team and supporting the direction of the community.","icon":"people","accent":"violet"},
+    {"id":"administrator","title":"Administrators","description":"Administration and support for the people behind the characters.","icon":"shield","accent":"cyan"},
+    {"id":"moderator","title":"Moderators","description":"Keeping community spaces welcoming and helping players find support.","icon":"check","accent":"green"},
+    {"id":"trial-staff","title":"Trial Staff","description":"Learning the role and supporting the community alongside the staff team.","icon":"help","accent":"amber"}
   ]
 }

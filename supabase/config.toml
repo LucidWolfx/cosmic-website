@@ -15,3 +15,7 @@ verify_jwt = false
 # Public image proxy for a fixed, owner-approved staff identity. No profile data.
 [functions.staff-avatar]
 verify_jwt = false
+
+# Public, minimal directory of current members holding fixed Cosmic staff roles.
+[functions.staff-directory]
+verify_jwt = false

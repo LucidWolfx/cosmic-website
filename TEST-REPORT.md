@@ -1,5 +1,28 @@
 # Cosmic v3 verification report
 
+## Automatic Discord staff directory - 28 September 2026
+
+- Five approved Discord roles populate Owners, Cosmic Management,
+  Administrators, Moderators and Trial Staff. Each person appears once under
+  their highest role, with badges for other matching staff roles.
+- Wolf retains his public name and Lead Developer badge. Server avatars take
+  precedence over global/default avatars. Bots and pending members are excluded.
+- Deployed and anonymously verified the dedicated staff-directory function:
+  HTTP 200, five-minute cache, six staff profiles with the expected role grouping.
+  The public projection contains only approved display fields; private portal
+  records and unrelated Discord roles are not returned.
+- All 93 automated tests passed, including 16 directory backend checks and 11
+  client contract/mount checks for duplicates, role ordering, unsafe input,
+  role changes, departures, expiry, outages, retry limits and avatar fallback.
+  No real member's roles were changed to perform these tests.
+- Build/static validation passed for 31 pages. Browser checks using the live
+  response verified six loaded Discord pictures, highest-role counts, secondary
+  badges, empty sections, and no horizontal overflow at desktop, 390 and 320 px.
+- Visible pages refresh about every five minutes. Failed refreshes remove
+  expired cards and show unavailable counts instead of retaining a stale roster.
+- Existing sign-in, application intake, department permissions and private
+  records are unchanged. This update adds no new dependencies.
+
 ## Community role panels - 28 September 2026
 
 - Combined the supplied role-panel grid reference with compact individual cards:

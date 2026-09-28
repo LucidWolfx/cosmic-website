@@ -1,5 +1,5 @@
 {
-  "version": "4.2.0-team-role-panels",
+  "version": "4.3.0-discord-staff-directory",
   "date": "2026-09-28",
   "brandFinal": true,
   "githubInspected": "LucidWolfx/Cosmic-fbi",
@@ -30,5 +30,9 @@
   "communityTeamDirectory": true,
   "staffAvatarAutomatedTestsPassed": 12,
   "communityDiscordAvatar": true,
-  "communityTeamRolePanels": true
+  "communityTeamRolePanels": true,
+  "communityDiscordRoleSync": true,
+  "staffDirectoryBackendTestsPassed": 16,
+  "staffDirectoryFrontendTestsPassed": 11,
+  "automatedTestsPassed": 93
 }

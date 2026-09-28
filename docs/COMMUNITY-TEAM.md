@@ -1,47 +1,66 @@
 # Community team directory
 
-The Community page introduces the public leadership and staff team.
-Edit `site/assets/team.json`, then run `python tools/build.py`.
+The Community page uses Discord staff roles to populate the approved role-panel
+and hexagonal profile-card layout. `site/assets/team.json` holds public panel
+copy; it does not maintain a manual member roster. `team-directory.js` loads the
+public `staff-directory` Edge Function. Build with `python tools/build.py`.
 
-The directory combines role panels (title, description, icon, member count)
-with individual profile cards (hexagonal avatar, name, role badge, and bio).
-The base remains black with crimson Ownership and cyan Development accents.
+## Role hierarchy
 
-`groups` defines each panel with a unique URL-safe `id`, `title`, `description`,
-`icon` from the existing icon set, and `accent` (`crimson` or `cyan`).
-Each member has a unique `id`, public `name`, full `role`, and a `roles` mapping
-from group ID to the title shown in that group. Optional `roleBios` overrides
-the general `bio` for a particular panel. Array order controls display order.
+| Order | Website section | Discord role ID |
+| --- | --- | --- |
+| 1 | Owners | 1329107732896284720 |
+| 2 | Cosmic Management | 1329107732896284713 |
+| 3 | Administrators | 1329107732850151502 |
+| 4 | Moderators | 1329107732774781069 |
+| 5 | Trial Staff | 1329107732774781068 |
 
-Optional `avatarUrl` must be an HTTPS image URL. The picture replaces `initials`
-only after it loads successfully; unavailable images retain the styled fallback.
-All member cards use the existing avatar loader and public picture endpoint.
+A person appears once, under their highest matching role. Other matching staff
+roles appear as badges on that same card. Counts describe the people listed in
+each section, not everyone who holds a lower role. Bots and pending members are
+excluded. People without a mapped staff role are never returned to the website.
 
-Only publish confirmed names and titles. An empty group shows a short directory
-update message; it does not create fictional staff or imply a vacant position.
-Wolf appears in Ownership as **Owner** and Development as **Lead Developer**.
-Those are two roles held by one person. Panel counts count each role's published
-members independently; they are not an overall unique staff total.
-The Discord username is not part of the public profile.
+The public name uses the server nickname, then Discord display name, then
+username. Wolf's verified Discord ID (351884909519831041) always displays as
+**Wolf**, with an additional **Lead Developer** badge. This override never keeps
+him in the directory if he leaves the guild or loses all mapped staff roles.
+Server-specific avatars take precedence over global/default Discord avatars.
+No personal bios are imported from Discord.
 
-This public directory is separate from website authorization and private
-department rosters. Editing it does not grant portal access, Discord roles, or
-department permissions. No private portal profiles are fetched or exposed here.
+## Updating and availability
 
-## Wolf's Discord picture
+The server reads all member pages and publishes a complete filtered snapshot.
+Successful snapshots are cached for up to five minutes per warm function
+instance, with browser caching limited to the snapshot's remaining freshness.
+The browser refreshes while the page is visible and rechecks on return.
+Role changes, departures, display names, and pictures are reflected on refresh.
 
-The public `staff-avatar/wolf` Edge Function returns only Wolf's profile image,
-preferring his Cosmic server avatar and falling back to his global Discord
-avatar. It uses the existing server-side `DISCORD_BOT_TOKEN` and
-`DISCORD_GUILD_ID`; neither credential is exposed to the website. The fixed
-allowlist in the function prevents it from looking up arbitrary members.
+Expired member cards are cleared when a refresh fails. The page distinguishes
+unavailable data from a successfully checked empty section. It does not keep a
+persistent browser copy of the staff list. Rate limits use retry backoff; an
+incomplete, failed, or truncated Discord response is never treated as a roster.
 
-Successful images are cached for five minutes. Temporary Discord failures can
-serve the last successful image for up to six hours; a confirmed departure
-clears that cached image. The endpoint does not return usernames, role lists,
-or member records. The public display name and title remain owner-maintained.
+## Backend setup
 
-Deploy `staff-avatar` with JWT verification disabled because its only public
-output is the approved profile picture. Other functions and authorization
-settings are unchanged. GitHub Pages publishes the frontend; function deployment
-is separate. Run `npm test` for the mocked Discord endpoint checks.
+`supabase/functions/_shared/staff-directory.mjs` owns the fixed guild and role
+allowlist and safe public serialization. Its thin Deno entry point is
+`supabase/functions/staff-directory/index.ts`. It uses the existing server-side
+`DISCORD_BOT_TOKEN` and `DISCORD_GUILD_ID`, expected guild 1329107732003029093.
+The bot's Server Members Intent must be enabled for Discord's List Guild Members
+endpoint. This was already enabled when the feature was configured.
+
+Deploy `staff-directory` with JWT verification disabled: this specific endpoint
+is intentionally public and returns only approved staff display information.
+It accepts no arbitrary guild, role, member, or URL parameters. It returns no
+bot token, private portal records, email addresses, messages, or unrelated roles.
+The frontend treats Discord names as text and restricts image URLs to Discord's
+known CDN paths for the matching member. Existing authentication, department
+permissions, and private rosters are unaffected by this public directory.
+
+GitHub Pages deployment does not deploy Supabase functions. Deploy and verify
+the function separately before publishing the frontend. Run `npm test` for
+backend behavior and client payload validation tests.
+
+The earlier `staff-avatar/wolf` image endpoint is retained for compatibility;
+its fixed-identity policy and credentials are unchanged. The directory uses the
+current avatar URL from each fresh Discord member snapshot instead.
