@@ -1,5 +1,20 @@
 # Cosmic v3 verification report
 
+## Continuous banner and compact spacing - 28 September 2026
+
+- Removed the pause button and hover pause at the owner's request. Both rows
+  continue moving when the pointer is over the banner.
+- The bottom row uses fixed 24 px gaps around its separators instead of
+  distributing excess screen width between phrases. Extra phrase copies fill
+  wide screens; equal groups retain a continuous loop and resize with the page.
+- Repeated phrases remain hidden from assistive technology. Reduced-motion
+  preferences still show static original text without duplicate phrases.
+- Build/static checks passed for 31 pages; JavaScript and Python syntax passed.
+  CUA verified a hovered banner with both animations running, no pause control,
+  24 px spacing, equal loop widths, and no overflow at 2560, 390 and 320 px.
+- Updated existing legacy UI expectations; that browser suite was not executed.
+  The corrected hero image framing and private systems are unchanged.
+
 ## Homepage artwork scaling - 28 September 2026
 
 - The hero image now uses contain sizing at its original proportions with no

@@ -2,24 +2,38 @@
 (() => {
   const ticker = document.querySelector('[data-home-ticker]');
   if (!ticker) return;
-  const toggle = ticker.querySelector('[data-ticker-toggle]');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  for (const track of ticker.querySelectorAll('.ad-ticker-track')) {
-    const copy = track.firstElementChild.cloneNode(true);
-    copy.classList.add('ad-ticker-copy');
+  const rows = [...ticker.querySelectorAll('.ad-ticker-track')].map(track => ({
+    track, group: track.firstElementChild, items: [...track.firstElementChild.children]
+  }));
+  let previousWidth = -1;
+  function duplicate(element, className) {
+    const copy = element.cloneNode(true);
+    copy.classList.add(className);
     copy.setAttribute('aria-hidden', 'true');
     copy.inert = true;
-    track.append(copy);
+    return copy;
   }
-  let paused = false;
-  function updateMotion() {
+  function fitRows(force = false) {
+    const width = ticker.clientWidth;
+    if (!force && width === previousWidth) return;
+    previousWidth = width;
     ticker.dataset.motionReady = String(!reducedMotion.matches);
-    ticker.dataset.paused = String(paused);
-    toggle.hidden = reducedMotion.matches;
-    toggle.textContent = paused ? 'Resume motion' : 'Pause motion';
-    toggle.setAttribute('aria-pressed', String(paused));
+    for (const {track, group, items} of rows) {
+      track.querySelector('.ad-ticker-copy')?.remove();
+      group.querySelectorAll('.ad-ticker-fill').forEach(item => item.remove());
+      if (reducedMotion.matches) continue;
+      // Fill wide screens with repeated phrases rather than stretching the gaps.
+      const groupWidth = group.getBoundingClientRect().width;
+      if (!groupWidth) continue;
+      const repeats = Math.max(1, Math.ceil(width / groupWidth));
+      for (let repeat = 1; repeat < repeats; repeat++) {
+        items.forEach(item => group.append(duplicate(item, 'ad-ticker-fill')));
+      }
+      track.append(duplicate(group, 'ad-ticker-copy'));
+    }
   }
-  toggle.addEventListener('click', () => { paused = !paused; updateMotion(); });
-  reducedMotion.addEventListener('change', updateMotion);
-  updateMotion();
+  reducedMotion.addEventListener('change', () => fitRows(true));
+  new ResizeObserver(() => fitRows()).observe(ticker);
+  fitRows(true);
 })();
