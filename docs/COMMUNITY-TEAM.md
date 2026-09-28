@@ -19,6 +19,8 @@ A person appears once, under their highest matching role. Other matching staff
 roles appear as badges on that same card. Counts describe the people listed in
 each section, not everyone who holds a lower role. Bots and pending members are
 excluded. People without a mapped staff role are never returned to the website.
+The section's own role is not repeated as a badge. Wolf appears first in Owners
+as the community's creator; other members retain the directory's normal order.
 
 The public name uses the server nickname, then Discord display name, then
 username. Wolf's verified Discord ID (351884909519831041) always displays as

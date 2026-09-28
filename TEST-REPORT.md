@@ -1,5 +1,16 @@
 # Cosmic v3 verification report
 
+## Staff card badge and order refinement - 28 September 2026
+
+- Cards omit the role already named by their section. Only additional staff
+  roles and approved extra labels appear as badges; empty badge rows are hidden.
+- Wolf is pinned first within Owners using his verified Discord identity.
+  His public name and Lead Developer badge are retained. Other owners keep
+  their existing relative order.
+- Build/static validation passed for 31 pages and JavaScript syntax passed.
+  The existing directory rendering expectation was updated for extra roles only.
+  Discord synchronization and access permissions are unchanged.
+
 ## Automatic Discord staff directory - 28 September 2026
 
 - Five approved Discord roles populate Owners, Cosmic Management,

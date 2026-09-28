@@ -87,6 +87,7 @@ body[data-page=community] .team-profile-frame [hidden] {display: none !important
 body[data-page=community] .team-card-body {min-width: 0; overflow-wrap: anywhere;}
 body[data-page=community] .team-member-heading {display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin: 0;}
 body[data-page=community] .team-member-badges {display: flex; flex-wrap: wrap; gap: 6px; max-width: 100%; min-width: 0;}
+body[data-page=community] .team-member-badges[hidden] {display: none;}
 body[data-page=community] .team-member-heading h4 {margin: 0; color: #f6f6f7; font: 700 22px/1.25 'Segoe UI', Arial, sans-serif; letter-spacing: -.03em;}
 body[data-page=community] .team-role {display: inline-flex; align-items: center; max-width: 100%; padding: 4px 9px; border: 1px solid var(--team-edge); border-radius: 4px; background: var(--team-soft); color: var(--team-highlight); font-size: 11px; font-weight: 550; letter-spacing: 0; line-height: 1.45;}
 body[data-page=community] .team-bio {margin: 12px 0 0; color: #aaa; font-size: 13px; line-height: 1.75;}

@@ -197,7 +197,9 @@ export function mountStaffDirectory(root, options = {}) {
     card.dataset.teamMember = member.id;
     card.querySelector('[data-team-name]').textContent = member.name;
     const badges = card.querySelector('[data-team-badges]');
-    for (const label of [...member.roles.map(role => ROLE_LABELS.get(role)), ...member.labels]) {
+    const extraLabels = [...member.roles.filter(role => role !== member.primaryGroup).map(role => ROLE_LABELS.get(role)), ...member.labels];
+    badges.hidden = extraLabels.length === 0;
+    for (const label of extraLabels) {
       const badge = doc.createElement('span');
       badge.className = 'team-role';
       badge.textContent = label;
@@ -229,6 +231,8 @@ export function mountStaffDirectory(root, options = {}) {
   function render(snapshot) {
     const grouped = new Map(GROUP_ORDER.map(slug => [slug, []]));
     snapshot.members.forEach(member => grouped.get(member.primaryGroup).push(member));
+    // The community's creator leads the Owners section; preserve everyone else's order.
+    grouped.get('ownership').sort((a, b) => Number(b.id === WOLF_ID) - Number(a.id === WOLF_ID));
     for (const [slug, members] of grouped) {
       const fragment = doc.createDocumentFragment();
       if (!members.length) fragment.append(emptyMessage('No staff listed in this section.'));

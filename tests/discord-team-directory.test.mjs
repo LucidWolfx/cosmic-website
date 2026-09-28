@@ -151,14 +151,14 @@ async function fixture(first = directory()) {
   };
 }
 
-test('mount renders hostile names as text, approved badges once in the highest group, and omits credentials', async () => {
+test('mount renders hostile names as text, additional role badges in the highest group, and omits credentials', async () => {
   const name = '<img src=x onerror=alert(1)> & "Owner"';
   const f = await fixture(directory([employee(), employee({id: OTHER, name, avatarUrl: avatar(OTHER), primaryGroup: 'moderator', roles: ['moderator', 'trial-staff'], labels: []})]));
   assert.equal(f.root.dataset.directoryState, 'ready');
   assert.equal(f.count('ownership'), '1'); assert.equal(f.count('management'), '0');
   assert.equal(f.count('moderator'), '1'); assert.equal(f.count('trial-staff'), '0');
   const wolf = f.cards('ownership')[0], other = f.cards('moderator')[0];
-  assert.deepEqual(wolf.querySelector('[data-team-badges]').children.map(node => node.textContent), ['Owner', 'Cosmic Management', 'Lead Developer']);
+  assert.deepEqual(wolf.querySelector('[data-team-badges]').children.map(node => node.textContent), ['Cosmic Management', 'Lead Developer']);
   assert.equal(other.querySelector('[data-team-name]').textContent, name);
   assert.equal(other.querySelector('[data-team-name]').children.length, 0);
   assert.equal(other.querySelector('[data-team-avatar]').src, avatar(OTHER));
