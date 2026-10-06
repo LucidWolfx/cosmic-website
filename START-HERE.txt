@@ -23,7 +23,7 @@ GITHUB PROJECT
 https://github.com/LucidWolfx/cosmic-website
 The new website has a separate repository. The older Cosmic-fbi site is unchanged.
 The Publish Cosmic website workflow builds, validates, and deploys site/.
-Live website: https://lucidwolfx.github.io/cosmic-website/
+Live website: https://cosmicrp.net/
 
 DISCORD LOGIN AND PRIVATE APPLICATION REVIEWS ARE CONNECTED.
 Reviews go to #website-applications. Staff can approve, deny, or request changes.

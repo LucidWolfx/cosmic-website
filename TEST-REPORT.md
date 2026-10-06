@@ -1,5 +1,22 @@
 # Cosmic v3 verification report
 
+## Custom domain migration - 6 October 2026
+
+- Set cosmicrp.net as the GitHub Pages custom domain and verified ownership with
+  its DNS TXT challenge. The Squarespace Defaults parking preset was replaced
+  with GitHub's four apex A records and www CNAME, with explicit owner approval.
+  Squarespace's authoritative DNS returned the expected saved records.
+- Added the exact https://cosmicrp.net/auth-callback.html Supabase redirect URL.
+  Department CORS accepts only the new HTTPS origin and the existing GitHub origin
+  during cutover. It returns the matching origin plus Vary: Origin, keeps headers
+  separate per request, and retains all session, membership and role checks.
+- Deployed department-hub and verified its public OPTIONS response: 204 with the
+  exact new origin and Vary: Origin. No private data was requested in that check.
+- Updated Discord review links and setup documentation to the new public address.
+- Full automated suite: 97 passed, zero failures or skips. Build/static validation:
+  31 pages; rebuilding changed no generated website files. DNS propagation,
+  HTTPS issuance and live sign-in are checked separately during the cutover.
+
 ## Homepage character pathways - 28 September 2026
 
 - Added a three-card section directly below the opposing text rows, using the

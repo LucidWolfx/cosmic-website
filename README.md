@@ -45,7 +45,7 @@ mention to **#department-apps**, linking to website Staff review.
 Decisions update the same application records used by the portal. See
 `docs/DISCORD-REVIEWS.md` for configuration, tests, and operation.
 
-The live website is https://lucidwolfx.github.io/cosmic-website/. Discord sign-in
+The live website is https://cosmicrp.net/. Discord sign-in
 and private reviews are configured and verified. The review channel is currently
 named **#website-applications**. Whitelist applications and member/support requests
 are open at the owner's direction on 28 September 2026, including LSPD department

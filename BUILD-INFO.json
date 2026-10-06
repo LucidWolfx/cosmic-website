@@ -1,6 +1,6 @@
 {
-  "version": "4.5.0-homepage-pathways",
-  "date": "2026-09-28",
+  "version": "4.5.1-cosmic-domain",
+  "date": "2026-10-06",
   "brandFinal": true,
   "githubInspected": "LucidWolfx/Cosmic-fbi",
   "githubModified": true,
@@ -34,7 +34,8 @@
   "communityDiscordRoleSync": true,
   "staffDirectoryBackendTestsPassed": 16,
   "staffDirectoryFrontendTestsPassed": 11,
-  "automatedTestsPassed": 93,
+  "automatedTestsPassed": 97,
   "homepageOpposingTextRows": true,
-  "homepageCharacterPathways": true
+  "homepageCharacterPathways": true,
+  "customDomain": "cosmicrp.net"
 }

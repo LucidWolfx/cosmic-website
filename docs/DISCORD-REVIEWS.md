@@ -19,7 +19,7 @@ See `DEPARTMENT-HUB.md`.
 
 ## Cosmic deployment
 
-- GitHub Pages: https://lucidwolfx.github.io/cosmic-website/
+- GitHub Pages: https://cosmicrp.net/
 - Supabase project: `mygpttrerwwexljgdiyq`
 - Discord application: `1399288433595252777` (Cosmic Roleplay, the owner's existing app)
 - Discord server: `1329107732003029093`

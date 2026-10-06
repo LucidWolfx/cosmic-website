@@ -70,7 +70,7 @@ export function reviewMessage(job) {
 
 export function departmentNotification(roleId,setupTest=false) {
   if(!ID.test(roleId||''))throw new Error('Invalid department notification role.');
-  const url='https://lucidwolfx.github.io/cosmic-website/portal.html#review';
+  const url='https://cosmicrp.net/portal.html#review';
   return {
     content:`<@&${roleId}>`,allowed_mentions:{parse:[],roles:[roleId],users:[],replied_user:false},
     embeds:[{title:setupTest?'Setup test � Department application':'New department application',description:setupTest?`This is a fictional setup test. No application needs review.\n\n[Open Staff review](${url})`:`A new department application is ready to review on the Cosmic website.\n\n[Open Staff review](${url})`,url,color:0x8ac7f3,footer:{text:'Cosmic Roleplay � Department applications'}}],
@@ -167,7 +167,7 @@ export function createHandlers({config:c,fetchImpl=fetch,waitUntil=()=>{},now=()
     const match=ACTION.exec(i.data?.custom_id||'');
     if(!match)return privateReply('This review control is not recognized.');
     const [,action,id,revision,modalMessage]=match;
-    if(action==='enroll')return privateReply('Review department applications on the Cosmic website: https://lucidwolfx.github.io/cosmic-website/portal.html#review');
+    if(action==='enroll')return privateReply('Review department applications on the Cosmic website: https://cosmicrp.net/portal.html#review');
     if(i.type===3){
       if(modalMessage||!ID.test(i.message?.id||'')||i.message?.author?.id!==c.appId)return privateReply('Use the application message posted by the Cosmic bot.');
       return modal(action,id,revision,i.message.id);

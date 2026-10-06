@@ -90,7 +90,7 @@ test('department approval, verified roster identity and departure lifecycle',asy
  }finally{await db.close();}
 });
 
-const config={supabaseUrl:'https://test.supabase.co',serviceKey:'server-only',botToken:'bot-only',guildId:'1329107732003029093',origin:'https://lucidwolfx.github.io'};
+const config={supabaseUrl:'https://test.supabase.co',serviceKey:'server-only',botToken:'bot-only',guildId:'1329107732003029093',origins:['https://cosmicrp.net','https://lucidwolfx.github.io']};
 const reply=(data,status=200)=>new Response(JSON.stringify(data),{status});
 test('roster synchronizer only archives confirmed Unknown Member, never errors or missing access',async()=>{
  for(const [status,body,outcome] of [[200,{user:{id:applicantDiscord,username:'fixture'}},'present'],[404,{code:10007},'left'],[404,{code:10004},'retry'],[403,{code:50001},'retry'],[401,{},'retry'],[429,{retry_after:65},'retry'],[500,{},'retry'],[200,{user:{id:reviewerDiscord}},'retry']]){
@@ -103,7 +103,7 @@ test('roster synchronizer only archives confirmed Unknown Member, never errors o
  }
 });
 test('department website approval uses verified applicant membership and denies missing command roles',async()=>{
- for(const roles of [[viewer],[viewer,editor]]){
+ for(const origin of config.origins)for(const roles of [[viewer],[viewer,editor]]){
   let approved;
   const handler=createDepartmentHandler({config,fetchImpl:async(url,options)=>{
     if(url.endsWith('/auth/v1/user'))return reply({id:reviewer});
@@ -114,7 +114,7 @@ test('department website approval uses verified applicant membership and denies 
     if(url.endsWith('/cosmic_approve_department_application')){approved=JSON.parse(options.body);return reply({status:'approved'});}
     throw Error('Unexpected call');
   }});
-  const response=await handler(new Request('https://test/department-hub',{method:'POST',headers:{Authorization:'Bearer session',Origin:config.origin},body:JSON.stringify({action:'approve',department:'lspd',payload:{application_id:applicant,roster:{...character,discord_id:reviewerDiscord}}})}));
-  assert.equal(response.status,roles.length===2?200:403);if(approved){assert.equal(approved.p_member_id,applicantDiscord);assert.equal(approved.p_portal_user,reviewer);assert.equal(approved.p_member_name,'verified.account');}
+  const response=await handler(new Request('https://test/department-hub',{method:'POST',headers:{Authorization:'Bearer session',Origin:origin},body:JSON.stringify({action:'approve',department:'lspd',payload:{application_id:applicant,roster:{...character,discord_id:reviewerDiscord}}})}));
+  assert.equal(response.status,roles.length===2?200:403);assert.equal(response.headers.get('access-control-allow-origin'),origin);if(approved){assert.equal(approved.p_member_id,applicantDiscord);assert.equal(approved.p_portal_user,reviewer);assert.equal(approved.p_member_name,'verified.account');}
  }
 });

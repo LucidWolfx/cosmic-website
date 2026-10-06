@@ -27,7 +27,7 @@ test('legacy Discord department approval controls direct reviewers to the websit
   let calls=0;const h=createHandlers({config,fetchImpl:async()=>{calls++;throw Error('Unexpected call');}});
   for(const i of [{...click,data:{custom_id:`cosmic:enroll:${id}:1`}},submitted('enroll')]){
     const result=await (await h.interactions(await request(i))).json();
-    assert.equal(result.type,4);assert.match(result.data.content,/website/);
+    assert.equal(result.type,4);assert.equal(result.data.content,'Review department applications on the Cosmic website: https://cosmicrp.net/portal.html#review');
   }
   assert.equal(calls,0);
 });
@@ -155,7 +155,8 @@ test('department requests contain only the designated role ping, embed and websi
   const payload=JSON.parse(sent.options.body);
   assert.equal(payload.content,`<@&${config.departmentNotifyRoleId}>`);
   assert.deepEqual(payload.allowed_mentions,{parse:[],roles:[config.departmentNotifyRoleId],users:[],replied_user:false});
-  assert.equal(payload.embeds.length,1);assert.match(payload.embeds[0].url,/portal.html#review$/);
+  assert.equal(payload.embeds.length,1);assert.equal(payload.embeds[0].url,'https://cosmicrp.net/portal.html#review');
+  assert.ok(payload.embeds[0].description.includes('[Open Staff review](https://cosmicrp.net/portal.html#review)'));
   assert.equal(payload.attachments,undefined);assert.equal(payload.components,undefined);
   assert.doesNotMatch(sent.options.body,/Private|Applicant|100000000000000004|@everyone/);
   assert.equal(payload.enforce_nonce,true);assert.ok(payload.nonce.length<=25);
@@ -203,4 +204,5 @@ test('setup alerts require a private outbox flag, not an applicant-supplied answ
   const sent=calls.filter(c=>c.url.endsWith('/messages')).map(c=>JSON.parse(c.options.body));
   assert.match(sent[0].embeds[0].title,/Setup test/);assert.match(sent[0].embeds[0].description,/fictional/);
   assert.equal(sent[1].embeds[0].title,'New department application');
+  for(const payload of sent){assert.equal(payload.embeds[0].url,'https://cosmicrp.net/portal.html#review');assert.ok(payload.embeds[0].description.includes('[Open Staff review](https://cosmicrp.net/portal.html#review)'));}
 });

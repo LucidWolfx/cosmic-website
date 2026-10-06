@@ -3,11 +3,11 @@ const UUID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const ACTIONS=new Set(['list','read','notice_save','notice_archive','roster_save','roster_archive','approve']);
 class Failure extends Error {constructor(status,message){super(message);this.status=status;}}
 
-export function departmentConfig(get){return {supabaseUrl:get('SUPABASE_URL'),serviceKey:get('SUPABASE_SERVICE_ROLE_KEY'),botToken:get('DISCORD_BOT_TOKEN'),guildId:get('DISCORD_GUILD_ID'),origin:'https://lucidwolfx.github.io'};}
+export function departmentConfig(get){return {supabaseUrl:get('SUPABASE_URL'),serviceKey:get('SUPABASE_SERVICE_ROLE_KEY'),botToken:get('DISCORD_BOT_TOKEN'),guildId:get('DISCORD_GUILD_ID'),origins:['https://cosmicrp.net','https://lucidwolfx.github.io']};}
 
 export function createDepartmentHandler({config:c,fetchImpl=fetch}){
-  const cors={'access-control-allow-origin':c.origin,'access-control-allow-headers':'authorization, apikey, content-type, x-client-info','access-control-allow-methods':'POST, OPTIONS','vary':'Origin','cache-control':'no-store','content-type':'application/json'};
-  const reply=(data,status=200)=>new Response(JSON.stringify(data),{status,headers:cors});
+  const origins=new Set(c.origins||[]);
+  const cors={'access-control-allow-headers':'authorization, apikey, content-type, x-client-info','access-control-allow-methods':'POST, OPTIONS','vary':'Origin','cache-control':'no-store','content-type':'application/json'};
   async function rpc(name,args){
     const response=await fetchImpl(`${c.supabaseUrl}/rest/v1/rpc/${name}`,{method:'POST',headers:{apikey:c.serviceKey,Authorization:`Bearer ${c.serviceKey}`,'content-type':'application/json'},body:JSON.stringify(args),signal:AbortSignal.timeout(8000)});
     if(!response.ok){
@@ -20,8 +20,13 @@ export function createDepartmentHandler({config:c,fetchImpl=fetch}){
     return response.json();
   }
   return async request=>{
-    if(request.headers.get('origin')&&request.headers.get('origin')!==c.origin)return reply({error:'Origin not allowed.'},403);
-    if(request.method==='OPTIONS')return new Response(null,{status:204,headers:cors});
+    const origin=request.headers.get('origin');
+    const allowed=origin!==null&&origins.has(origin);
+    // Keep response headers local to this request: both sites can be active during cutover.
+    const headers={...cors,...(allowed?{'access-control-allow-origin':origin}:{})};
+    const reply=(data,status=200)=>new Response(JSON.stringify(data),{status,headers});
+    if(origin!==null&&!allowed)return reply({error:'Origin not allowed.'},403);
+    if(request.method==='OPTIONS')return new Response(null,{status:204,headers});
     if(request.method!=='POST')return reply({error:'Use POST.'},405);
     try{
       if(!c.supabaseUrl?.startsWith('https://')||!c.serviceKey||!c.botToken||!ID.test(c.guildId||''))throw new Failure(503,'The department service is not configured.');
